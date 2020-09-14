@@ -1,0 +1,11 @@
+@import '../Helpers/mixin';
+
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    font-family: 'Source Sans Pro', sans-serif;
+    @include styleText($color-black-0, $fs-0, $fw-normal);
+    line-height: 1.5;
+}
