@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import img from '../../../img/movie-3.jpg';
+import {Link} from 'react-router-dom';
+
 export default class SliderItems extends Component {
     render() {
         
@@ -14,7 +15,7 @@ export default class SliderItems extends Component {
                         </a>
                     </div>
                     <div className="newIn__payTicket">
-                        <div className="detail"><a>CHI TIẾT</a></div>
+                        <div className="detail"><Link to={`/detail/${this.props.item.maPhim}`}>CHI TIẾT</Link></div>
                         <div className="pay"><a> MUA VÉ</a> </div>
                     </div>
                 </div>

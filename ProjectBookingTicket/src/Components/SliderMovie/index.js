@@ -4,8 +4,9 @@ import '../../Layouts/Slider.scss';
 import SampleNextArrow from './Arrow/nextArrow';
 import SamplePrevArrow from './Arrow/prevArrow';
 import SliderItems from './SliderItems';
-import Axios from 'axios';
 import { connect } from 'react-redux';
+import {fetchMovie} from '../../Redux/Actions/movie';
+
 
 
 class SliderMovie extends Component {
@@ -38,23 +39,12 @@ class SliderMovie extends Component {
         )
     }
     componentDidMount() {
-        Axios({
-            method: 'GET',
-            url: 'http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP03',
-        }).then(res => {
-            this.props.dispatch({
-                type: 'FETCH_MOVIES',
-                payload: res.data
-            });
-        }).catch(err => {
-            console.log(err);
-        })
+      this.props.dispatch(fetchMovie());
     };
 }
 const mapStateToProps = state => ({
     movieList: state.movie.movies
 })
-
 
 
 export default connect(mapStateToProps)(SliderMovie);

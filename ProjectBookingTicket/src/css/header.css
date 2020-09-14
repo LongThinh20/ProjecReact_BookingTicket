@@ -1,9 +1,4 @@
 .header {
-  position: absolute;
-  z-index: 100;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
   background: #333;
   width: 100%;
   opacity: .8;
