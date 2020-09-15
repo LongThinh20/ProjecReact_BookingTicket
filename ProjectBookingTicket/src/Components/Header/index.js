@@ -1,7 +1,13 @@
+import { template } from 'lodash';
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import img from '../../img/logo.svg';
+import '../../Layouts/header.scss';
+import { connect } from 'react-redux';
 
-export default class Header extends Component {
+
+
+class Header extends Component {
     render() {
         return (
             <header className="header">
@@ -9,17 +15,16 @@ export default class Header extends Component {
                     <div className="header_account text-right">
                         <span className="account_icon"><i className=" fa fa-user-circle mr-2" /></span>
                         <div type=" button" className="account_detail btn dropdown-toggle" data-toggle="dropdown">
-                            Nguyễn Văn Tí
-      </div>
+                            ..............</div>
                         <div className="dropdown-menu">
                             <a className="acount_logout dropdown-item" href="#">Thông tin cá nhân</a>
                             <a className="acount_logout dropdown-item " href="#">Đăng xuất</a>
                         </div>
                     </div>
                     <nav className=" header__nav navbar navbar-expand-md navbar-dark ">
-                        <a className="navbar-brand header-img" href="#">
-                            <img src= {img} alt className="img-fluid" />
-                        </a>
+                        <NavLink className="navbar-brand header-img" to="/">
+                            <img src={img} className="img-fluid" />
+                        </NavLink>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#movieNavbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon" />
                         </button>
@@ -35,10 +40,10 @@ export default class Header extends Component {
                                     <a className="nav-link" href="#">MUA VÉ</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#" data-toggle="modal" data-target="#logIn" data-whatever="@getbootstrap">ĐĂNG NHẬP</a>
+                                    <NavLink className="nav-link" activeStyle={{ color: 'orange' }} to="/signin" >ĐĂNG NHẬP</NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#" data-toggle="modal" data-target="#signUp" data-whatever="@getbootstrap">ĐĂNG KÍ</a>
+                                    <NavLink className="nav-link" activeStyle={{ color: 'orange' }} to="/signup" >ĐĂNG KÍ</NavLink>
                                 </li>
                             </ul>
                         </div>
@@ -49,3 +54,11 @@ export default class Header extends Component {
         )
     }
 }
+// const mapStateToProps = state=>{
+//     return{
+//         credentials : state.user.credentials
+//     }
+// }
+
+
+export default connect(null)(Header);

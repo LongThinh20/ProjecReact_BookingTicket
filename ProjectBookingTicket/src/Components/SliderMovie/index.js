@@ -4,8 +4,10 @@ import '../../Layouts/Slider.scss';
 import SampleNextArrow from './Arrow/nextArrow';
 import SamplePrevArrow from './Arrow/prevArrow';
 import SliderItems from './SliderItems';
-import Axios from 'axios';
+
 import { connect } from 'react-redux';
+import { fetchMovieAction } from '../../Redux/Actions/movie';
+
 
 
 class SliderMovie extends Component {
@@ -15,7 +17,7 @@ class SliderMovie extends Component {
             dots: false,
             infinite: false,
             slidesToShow: 4,
-            slidesToScroll: 1,
+            slidesToScroll: 3,
             nextArrow: <SampleNextArrow />,
             prevArrow: <SamplePrevArrow />
         };
@@ -28,7 +30,7 @@ class SliderMovie extends Component {
                     <Slider {...settings}>
                         {
                             this.props.movieList.map((item, index) =>
-                                <SliderItems item={item} />
+                                <SliderItems item={item} key={index} />
                             )
                         }
 
@@ -38,17 +40,7 @@ class SliderMovie extends Component {
         )
     }
     componentDidMount() {
-        Axios({
-            method: 'GET',
-            url: 'http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP03',
-        }).then(res => {
-            this.props.dispatch({
-                type: 'FETCH_MOVIES',
-                payload: res.data
-            });
-        }).catch(err => {
-            console.log(err);
-        })
+       this.props.dispatch(fetchMovieAction())
     };
 }
 const mapStateToProps = state => ({

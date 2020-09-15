@@ -1,15 +1,28 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import './App.scss';
-import HomePage from './Screens/Home';
-import SignUp from './Screens/SignUp';
+import HomePage from './Screens/HomeMoule/Home';
+import SignUp from './Screens/HomeMoule/SignUp';
+import DetailMovie from './Screens/HomeMoule/Detail';
+
+import Header from './Components/Header';
+import Footer from './Components/Footer';
+
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import SignIn from './Screens/HomeMoule/SignIn';
 
 
 function App() {
   return (
-    <Fragment>
-      {/* <HomePage/> */}
-      <SignUp/>
-    </Fragment>
+    <BrowserRouter>
+      <Header />
+      <Switch>
+        <Route path="/detail/:Id" component={DetailMovie} />
+        <Route path="/signup" component={SignUp} />
+        <Route path="/signin" component={SignIn} />
+        <Route path="/" component={HomePage} />
+      </Switch>
+      <Footer />
+    </BrowserRouter>
   );
 }
 

@@ -14,13 +14,13 @@ export default class ListGroup extends Component {
                             <h4 className="cinemaTitle">CHỌN RẠP</h4>
                             <div className="cinemaList_content list-group" id="list-tab" role="tablist">
                                 <a className="cinemaList_item list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">
-                                    <img className="Cinema_Icon" src={img} alt /></a>
+                                    <img className="Cinema_Icon" src={img}  /></a>
                                 <a className="cinemaList_item list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">
-                                    <img className="Cinema_Icon" src={img} alt /></a>
+                                    <img className="Cinema_Icon" src={img}  /></a>
                                 <a className="cinemaList_item list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">
-                                    <img className="Cinema_Icon" src={img} alt /></a>
+                                    <img className="Cinema_Icon" src={img}  /></a>
                                 <a className="cinemaList_item list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">
-                                    <img className="Cinema_Icon" src={img} alt /></a>
+                                    <img className="Cinema_Icon" src={img}  /></a>
                             </div>
                         </div>
                         <div className="col-4 cinemaGroupList">
@@ -60,7 +60,7 @@ export default class ListGroup extends Component {
                                 <div className="cinemaMovie_content tab-pane fade show active" id="list-home1" role="tabpanel" aria-labelledby="list-home-list1">
                                     <div className="cinemaMovie_item row">
                                         <div className="col-2  cinemaMovie_img">
-                                            <img src={img1} alt className="img-fluid ml-2" />
+                                            <img src={img1}  className="img-fluid ml-2" />
                                         </div>
                                         <div className="col cinemaMovie_detail">
                                             <h3>It's over</h3>
@@ -73,7 +73,7 @@ export default class ListGroup extends Component {
                                     </div>
                                     <div className="cinemaMovie_item row">
                                         <div className="col-2  cinemaMovie_img">
-                                            <img src={img1} alt className="img-fluid ml-2" />
+                                            <img src={img1}  className="img-fluid ml-2" />
                                         </div>
                                         <div className="col cinemaMovie_detail">
                                             <h3>It's over</h3>

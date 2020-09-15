@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import img from '../../../img/movie-3.jpg';
+import { NavLink } from 'react-router-dom';
+
 export default class SliderItems extends Component {
     render() {
-        
+
         return (
             <div className="item carousel__detail">
                 <div className="newIn__img img-fluid">
@@ -14,7 +15,7 @@ export default class SliderItems extends Component {
                         </a>
                     </div>
                     <div className="newIn__payTicket">
-                        <div className="detail"><a>CHI TIẾT</a></div>
+                        <div className="detail"><NavLink to={`/detail/${this.props.item.maPhim}`}>CHI TIẾT</NavLink></div>
                         <div className="pay"><a> MUA VÉ</a> </div>
                     </div>
                 </div>
