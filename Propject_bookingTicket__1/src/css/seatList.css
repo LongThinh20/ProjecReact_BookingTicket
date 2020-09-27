@@ -1,0 +1,39 @@
+.seatList {
+  padding: 200px 0;
+}
+
+.seatList .seatList_detail {
+  background: url(../img/screen.png);
+  width: 100px;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding: 50px 0;
+}
+
+.seatList .seatList_detail table tbody tr td {
+  padding: 5px;
+}
+
+.seatList .seatList_detail table tbody tr .rowName {
+  padding-right: 40px;
+  color: #333;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.seatList .contentRight .totalCost {
+  color: #555555;
+  font-size: 60px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.seatList .contentRight .bookingEdit {
+  color: white;
+  font-size: 30px;
+  font-weight: normal;
+  line-height: 50px;
+  height: 50px;
+}
+/*# sourceMappingURL=seatList.css.map */

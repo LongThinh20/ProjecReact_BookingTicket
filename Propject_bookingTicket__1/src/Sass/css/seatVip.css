@@ -1,0 +1,29 @@
+.seatVip {
+  height: 27px;
+  width: 33px;
+  text-align: center;
+  background: #f8b85d;
+  color: transparent;
+  border: 1px solid  transparent;
+  border-radius: 8px 5px 5px;
+  position: relative;
+  color: white;
+}
+
+.seatVip::before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  background: #f8b85d;
+  border-radius: 5px;
+  border: 2px solid rgba(255, 255, 255, 0.856);
+  top: -3px;
+  left: 3px;
+  color: #f8b85d;
+}
+
+.seatVip:focus {
+  outline: none;
+}
+/*# sourceMappingURL=seatVip.css.map */

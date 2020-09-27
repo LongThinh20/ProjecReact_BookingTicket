@@ -1,0 +1,7 @@
+
+@import '../Helpers/mixin';
+@import '../Helpers/variables';
+
+.text_Orange{
+    @include  styleText($color-orange,20px,$fw-bold);
+}

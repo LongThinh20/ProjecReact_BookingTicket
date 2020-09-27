@@ -1,0 +1,15 @@
+@import '../Sass/Helpers/mixin';
+@import '../Sass/Helpers/variables';
+
+.signUp{
+    height: 800px;
+    padding: 100px 0;
+    .signUp_content{
+        width: 30%;
+        margin: auto;
+        h1{
+            @include styleTextTile(30px);
+        }
+       
+    }
+}

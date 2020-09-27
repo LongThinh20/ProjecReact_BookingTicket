@@ -1,0 +1,45 @@
+@import '../Sass/Helpers/mixin';
+@import '../Sass/Helpers/variables';
+
+.detail{
+    position: relative;
+    padding: 100px 0;
+ height: 800px;
+    .left_content{
+        img{
+            height: 300px;
+            width: 200px;
+        }
+        
+    }
+    .right_content{
+        color: white;
+        h1{
+            letter-spacing: 5px;
+        }
+        .rating_Star{
+            i{
+                color: orange;
+                padding-right: 5px;
+                font-size: 15px;
+        }
+        span{
+         
+            width: 50px;
+            height: 50px;
+            border-left: 1px dotted $color-orange;
+            color: greenyellow;
+            font-size: 25px;
+        } 
+      }
+      .description{
+          @include styleText($color-gray-3,$fs-1,$fw-normal);
+          font-style: italic;
+      }
+        .button_Cinema{
+           width: 100px;
+           height: 45px;
+        }
+    }
+   
+}

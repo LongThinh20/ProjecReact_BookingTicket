@@ -1,0 +1,12 @@
+{
+    "version": 3,
+    "mappings": "AAIA,AAAA,YAAY,CAAA;ECDR,KAAK,ECaM,OAAO;EDZlB,SAAS,EDCyB,IAAI;ECAtC,WAAW,ECsDL,IAAI;CFrDb",
+    "sources": [
+        "../Components/text_Orange.scss",
+        "../Helpers/_mixin.scss",
+        "../Helpers/_variables.scss",
+        "../Helpers/_variables.scss"
+    ],
+    "names": [],
+    "file": "text_Orange.css"
+}
