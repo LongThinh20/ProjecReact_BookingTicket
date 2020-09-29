@@ -1,13 +1,15 @@
 @import '../Sass/Helpers/mixin';
 @import '../Sass/Helpers/variables';
 
-.signIn{
+.signIn {
     padding: 100px 0;
     height: 800px;
-    .signIn_Content{
+
+    .signIn_Content {
         width: 30%;
         margin: auto;
-        h1{
+
+        h1 {
             @include styleTextTile(35px)
         }
     }

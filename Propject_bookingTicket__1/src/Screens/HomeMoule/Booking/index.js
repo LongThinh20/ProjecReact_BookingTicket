@@ -9,7 +9,11 @@ import text_Form_Title from '../../../Sass/Components/text_Form_Title.scss';
 import text_Green from '../../../Sass/Components/text_Green.scss';
 import text_Orange from '../../../Sass/Components/text_Orange.scss';
 import text_Normal from '../../../Sass/Components/text_Normal.scss';
+import demoText from '../../../Sass/Components/demoText.scss'
 import moment from 'moment'
+import Swal from 'sweetalert2'
+import Countdown from 'react-countdown-now';
+import swal from 'sweetalert';
 
 
 import React, { useEffect, useState } from 'react'
@@ -18,6 +22,7 @@ import Axios from 'axios';
 import { date, object } from 'yup';
 import SeatList from './SeatList';
 import { useDispatch, useSelector } from 'react-redux';
+import countDownComponent from '../../../Components/countDownComponent';
 
 export default function Booking(props) {
 
@@ -121,13 +126,77 @@ export default function Booking(props) {
 
     // }
 
+
+    const checkPay = () => {
+        Swal.fire({
+            title: 'Bạn có chắc muốn thanh toán không',
+            icon: 'info',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'THANH TOÁN'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'THANH TOÁN HOÀN TẤT!',
+                    'Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi',
+                    'success'
+                )
+            }
+        })
+    }
+
+    const Completionist = () => (
+        swal("Hết thời gian đặt ghế vui lòng đặt ghế trong thời gian 5 phút,tiến hành đặt lại!!")
+            .then((value) => {
+                window.location.reload()
+            })
+    )
+
+    const renderer = ({ minutes, seconds, completed }) => {
+        if (completed) {
+            // Render a complete state
+            console.log(completed);
+            return <Completionist />;
+        } else {
+            // Render a countdown
+            return (
+                <span className="display-4">{minutes}:{seconds}</span>);
+        }
+    };
+    const couter = 1000 * 60 * 5
     return (
         <section className="seatList">
+
             <div className="container">
                 <div className="row">
-                    <div className="col-md-12 col-lg-8 col-xl-8 seatList_detail">
-                        <div className="screen col-12"></div>
+                    <div className="col">
+                        <p className="demoText">
+                            {
+                                Object.entries(lstBookingTicket).map(([index, item]) => {
+                                    return (
+                                        item.tenCumRap
+                                    )
+                                })
+                            }
+                        </p>
+                    </div>
+                    <div className="col">
 
+                        <div className="text_Normal">Thời gian giữ ghế:</div>
+                        <Countdown
+                            date={Date.now() + couter}
+                            renderer={renderer}
+                        />
+
+                    </div>
+                </div>
+
+                <div className="row">
+
+                    <div className="col-md-12 col-lg-8 col-xl-8 seatList_detail">
+
+                        <div className="screen col-12"></div>
                         <table style={{ margin: 'auto' }}>
 
                             <tr>
@@ -147,7 +216,7 @@ export default function Booking(props) {
                                             return ghe.daDat ? <button key={index} className=" seatBooking">
                                                 X </button>
                                                 :
-                                                <button key={index} onClick={() => { datGhe(`${A}`, ghe); booking(`${A}`,ghe.stt,ghe.giaVe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
+                                                <button key={index} onClick={() => { datGhe(`${A}`, ghe); booking(`${A}`, ghe.stt, ghe.giaVe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
                                                     {ghe.stt}
                                                 </button>
                                         })
@@ -163,7 +232,6 @@ export default function Booking(props) {
                                             let classGheVip = ghe.loaiGhe === 'Vip' ? 'seatVip' : '';
 
 
-
                                             let indexGhe = danhSachGheDangDat.findIndex(gheDangDat => gheDangDat.stt === ghe.stt);
 
                                             let classGheDangDat = indexGhe !== -1 ? 'seatSelect' : '';
@@ -171,7 +239,7 @@ export default function Booking(props) {
                                             return ghe.daDat ? <button key={index} className=" seatBooking">
                                                 X </button>
                                                 :
-                                                <button key={index} onClick={() => { datGhe(ghe, `${B}`); booking() }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
+                                                <button key={index} onClick={() => { datGhe(`${A}`, ghe); booking(`${B}`, ghe.stt, ghe.giaVe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
                                                     {ghe.stt}
                                                 </button>
                                         })
@@ -375,14 +443,14 @@ export default function Booking(props) {
 
 
                     </div>
-                    <div className="col-md-12 col-lg-4 contentRight">
-                        <div className="card">
+                    <div className="col-md-12 col-lg-4 contentRight ">
+                        <div className="card ">
                             <div className="card-header totalCost">
-                               {
-                                   lstSeatBooking.reduce((total,lst,index)=>{
-                                       return total += lst.price
-                                   },0).toLocaleString()
-                               } đ </div>
+                                {
+                                    lstSeatBooking.reduce((total, lst, index) => {
+                                        return total += lst.price
+                                    }, 0).toLocaleString()
+                                } đ </div>
                             <ul className="list-group list-group-flush">
                                 <li className="list-group-item">
                                     <div className="row">
@@ -430,9 +498,9 @@ export default function Booking(props) {
                                         <div className="col pl-0">
                                             {
                                                 lstSeatBooking?.map((item, index) => {
-                                                    return (                                                    
-                                                    <span className="text_Orange mr-2">{item.rowSeat}{`${item.stt}`} - <span className="text_Green">{item.price.toLocaleString()
-                                                    }</span></span>
+                                                    return (
+                                                        <span className="text_Orange mr-2">{item.rowSeat}{`${item.stt}`} - <span className="text_Green">{item.price.toLocaleString()
+                                                        }</span></span>
                                                     )
                                                 })
                                             }
@@ -474,7 +542,7 @@ export default function Booking(props) {
                                 </li>
                             </ul>
                             <div className="card-foot">
-                                <button onClick={() => { }} className="button_Form bookingEdit">Đặt Vé</button>
+                                <button onClick={() => { checkPay() }} className="button_Form bookingEdit">Đặt Vé</button>
                             </div>
                         </div>
                     </div>

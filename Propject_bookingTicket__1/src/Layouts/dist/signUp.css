@@ -1,0 +1,25 @@
+.signUp {
+  height: 800px;
+  padding: 100px 0;
+}
+.signUp .signUp_content {
+  width: 30%;
+  margin: auto;
+}
+.signUp .signUp_content h1 {
+  color: #eb7633;
+  font-size: 30px;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+.signUp .signUp_content h1::after {
+  content: " ";
+  width: 160px;
+  height: 3px;
+  background: linear-gradient(to right, #f8b85d, #eb7633);
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+}

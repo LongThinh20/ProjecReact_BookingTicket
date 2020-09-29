@@ -1,156 +1,180 @@
 @import '../Sass/Helpers/mixin';
 @import '../Sass/Helpers/variables';
-.mySlider{
+
+.mySlider {
     padding-top: 100px;
     background-color: $color-black-1;
-.newIn__title{
-    color: #eb7633;
-    font-size: 18px;
-    letter-spacing: 2px;
-    margin-bottom: 40px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    position: relative;
-    &::after{
-        content: " ";
-        width: 160px;
-        height: 3px;
-        background: linear-gradient(to right, #f8b85d,#eb7633);
-        position: absolute;
-        bottom: -1px;
-        left: 0;
-    }
-}
-.slick-slider{
-    .slick-prev{
-       &::before{
-           position: absolute;
-           font-size: $fs-4;
-           left: -15px;
-       }
-    }
-    .slick-next{
-        &::before{
-            font-size: $fs-4;
-            
+
+    .newIn__title {
+        color: #eb7633;
+        font-size: 18px;
+        letter-spacing: 2px;
+        margin-bottom: 40px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        position: relative;
+
+        &::after {
+            content: " ";
+            width: 160px;
+            height: 3px;
+            background: linear-gradient(to right, #f8b85d, #eb7633);
+            position: absolute;
+            bottom: -1px;
+            left: 0;
         }
-     }
-    .item{
-        padding: 0 10px;
-        .newIn__img{
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            img{
+    }
+
+    .slick-slider {
+        .slick-prev {
+            &::before {
+                position: absolute;
+                font-size: $fs-4;
+                left: -15px;
+            }
+        }
+
+        .slick-next {
+            &::before {
+                font-size: $fs-4;
+
+            }
+        }
+
+        .item {
+            padding: 0 10px;
+
+            .newIn__img {
                 position: relative;
+                overflow: hidden;
                 border-radius: 10px;
-                width: 100%;
-                height: 100%;
-            }
-            .overlay{
-                position: absolute;
-                left: 0;
-                height: 100%;
-                width: 200%;
-                opacity: 0.8;
-                background: linear-gradient(to bottom,#f8b85d, #eb7633);
-                transform: skewX(30deg) translateX(-125%);
-                transition: all .5s;
-                top: 0;
-            }
-            &:hover .overlay{
-                transform: skewX(30deg) translateX(-20%);
-            }
-            .newIn__play{
-                position: absolute;
-                color: white;
-                top: 50%;
-                left: 0;
-                transform: translateY(-50%);
-                width: 100%;
-                text-align: center;
-                opacity: 0;
-                transition: all .5s;
-                i{
-                    width: 70px;
-                    height: 70px;
-                    border: 2px solid #fff;
-                    background-color: rgba(255, 255, 255, 0.192);
-                    border-radius: 5px;
-                    line-height: 70px;
-                    text-align: center;
-                    margin: 0 auto;
+                margin-bottom: 20px;
+
+                img {
+                    position: relative;
+                    border-radius: 10px;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                .overlay {
+                    position: absolute;
+                    left: 0;
+                    height: 100%;
+                    width: 200%;
+                    opacity: 0.8;
+                    background: linear-gradient(to bottom, #f8b85d, #eb7633);
+                    transform: skewX(30deg) translateX(-125%);
                     transition: all .5s;
-                    &:hover{
-                        transform: scale(0.9);
+                    top: 0;
+                }
+
+                &:hover .overlay {
+                    transform: skewX(30deg) translateX(-20%);
+                }
+
+                .newIn__play {
+                    position: absolute;
+                    color: white;
+                    top: 50%;
+                    left: 0;
+                    transform: translateY(-50%);
+                    width: 100%;
+                    text-align: center;
+                    opacity: 0;
+                    transition: all .5s;
+
+                    i {
+                        width: 70px;
+                        height: 70px;
+                        border: 2px solid #fff;
+                        background-color: rgba(255, 255, 255, 0.192);
+                        border-radius: 5px;
+                        line-height: 70px;
+                        text-align: center;
+                        margin: 0 auto;
+                        transition: all .5s;
+
+                        &:hover {
+                            transform: scale(0.9);
+                        }
+                    }
+
+                    a {
+                        font-size: 13px;
+                        cursor: pointer;
+                        letter-spacing: 4px;
+                        margin: 10px 0;
                     }
                 }
-                a{
-                    font-size: 13px;
-                    cursor: pointer;
-                    letter-spacing: 4px;
-                    margin: 10px 0;
-                }   
+
+                &:hover .newIn__play {
+                    opacity: 1;
+                }
+
+                .newIn__payTicket {
+                    position: absolute;
+                    display: flex;
+                    bottom: 0;
+                    width: 100%;
+                    height: 70px;
+                    background-color: rgba(0, 0, 0, 0.349);
+                    opacity: 0;
+                    transition: all .5s;
+
+                    a {
+                        font-size: 13px;
+                        cursor: pointer;
+                        letter-spacing: 4px;
+                        margin: 10px 0;
+                        color: white;
+                    }
+
+                    .detailMovie {
+                        height: 45px;
+                        width: 100px;
+                        text-align: center;
+                        line-height: 40px;
+                        margin-left: 15px;
+                        margin-top: 15px;
+                        border: 2px solid #fff;
+
+                        &:hover {
+                            background-color: #eb7633;
+                        }
+                    }
+
+                    .pay {
+                        position: absolute;
+                        right: 0;
+                        height: 45px;
+                        width: 100px;
+                        text-align: center;
+                        line-height: 40px;
+                        margin-right: 15px;
+                        margin-top: 15px;
+                        border: 2px solid #fff;
+
+                        &:hover {
+                            background-color: #eb7633;
+                        }
+                    }
+                }
+
+                &:hover .newIn__payTicket {
+                    opacity: 1;
+                }
             }
-            &:hover .newIn__play{
-                opacity: 1;
-            }
-            .newIn__payTicket{
-                position: absolute;
-                display: flex;
-                bottom: 0;
-                width: 100%;
-                height: 70px;
-                background-color: rgba(0, 0, 0, 0.349);
-                opacity: 0;
-                transition: all .5s;
-                a{
-                    font-size: 13px;
-                    cursor: pointer;
-                    letter-spacing: 4px;
-                    margin: 10px 0;
+
+            .newIn__text {
+                p {
+                    font-size: 18px;
                     color: white;
                 }
-                .detailMovie{
-                    height: 45px;
-                    width: 100px;
-                    text-align:center;
-                    line-height: 40px;
-                    margin-left: 15px;
-                    margin-top: 15px;
-                    border: 2px solid #fff;
-                    &:hover{
-                        background-color: #eb7633;
-                    }
-                }
-                .pay{
-                    position: absolute;
-                    right: 0;
-                    height: 45px;
-                    width: 100px;
-                    text-align:center;
-                    line-height: 40px;
-                    margin-right: 15px;
-                    margin-top: 15px;
-                    border: 2px solid #fff;
-                    &:hover{
-                        background-color: #eb7633;
-                    }
-                }
             }
-            &:hover .newIn__payTicket{
-                opacity: 1;
+
+            &:focus {
+                outline: none;
             }
         }
-        .newIn__text{
-        p{
-            font-size: 18px;
-            color: white; 
-        }
-        }
-        &:focus{
-            outline: none;
-        }
-    }
     }
 }

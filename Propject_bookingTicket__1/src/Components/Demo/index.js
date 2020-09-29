@@ -1,52 +1,32 @@
-import Axios from 'axios';
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchCinemaAction } from '../../Redux/Actions/movie'
-import { FETCH_CINEMA } from '../../Redux/Actions/type';
-import demo2 from './demo2';
+import React from 'react'
 
-class Demo extends Component {
-    render() {
-        return (
-            <div>
-
-
-                <div className="row">
-                    <div className="col-4">
-                        <div className="list-group" id="list-tab" role="tablist">
-                            {
-                                this.props.cinemaList.map((item, index) => (
-                                    <a className="list-group-item list-group-item-action " id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home"
-                                 
-                                    >{item.maHeThongRap}</a>
-
-                                ))
-
-                            }
-                        </div>
-                    </div>
-
-                    <demo2 />
-                </div >
-
-
-
-            </div>
-
-        )
+export default function Demo() {
+  let time = 6;
+  const interval = () => setInterval(function () {
+    time--;
+    document.getElementById('Label1').innerHTML = "" + time + " seconds"
+    if (time == 0) {
+      // stop timer
+      clearInterval(interval);
+      // click
+      document.getElementById('thebutton').click();
     }
-    componentDidMount(){
-        this.props.dispatch(fetchCinemaAction())
-    }
+  }, 1000)
+
+
+  return (
+    <div className="container">
+      <div>
+        <p id="Label1"> Time </p>
+        <button  type="submit" id="thebutton" onClick={interval()}>click</button>
+        <p id="Label2" style={{ color: 'red' }}> </p>
+      </div>
+
+    </div >
+  )
+
 }
-const mapStateToProps = state => ({
-    cinemaList: state.movie.cinema
-})
 
 
 
 
-
-
-
-export default connect(mapStateToProps,null)(Demo);

@@ -1,42 +1,50 @@
 @import '../Sass/Helpers/mixin';
 @import '../Sass/Helpers/variables';
 
-.seatList{
-    padding: 200px 0;
-    .seatList_detail{
-            background: url(../img/screen.png);
-            width: 100px;
-            height: 100%;
-            background-size: contain;
-            background-repeat: no-repeat;
-            padding: 50px 0;
-        table{
-            tbody{
-                tr{
-                    td{
-                        padding: 5px;     
+.seatList {
+
+    padding: 100px 0;
+
+    .seatList_detail {
+        background: url(../img/screen.png);
+        width: 100px;
+        height: 100%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        padding: 50px 0;
+
+
+        table {
+            tbody {
+                tr {
+                    td {
+                        padding: 5px;
                     }
-                    .rowName{
+
+                    .rowName {
                         padding-right: 40px;
-                           @include styleText($color-black-1,20px,$fw-bold);
-                       }
-                   
+                        @include styleText($color-black-1, 20px, $fw-bold);
+                    }
+
                 }
             }
-            
+
         }
-    
+
     }
-    .contentRight{
-        .totalCost{
-            @include styleText($color-black-0,60px,$fw-bold);
+
+    .contentRight {
+        box-shadow: 5px 10px 8px #888888;
+
+        .totalCost {
+            @include styleText($color-black-0, 60px, $fw-bold);
             text-align: center;
         }
-        .bookingEdit{
-            @include styleText(white,30px,$fw-normal);
+
+        .bookingEdit {
+            @include styleText(white, 30px, $fw-normal);
             line-height: 50px;
             height: 50px;
         }
     }
 }
-

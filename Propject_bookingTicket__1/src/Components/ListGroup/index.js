@@ -64,19 +64,27 @@ export default function ListGroup(props) {
         <section className="bookingTicket">
             <div className="container">
                 <div className="row">
-                   
+
                     <div className="col-2 cinemaList">
                         <h4 className="cinemaTitle">CHỌN RẠP</h4>
                         <div className="cinemaList_content list-group" id="list-tab" role="tablist">
                             {
                                 Object.entries(cinemaList).map(([index, item]) => {
                                     return (
-                                        <a className = "cinemaList_item list-group-item list-group-item-action"
-                                            id="list-home-list" data-toggle="list" href={`#${item.maHeThongRap}`} role="tab" aria-controls="home"
-                                            onClick={() => onIncrement(item.maHeThongRap)} key={index}
-                                        >
+                                        maHeThongRap == item.maHeThongRap ? (<a className="cinemaList_item list-group-item list-group-item-action active"
+                                            id="list-home-list" data-toggle="list" href={`#${item.maHeThongRap}`} role="tab" aria-controls={item.maHeThongRap}
+                                            onClick={() => onIncrement(item.maHeThongRap)} key={index}>
                                             <img className="Cinema_Icon" src={item.logo} style={{ width: '50px', height: '50px' }} />
-                                        </a>)
+                                        </a>
+                                        )
+                                            : (<a className="cinemaList_item list-group-item list-group-item-action"
+                                                id="list-home-list" data-toggle="list" href={`#${item.maHeThongRap}`} role="tab" aria-controls="home"
+                                                onClick={() => onIncrement(item.maHeThongRap)} key={index}>
+                                                <img className="Cinema_Icon" src={item.logo} style={{ width: '50px', height: '50px' }} />
+                                            </a>
+                                            )
+
+                                    )
                                 })
                             }
                         </div>
@@ -85,8 +93,8 @@ export default function ListGroup(props) {
                     <div className="col-4 cinemaGroupList">
                         <h4 className="cinemaTitle">CHỌN CỤM RẠP</h4>
                         <div className="tab-content" id="nav-tabContent">
-                            {/* ---cinema1---- */}
-                            <div className="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="BHDStar">
+                           
+                            <div className="tab-pane fade show active" id={maHeThongRap} role="tabpanel" aria-labelledby={maHeThongRap}>
                                 <div className="cinemaGroupList_content list-group" id="list-tab" role="tablist">
 
                                     {
@@ -96,7 +104,7 @@ export default function ListGroup(props) {
                                                 Object.entries(item.lstCumRap).map(([index, item]) => {
                                                     return (
 
-                                                        <a className="cinemaGroupList_item list-group-item list-group-item-action " id="list-home-list1" data-toggle="list" href={`#${item.maCumRap}`} role="tab" aria-controls="home" key={index}
+                                                        <a className="cinemaGroupList_item list-group-item list-group-item-action " id={item.maHeThongRap} data-toggle="list" href={`#${item.maCumRap}`} role="tab" aria-controls="home" key={index}
                                                             onClick={() => { checkShowTime(item.danhSachPhim) }}
                                                         >
                                                             <p>Tên rạp: <span>{item.tenCumRap}</span></p>
@@ -104,6 +112,7 @@ export default function ListGroup(props) {
                                                         </a>
                                                     )
                                                 })
+
                                             )
                                         })
                                     }
@@ -116,12 +125,11 @@ export default function ListGroup(props) {
                         <h4 className="cinemaTitle">CHỌN SUẤT</h4>
                         <div className="tab-content" id="nav-tabContent">
 
-                            <div className="cinemaMovie_content tab-pane fade show active" id={maCumRap} role="tabpanel" aria-labelledby="list-home-list1">
+                            <div className="cinemaMovie_content tab-pane fade show active" id={maCumRap} role="tabpanel" aria-labelledby={maHeThongRap}>
 
                                 {
                                     Object.entries(lstMovie).map(([index, item]) => {
                                         return (
-
                                             <div className="cinemaMovie_item row" >
                                                 <div className="col-2  cinemaMovie_img">
                                                     <img src={item.hinhAnh} className="img-fluid ml-2" />
@@ -131,14 +139,15 @@ export default function ListGroup(props) {
                                                     <p className="mr-lg-2"><i className="fa fa-clock" /> THỜI GIAN : <span>120 phút</span></p>
 
                                                     {
-                                                        Object.entries(item.lstLichChieuTheoPhim).map(([index, item]) => {
+                                                        Object.entries(item.lstLichChieuTheoPhim).slice(0, 10).map(([index, item]) => {
                                                             return (
-                                                            <NavLink to={`/booking/${item.maLichChieu}`} className="button_ShowTime mb-2"><span className="text_Green" style={{ fontSize: '13px' }}>{moment(item.ngayChieuGioChieu).format('DD.MM')}~</span> {moment(item.ngayChieuGioChieu).format('hh:mm a')}</NavLink>
+                                                                <NavLink to={`/booking/${item.maLichChieu}`} className="button_ShowTime mb-2"><span className="text_Green" style={{ fontSize: '13px' }}>{moment(item.ngayChieuGioChieu).format('DD.MM')}~</span> {moment(item.ngayChieuGioChieu).format('hh:mm a')}</NavLink>
                                                             )
                                                         })
                                                     }
                                                 </div>
                                             </div>
+
                                         )
                                     })
                                 }

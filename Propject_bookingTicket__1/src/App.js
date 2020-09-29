@@ -12,11 +12,13 @@ import Booking from './Screens/HomeMoule/Booking';
 
 
 
+
 function App() {
   return (
     <BrowserRouter>
       <Header />
       <Switch>
+       
         <Route path="/detail/:Id" component={DetailMovie} />
         <Route path="/signup" component={SignUp} />
         <Route path="/signin" component={SignIn} />
