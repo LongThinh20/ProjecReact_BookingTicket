@@ -5,12 +5,23 @@
   font-size: 15px;
   letter-spacing: 3px;
   overflow: hidden;
+  background: -webkit-gradient(linear, left top, right top, from(#eb7633), color-stop(#f8b85d), to(#eb7633));
   background: linear-gradient(90deg, #eb7633, #f8b85d, #eb7633);
   background-repeat: no-repeat;
   background-size: 80%;
-  animation: animate 4s linear infinite;
+  -webkit-animation: animate 4s linear infinite;
+          animation: animate 4s linear infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: rgba(255, 255, 255, 0);
+}
+
+@-webkit-keyframes animate {
+  0% {
+    background-position: -300%;
+  }
+  100% {
+    background-position: 300%;
+  }
 }
 
 @keyframes animate {
@@ -21,3 +32,4 @@
     background-position: 300%;
   }
 }
+/*# sourceMappingURL=demoText.css.map */

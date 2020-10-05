@@ -49,4 +49,19 @@
         }
     }
 
+    .content_center {
+        position: relative;
+        margin-top: 50px;
+        ul{
+           li{
+              .active{
+                  background-color: $color-orange;
+              }
+              a{
+                  color: $color-yellow;
+              }
+           }            
+        }
+    }
+
 }

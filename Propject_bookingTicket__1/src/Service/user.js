@@ -32,7 +32,7 @@ class UserService {
     signUp(data) {
         return Axios({
             method: "POST",
-            url: "http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangKy",
+            url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangKy",
             data: data
         })
     }
@@ -40,7 +40,7 @@ class UserService {
     signIn(user) {
         return Axios({
             method: "POST",
-            url: "http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap",
+            url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap",
             data: user
         })
     }

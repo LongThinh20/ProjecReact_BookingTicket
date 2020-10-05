@@ -60,7 +60,7 @@
                     position: absolute;
                     left: 0;
                     height: 100%;
-                    width: 200%;
+                    width: 250%;
                     opacity: 0.8;
                     background: linear-gradient(to bottom, #f8b85d, #eb7633);
                     transform: skewX(30deg) translateX(-125%);
@@ -130,12 +130,12 @@
                     }
 
                     .detailMovie {
+                       
                         height: 45px;
-                        width: 100px;
+                        width: 50%;
                         text-align: center;
                         line-height: 40px;
-                        margin-left: 15px;
-                        margin-top: 15px;
+                        margin: auto;
                         border: 2px solid #fff;
 
                         &:hover {
@@ -143,21 +143,6 @@
                         }
                     }
 
-                    .pay {
-                        position: absolute;
-                        right: 0;
-                        height: 45px;
-                        width: 100px;
-                        text-align: center;
-                        line-height: 40px;
-                        margin-right: 15px;
-                        margin-top: 15px;
-                        border: 2px solid #fff;
-
-                        &:hover {
-                            background-color: #eb7633;
-                        }
-                    }
                 }
 
                 &:hover .newIn__payTicket {

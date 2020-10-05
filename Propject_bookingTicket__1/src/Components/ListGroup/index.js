@@ -9,6 +9,7 @@ import { movieService } from '../../Service';
 import moment from 'moment';
 import _ from 'lodash';
 
+
 export default function ListGroup(props) {
 
 
@@ -17,8 +18,8 @@ export default function ListGroup(props) {
     const maHeThongRap = useSelector(state => state.movie.maHeThongRap);
     const maCumRap = useSelector(state => state.movie.maCumRap);
     const lstMovie = useSelector(state => state.movie.lstMovie);
-
-
+    
+ 
     useEffect(() => {
         movieService.fetchCinema()
             .then(res => {

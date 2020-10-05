@@ -53,7 +53,6 @@ const MovieReducer = (state = initialState, action) => {
             } else {
                 lstSeatBookingUpdate.push(action.payload);
             }
-            console.log(lstSeatBookingUpdate);
             state.lstSeatBooking = lstSeatBookingUpdate;
 
             return { ...state }

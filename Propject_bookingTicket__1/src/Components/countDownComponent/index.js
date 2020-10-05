@@ -2,7 +2,7 @@ import React from 'react';
 import Countdown from 'react-countdown-now';
 import swal from 'sweetalert';
 
-export default function countDown() {
+export default function countDownComponent() {
 
   const Completionist = () => (
     swal("Hết thời gian đặt ghế vui lòng đặt ghế trong thời gian 5 phút,tiến hành đặt lại!!")

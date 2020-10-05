@@ -42,4 +42,17 @@
   width: 100px;
   height: 45px;
 }
+
+.detail .content_center {
+  position: relative;
+  margin-top: 50px;
+}
+
+.detail .content_center ul li .active {
+  background-color: #eb7633;
+}
+
+.detail .content_center ul li a {
+  color: #f8b85d;
+}
 /*# sourceMappingURL=detail.css.map */

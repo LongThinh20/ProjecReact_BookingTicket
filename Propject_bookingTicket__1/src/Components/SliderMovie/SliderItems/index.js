@@ -14,6 +14,7 @@ export default class SliderItems extends Component {
                             <i className="fa fa-play d-block" />
                         </a>
                     </div>
+                    
                     <div className="newIn__payTicket">
                         <div className="detailMovie"><NavLink to={`/detail/${this.props.item.maPhim}`}>CHI TIẾT</NavLink></div>
                         <div className="pay"><a> MUA VÉ</a> </div>

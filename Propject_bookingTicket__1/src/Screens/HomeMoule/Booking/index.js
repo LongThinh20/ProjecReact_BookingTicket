@@ -239,7 +239,7 @@ export default function Booking(props) {
                                             return ghe.daDat ? <button key={index} className=" seatBooking">
                                                 X </button>
                                                 :
-                                                <button key={index} onClick={() => { datGhe(`${A}`, ghe); booking(`${B}`, ghe.stt, ghe.giaVe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
+                                                <button key={index} onClick={() => { datGhe(`${B}`, ghe); booking(`${B}`, ghe.stt, ghe.giaVe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
                                                     {ghe.stt}
                                                 </button>
                                         })
@@ -263,7 +263,7 @@ export default function Booking(props) {
                                             return ghe.daDat ? <button key={index} className=" seatBooking">
                                                 X </button>
                                                 :
-                                                <button key={index} onClick={() => { datGhe(ghe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
+                                                <button key={index} onClick={() => { datGhe(`${B}`, ghe); booking(`${B}`, ghe.stt, ghe.giaVe)}} className={` seat ${classGheDangDat}  ${classGheVip} `}>
                                                     {ghe.stt}
                                                 </button>
                                         })
@@ -287,7 +287,7 @@ export default function Booking(props) {
                                             return ghe.daDat ? <button key={index} className=" seatBooking">
                                                 X </button>
                                                 :
-                                                <button key={index} onClick={() => { datGhe(ghe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
+                                                <button key={index} onClick={() => { datGhe(`${C}`, ghe); booking(`${C}`, ghe.stt, ghe.giaVe)}} className={` seat ${classGheDangDat}  ${classGheVip} `}>
                                                     {ghe.stt}
                                                 </button>
                                         })

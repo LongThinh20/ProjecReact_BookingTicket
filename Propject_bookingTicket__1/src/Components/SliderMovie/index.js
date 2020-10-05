@@ -9,8 +9,8 @@ import { connect } from 'react-redux';
 import { fetchMovieAction } from '../../Redux/Actions/movie';
 
 
-
 class SliderMovie extends Component {
+
 
     render() {
         const settings = {
@@ -20,7 +20,8 @@ class SliderMovie extends Component {
             slidesToScroll: 3,
             nextArrow: <SampleNextArrow />,
             prevArrow: <SamplePrevArrow />
-        };
+        }
+        
         return (
             <section className="mySlider ">
                 <div className="container">
@@ -43,11 +44,10 @@ class SliderMovie extends Component {
         this.props.dispatch(fetchMovieAction())
     };
 }
+
 const mapStateToProps = state => ({
     movieList: state.movie.movies
 })
-
-
 
 export default connect(mapStateToProps)(SliderMovie);
 

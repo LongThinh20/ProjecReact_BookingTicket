@@ -28,7 +28,6 @@ class DetailMovie extends Component {
                                 <a href={this.props.movieDetail.trailer} data-toggle="modal" data-target="#exampleModalCenter">
                                     <i className="fa fa-play d-block" />
                                 </a>
-
                             </div>
 
                             <div className="modal fade" id="exampleModalCenter" tabIndex={-1} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="htrue">
@@ -38,7 +37,6 @@ class DetailMovie extends Component {
                                     </div>
                                 </div>
                             </div>
-
 
                             <div className="detail_Img">
                                 <img src={this.props.movieDetail.hinhAnh} ></img>
@@ -60,7 +58,6 @@ class DetailMovie extends Component {
                             <button className="btn button_Cinema">ĐẶT VÉ</button>
                         </div>
                     </div>
-
                 </div>
             </section>
         )

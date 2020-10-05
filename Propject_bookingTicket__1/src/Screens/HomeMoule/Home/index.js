@@ -2,15 +2,14 @@ import React, { Component } from 'react'
 
 import Carousel from '../../../Components/Carousel'
 import ListGroup from '../../../Components/ListGroup'
-import SliderMovie from '../../../Components/SliderMovie'
-
+import SliderMovie1 from '../../../Components/SliderMovie1'
 
 class HomePage extends Component {
     render() {
         return (
             <div>
                 <Carousel />
-                <SliderMovie />
+                <SliderMovie1 />
                 <ListGroup />
                
             </div>
@@ -18,6 +17,5 @@ class HomePage extends Component {
     }
 
 }
-
 
 export default HomePage;

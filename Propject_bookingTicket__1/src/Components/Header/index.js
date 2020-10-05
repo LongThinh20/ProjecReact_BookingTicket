@@ -54,11 +54,6 @@ class Header extends Component {
         )
     }
 }
-// const mapStateToProps = state=>{
-//     return{
-//         credentials : state.user.credentials
-//     }
-// }
 
 
 export default connect(null)(Header);

@@ -2,7 +2,7 @@
 import { FETCH_CREDENTIALS } from "../Actions/type";
 
 let initialState = {
-    credentials: null
+    credentials: []
 }
 
 const UserReducer = (state = initialState, action) => {

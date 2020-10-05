@@ -55,7 +55,7 @@
   position: absolute;
   left: 0;
   height: 100%;
-  width: 200%;
+  width: 250%;
   opacity: 0.8;
   background: -webkit-gradient(linear, left top, left bottom, from(#f8b85d), to(#eb7633));
   background: linear-gradient(to bottom, #f8b85d, #eb7633);
@@ -138,31 +138,14 @@
 
 .mySlider .slick-slider .item .newIn__img .newIn__payTicket .detailMovie {
   height: 45px;
-  width: 100px;
+  width: 50%;
   text-align: center;
   line-height: 40px;
-  margin-left: 15px;
-  margin-top: 15px;
+  margin: auto;
   border: 2px solid #fff;
 }
 
 .mySlider .slick-slider .item .newIn__img .newIn__payTicket .detailMovie:hover {
-  background-color: #eb7633;
-}
-
-.mySlider .slick-slider .item .newIn__img .newIn__payTicket .pay {
-  position: absolute;
-  right: 0;
-  height: 45px;
-  width: 100px;
-  text-align: center;
-  line-height: 40px;
-  margin-right: 15px;
-  margin-top: 15px;
-  border: 2px solid #fff;
-}
-
-.mySlider .slick-slider .item .newIn__img .newIn__payTicket .pay:hover {
   background-color: #eb7633;
 }
 
