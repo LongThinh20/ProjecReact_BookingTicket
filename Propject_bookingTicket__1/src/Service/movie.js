@@ -35,6 +35,14 @@ class MovieService {
         })
     }
 
+    fetchShowtimeToIdMovie(id) {
+        return Axios({
+            method: "GET",
+            url: `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}
+            `
+        })
+    }
+
     fetchBookingTicket(id) {
         return Axios({
             method: "GET",

@@ -63,6 +63,14 @@ function () {
       });
     }
   }, {
+    key: "fetchShowtimeToIdMovie",
+    value: function fetchShowtimeToIdMovie(id) {
+      return (0, _axios["default"])({
+        method: "GET",
+        url: "https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=".concat(id, "\n            ")
+      });
+    }
+  }, {
     key: "fetchBookingTicket",
     value: function fetchBookingTicket(id) {
       return (0, _axios["default"])({

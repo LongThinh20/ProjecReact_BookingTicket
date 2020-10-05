@@ -1,7 +1,7 @@
 .detail {
   position: relative;
   padding: 100px 0;
-  height: 800px;
+  height: 1000px;
 }
 .detail .left_content img {
   height: 300px;
@@ -35,13 +35,23 @@
   width: 100px;
   height: 45px;
 }
-.detail .content_center {
+.detail .center_content {
   position: relative;
   margin-top: 50px;
 }
-.detail .content_center ul li .active {
+.detail .center_content ul li {
+  margin-right: 20px;
+}
+.detail .center_content ul li .active {
   background-color: #eb7633;
 }
-.detail .content_center ul li a {
+.detail .center_content ul li a {
   color: #f8b85d;
+}
+.detail .center_content .content_showTime {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+.detail .center_content .content_showTime ul li {
+  text-align: center;
 }

@@ -9,10 +9,12 @@
     display: inline-block;
     border: 1px solid $color-orange;
     background-color: transparent;
+  
     @include styleText($color-orange,$fs-3,$fw-normal);
     &:hover{
         background-color: #eb7633;
         color: white;
+        text-decoration: none;
     }
     &:focus{
        outline: none;

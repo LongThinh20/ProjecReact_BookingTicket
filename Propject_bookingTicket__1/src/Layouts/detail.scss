@@ -4,7 +4,7 @@
 .detail {
     position: relative;
     padding: 100px 0;
-    height: 800px;
+    height: 1000px;
 
     .left_content {
         img {
@@ -49,11 +49,12 @@
         }
     }
 
-    .content_center {
+    .center_content {
         position: relative;
         margin-top: 50px;
         ul{
            li{
+               margin-right: 20px;
               .active{
                   background-color: $color-orange;
               }
@@ -62,6 +63,14 @@
               }
            }            
         }
+        .content_showTime{
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            ul{
+                li{
+                    text-align: center;
+                }
+            }
+        }
     }
-
 }

@@ -18,8 +18,8 @@ export default function ListGroup(props) {
     const maHeThongRap = useSelector(state => state.movie.maHeThongRap);
     const maCumRap = useSelector(state => state.movie.maCumRap);
     const lstMovie = useSelector(state => state.movie.lstMovie);
-    
- 
+
+
     useEffect(() => {
         movieService.fetchCinema()
             .then(res => {
@@ -84,7 +84,6 @@ export default function ListGroup(props) {
                                                 <img className="Cinema_Icon" src={item.logo} style={{ width: '50px', height: '50px' }} />
                                             </a>
                                             )
-
                                     )
                                 })
                             }
@@ -94,14 +93,12 @@ export default function ListGroup(props) {
                     <div className="col-4 cinemaGroupList">
                         <h4 className="cinemaTitle">CHỌN CỤM RẠP</h4>
                         <div className="tab-content" id="nav-tabContent">
-                           
+
                             <div className="tab-pane fade show active" id={maHeThongRap} role="tabpanel" aria-labelledby={maHeThongRap}>
                                 <div className="cinemaGroupList_content list-group" id="list-tab" role="tablist">
-
                                     {
                                         Object.entries(showtimeCinema).map(([index, item]) => {
                                             return (
-
                                                 Object.entries(item.lstCumRap).map(([index, item]) => {
                                                     return (
 
