@@ -5,7 +5,7 @@ export default class Carousel extends Component {
     render() {
         return (
             <div>
-                <section className="movieCarousel">
+                <section className="movieCarousel" >
                     <div id="movieSlider" className="carousel slide carousel-fade" data-ride="carousel">
                         <ol className="container carousel-indicators">
                             <li data-target="#movieSlider" data-slide-to={0} className="active" />

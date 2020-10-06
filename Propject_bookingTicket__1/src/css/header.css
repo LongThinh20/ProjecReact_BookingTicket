@@ -1,8 +1,12 @@
 .header {
+  position: fixed;
   z-index: 100;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   background: black;
   width: 100%;
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .header .header_account .account_detail {
@@ -32,12 +36,15 @@
 
 .header .header__nav .navbar-nav {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  -webkit-transition: all .5;
+  transition: all .5;
 }
 
 .header .header__nav .navbar-nav .nav-item .nav-link {
   color: white;
   padding: 0 30px 15px 30px;
   font-size: 20px;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .header .header__nav .navbar-nav .nav-item::after {

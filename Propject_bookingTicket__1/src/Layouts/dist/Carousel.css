@@ -14,7 +14,7 @@
   background-color: white;
 }
 .movieCarousel #movieSlider .carousel-inner .carousel-item {
-  height: 600px;
+  height: 800px;
 }
 .movieCarousel #movieSlider .carousel-inner .img-1 {
   background-image: url(../img//hero-1.jpg);

@@ -21,9 +21,9 @@ class SliderMovie extends Component {
             nextArrow: <SampleNextArrow />,
             prevArrow: <SamplePrevArrow />
         }
-        
+
         return (
-            <section className="mySlider ">
+            <section className="mySlider" id="showMovie">
                 <div className="container">
                     <div className="newIn__title">
                         <h2>DANH SÁCH PHIM</h2>

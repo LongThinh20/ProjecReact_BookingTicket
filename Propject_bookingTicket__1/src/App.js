@@ -16,6 +16,7 @@ import DetailMovie1 from './Screens/HomeMoule/Detail1';
 
 
 
+
 function App() {
   const dispatch = useDispatch();
   const getCredentialFormLocal = () => {
@@ -39,6 +40,7 @@ function App() {
 
         <Route path="/detail/:Id" component={DetailMovie1} />
         <Route path="/signup" component={SignUp} />
+        {/* <Route path="/demo" component={demo} /> */}
         <Route path="/signin" component={SignIn} />
         <Route path="/booking/:Id" component={Booking} />
         <Route path="/" component={HomePage} />

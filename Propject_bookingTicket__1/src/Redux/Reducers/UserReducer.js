@@ -11,6 +11,10 @@ const UserReducer = (state = initialState, action) => {
             state.credentials = action.payload;
             return { ...state }
         }
+        case 'DELETE_ACCOUNT': {
+            state.credentials = null;
+            return { ...state }
+        }
         default:
             return state
     }

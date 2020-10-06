@@ -2,12 +2,15 @@
 @import '../Sass/Helpers/variables';
 
 .signUp {
-    height: 800px;
-    padding: 100px 0;
+   
+    padding: 150px 0 150px 0;
+    background-color: $color-black-bg;
+    height: 1000px;
 
     .signUp_content {
         width: 30%;
         margin: auto;
+        color: white;
 
         h1 {
             @include styleTextTile(30px);

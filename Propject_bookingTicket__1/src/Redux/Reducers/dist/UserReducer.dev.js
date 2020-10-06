@@ -28,6 +28,12 @@ var UserReducer = function UserReducer() {
         return _objectSpread({}, state);
       }
 
+    case 'DELETE_ACCOUNT':
+      {
+        state.credentials = null;
+        return _objectSpread({}, state);
+      }
+
     default:
       return state;
   }

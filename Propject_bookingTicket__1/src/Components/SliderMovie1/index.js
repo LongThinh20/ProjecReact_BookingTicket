@@ -34,7 +34,7 @@ export default function SliderMovie1() {
 
 
     return (
-        <section className="mySlider ">
+        <section className="mySlider " id="showlstMovie">
             <div className="container">
                 <div className="newIn__title">
                     <h2>DANH SÁCH PHIM</h2>
