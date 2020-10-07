@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import img from '../../img/logo.svg';
 import '../../Layouts/header.scss';
 import useScrollTop from 'react-hook-scrolltop';
-import useScrollInfo from 'react-element-scroll-hook';
 import Swal from 'sweetalert2'
 
 export default function Header1() {
@@ -31,7 +30,8 @@ export default function Header1() {
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire(
-                    'ĐĂNG XUẤT THÀNH CÔNG',                   
+                    'ĐĂNG XUẤT THÀNH CÔNG',
+                    // window.location.replace('/')
                 )
                 handleSignOut()
             }
@@ -42,7 +42,7 @@ export default function Header1() {
     // console.log(scrollInfo);
 
     return (
-        <header className="header" style={{ backgroundColor: isTopOfPage ? 'transparent' : 'black' }}>
+        <header className="header" style={{ backgroundColor: isTopOfPage ? 'black' : 'black' }}>
             <div className="container">
 
 

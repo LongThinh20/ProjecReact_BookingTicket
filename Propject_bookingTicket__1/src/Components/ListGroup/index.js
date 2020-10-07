@@ -144,8 +144,6 @@ export default function ListGroup(props) {
                                   (<NavLink to={`/booking/${item.maLichChieu}`} className="button_ShowTime mb-2" > <span className="text_Green" style={{ fontSize: '13px' }}>{moment(item.ngayChieuGioChieu).format('DD.MM')}~</span> { moment(item.ngayChieuGioChieu).format('hh:mm a')}</NavLink>)
                                   : (<NavLink to={`/signIn`} className="button_ShowTime mb-2"><span className="text_Green" style={{ fontSize: '13px' }}>{moment(item.ngayChieuGioChieu).format('DD.MM')}~</span> {moment(item.ngayChieuGioChieu).format('hh:mm a')}</NavLink>)
                               )
-
-
                             })
                           }
                         </div>

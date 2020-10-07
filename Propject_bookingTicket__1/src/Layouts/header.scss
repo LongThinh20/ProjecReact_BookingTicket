@@ -9,7 +9,7 @@
     background: black;
     width: 100%;
     opacity: 0.8;
- 
+
 
     .header_account {
         .account_detail {
@@ -48,11 +48,12 @@
         .navbar-nav {
             border-bottom: 1px solid rgba(255, 255, 255, .2);
             transition: all .5;
+
             .nav-item {
                 .nav-link {
                     color: white;
                     padding: 0 30px 15px 30px;
-                    font-size: 20px;
+                    font-size: 18px;
                     border-right: 1px solid rgba(255, 255, 255, .2);
                 }
 
@@ -73,7 +74,13 @@
                     width: 100%;
                 }
 
+
             }
+
+          .active {
+              color: yellow !important;
+          }
+
         }
     }
 }

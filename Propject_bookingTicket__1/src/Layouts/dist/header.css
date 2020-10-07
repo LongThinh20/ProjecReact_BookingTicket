@@ -34,7 +34,7 @@
 .header .header__nav .navbar-nav .nav-item .nav-link {
   color: white;
   padding: 0 30px 15px 30px;
-  font-size: 20px;
+  font-size: 18px;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
 .header .header__nav .navbar-nav .nav-item::after {
@@ -50,4 +50,7 @@
 }
 .header .header__nav .navbar-nav .nav-item:active::after {
   width: 100%;
+}
+.header .header__nav .navbar-nav .active {
+  color: yellow !important;
 }

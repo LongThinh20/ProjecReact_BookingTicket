@@ -4,25 +4,64 @@
 .mySlider {
     padding-top: 100px;
     background-color: $color-black-1;
+    height: 700px;
 
-    .newIn__title {
-        color: #eb7633;
-        font-size: 18px;
-        letter-spacing: 2px;
-        margin-bottom: 40px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        position: relative;
+    ul {
+        li {
+            a {
 
-        &::after {
-            content: " ";
-            width: 160px;
-            height: 3px;
-            background: linear-gradient(to right, #f8b85d, #eb7633);
-            position: absolute;
-            bottom: -1px;
-            left: 0;
+                .__title {
+                    color: #eb7633;
+                    letter-spacing: 2px;
+                    margin-bottom: 40px;
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                    position: relative;
+                    opacity: 0.5;
+
+                    &::after {
+                        content: " ";
+                        width: 0;
+                        height: 3px;
+                        background: linear-gradient(to right, #f8b85d, #eb7633);
+                        position: absolute;
+                        bottom: -1px;
+                        left: 0;
+                        transition: all .3s;
+
+                    }
+                    &:hover::after {
+                        width: 100%;
+                    }
+                }
+            }
+
+            .active {
+                background-color: transparent !important;
+
+                .__title {
+                    color: #eb7633;
+                    opacity: 1;
+                    letter-spacing: 2px;
+                    margin-bottom: 40px;
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                    position: relative;
+
+                    &::after {
+                        content: " ";
+                        width: 160px;
+                        height: 3px;
+                        background: linear-gradient(to right, #f8b85d, #eb7633);
+                        position: absolute;
+                        bottom: -1px;
+                        left: 0;
+                    }
+                }
+            }
+
         }
+
     }
+
 
     .slick-slider {
         .slick-prev {
@@ -130,7 +169,7 @@
                     }
 
                     .detailMovie {
-                       
+
                         height: 45px;
                         width: 50%;
                         text-align: center;

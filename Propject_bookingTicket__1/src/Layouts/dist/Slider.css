@@ -1,16 +1,41 @@
 .mySlider {
   padding-top: 100px;
   background-color: #333;
+  height: 700px;
 }
-.mySlider .newIn__title {
+.mySlider ul li a .__title {
   color: #eb7633;
-  font-size: 18px;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  position: relative;
+  opacity: 0.5;
+}
+.mySlider ul li a .__title::after {
+  content: " ";
+  width: 0;
+  height: 3px;
+  background: linear-gradient(to right, #f8b85d, #eb7633);
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  transition: all 0.3s;
+}
+.mySlider ul li a .__title:hover::after {
+  width: 100%;
+}
+.mySlider ul li .active {
+  background-color: transparent !important;
+}
+.mySlider ul li .active .__title {
+  color: #eb7633;
+  opacity: 1;
   letter-spacing: 2px;
   margin-bottom: 40px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   position: relative;
 }
-.mySlider .newIn__title::after {
+.mySlider ul li .active .__title::after {
   content: " ";
   width: 160px;
   height: 3px;

@@ -12,6 +12,7 @@ import Booking from './Screens/HomeMoule/Booking';
 import { useDispatch } from 'react-redux';
 import Header1 from './Components/Header1';
 import DetailMovie1 from './Screens/HomeMoule/Detail1';
+import demo from './Components/demo';
 
 
 
@@ -40,7 +41,7 @@ function App() {
 
         <Route path="/detail/:Id" component={DetailMovie1} />
         <Route path="/signup" component={SignUp} />
-        {/* <Route path="/demo" component={demo} /> */}
+        <Route path="/demo" component={demo} />
         <Route path="/signin" component={SignIn} />
         <Route path="/booking/:Id" component={Booking} />
         <Route path="/" component={HomePage} />

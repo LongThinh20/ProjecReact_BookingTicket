@@ -7,6 +7,8 @@ import Slider from 'react-slick';
 import { useSelector } from 'react-redux';
 import { fetchMovieAction } from '../../Redux/Actions/movie';
 import { movieService } from '../../Service';
+import { NavLink } from 'react-bootstrap';
+import Skeleton from 'react-loading-skeleton';
 
 
 export default function SliderMovie1() {
@@ -36,21 +38,52 @@ export default function SliderMovie1() {
     return (
         <section className="mySlider " id="showlstMovie">
             <div className="container">
-                <div className="newIn__title">
-                    <h2>DANH SÁCH PHIM</h2>
-                </div>
-                <Slider {...settings}>
-                    {
-                        Object.entries(movieList).map(([index, item]) =>
-                            (
-                                <SliderItems item={item} />
-                            )
 
+                <ul className="nav nav-pills">
+                    <li className="nav-item ">
+                        <a className="nav-link active" data-toggle="pill" href="#home">
+                            <h3 className="__title">ĐANG CHIẾU </h3>
+                        </a>
+                    </li>
+                    <li className="nav-item ">
+                        <a className="nav-link" data-toggle="pill" href="#menu1">
+                            <h3 className="__title">SẮP CHIẾU </h3>
+                        </a>
+                    </li>
+                </ul>
 
-                        )
-                    }
-                </Slider>
             </div>
+
+            <div className="tab-content">
+                <div className="tab-pane container active" id="home">
+                    <Slider {...settings}>
+                        {
+                            Object.entries(movieList).map(([index, item]) =>
+                                (
+                                    <SliderItems item={item} />
+                                )
+
+
+                            )
+                        }
+                    </Slider>
+                </div>
+                <div className="tab-pane container fade" id="menu1">
+                    <Slider {...settings}>
+                        {
+                            Object.entries(movieList).map(([index, item]) =>
+                                (
+                                    <SliderItems item={item} />
+                                )
+
+
+                            )
+                        }
+                    </Slider>
+                </div>
+
+            </div>
+
         </section>
     )
 }

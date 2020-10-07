@@ -1,6 +1,9 @@
 .seatList {
   padding: 100px 0;
 }
+.seatList ._countDown {
+  margin-top: 50px;
+}
 .seatList .seatList_detail {
   background: url(../img/screen.png);
   width: 100px;
@@ -17,6 +20,31 @@
   color: #333;
   font-size: 20px;
   font-weight: bold;
+}
+.seatList .seatList_detail .contentBottom {
+  display: flex;
+  margin-top: 20px;
+  transform: translateX(20%);
+  left: 50%;
+}
+.seatList .seatList_detail .contentBottom .item {
+  padding-right: 20px;
+  text-align: center;
+}
+.seatList .seatList_detail .contentBottom .item div {
+  display: inline-block;
+  height: 20px;
+  width: 23px;
+  border-radius: 5px;
+}
+.seatList .seatList_detail .contentBottom .item div::before {
+  width: 16px;
+  height: 18px;
+}
+.seatList .seatList_detail .contentBottom .item p {
+  color: #7d7d7d;
+  font-size: 12px;
+  font-weight: normal;
 }
 .seatList .contentRight {
   box-shadow: 5px 10px 8px #888888;

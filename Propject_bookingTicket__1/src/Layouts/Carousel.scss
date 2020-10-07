@@ -27,25 +27,31 @@
             }
 
             .img-1 {
-                background-image: url(../img//hero-1.jpg);
+                background-image: url(../img/panel-3.jpg);
                 background-position: center center;
                 background-repeat: no-repeat;
                 background-size: cover;
             }
 
             .img-2 {
-                background-image: url(../img/hero-2.jpg);
+                background-image: url(../img/panel_1.jpg);
                 background-position: center center;
                 background-repeat: no-repeat;
                 background-size: cover;
             }
 
             .img-3 {
-                background-image: url(../img/hero-3.jpg);
+                background-image: url(../img/panel_2.jpg);
                 background-position: center center;
                 background-repeat: no-repeat;
                 background-size: cover;
             }
+        }
+
+        .carousel-control-next-icon,
+        .carousel-control-prev-icon {
+            height: 40px;
+            width: 40px;
         }
 
 

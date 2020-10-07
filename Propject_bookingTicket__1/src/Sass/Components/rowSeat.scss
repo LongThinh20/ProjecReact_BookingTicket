@@ -1,0 +1,8 @@
+@import '../Helpers/mixin';
+@import '../Helpers/variables';
+
+
+.rowSeat {
+    @include styleText($color-black-bg, $fs-0, $fw-bold);
+   padding-right: 30px;
+}

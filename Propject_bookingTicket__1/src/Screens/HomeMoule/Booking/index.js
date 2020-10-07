@@ -9,7 +9,8 @@ import text_Form_Title from '../../../Sass/Components/text_Form_Title.scss';
 import text_Green from '../../../Sass/Components/text_Green.scss';
 import text_Orange from '../../../Sass/Components/text_Orange.scss';
 import text_Normal from '../../../Sass/Components/text_Normal.scss';
-import demoText from '../../../Sass/Components/demoText.scss'
+import demoText from '../../../Sass/Components/demoText.scss';
+import rowSeat from '../../../Sass/Components/rowSeat.scss';
 import moment from 'moment'
 import Swal from 'sweetalert2'
 import Countdown from 'react-countdown-now';
@@ -23,6 +24,7 @@ import { date, object } from 'yup';
 import SeatList from './SeatList';
 import { useDispatch, useSelector } from 'react-redux';
 import countDownComponent from '../../../Components/countDownComponent';
+import { Fade } from 'react-bootstrap';
 
 export default function Booking(props) {
 
@@ -35,6 +37,7 @@ export default function Booking(props) {
     const G = 'G';
     const H = 'H';
     const I = 'I';
+    const J = 'J';
 
     let [lstBookingTicket, setlstBookingTicket] = useState({});
     let [danhSachGheDangDat, setDanhSachGheDangDat] = useState([]);
@@ -125,7 +128,19 @@ export default function Booking(props) {
     //     setlstSeatBooking(lstSeatUpdate);
 
     // }
+    const datVe = () => {
+        let taiKhoan = JSON.parse(localStorage.getItem('credentials')).taiKhoan
+        console.log((taiKhoan));
 
+        let objectDatVe = {
+            "maLichChieu": props.match.params.maLichChieu,
+            "danhSachVe": danhSachGheDangDat,
+            "taiKhoanNguoiDung": taiKhoan
+        }
+
+        localStorage.setItem('obj', JSON.stringify(objectDatVe))
+
+    }
 
     const checkPay = () => {
         Swal.fire({
@@ -141,7 +156,12 @@ export default function Booking(props) {
                     'THANH TOÁN HOÀN TẤT!',
                     'Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi',
                     'success'
-                )
+                ).then((value) => {
+                    if (value) {
+                        // window.location.replace("/");
+                    }
+                });
+                datVe()
             }
         })
     }
@@ -161,7 +181,7 @@ export default function Booking(props) {
         } else {
             // Render a countdown
             return (
-                <span className="display-4">{minutes}:{seconds}</span>);
+                <h4 style={{ color: 'orange' }}>{minutes}:{seconds}</h4>);
         }
     };
     const couter = 1000 * 60 * 5
@@ -169,7 +189,7 @@ export default function Booking(props) {
         <section className="seatList">
 
             <div className="container">
-                <div className="row">
+                <div className="row  _countDown">
                     <div className="col">
                         <p className="demoText">
                             {
@@ -200,7 +220,7 @@ export default function Booking(props) {
                         <table style={{ margin: 'auto' }}>
 
                             <tr>
-                                <td>{A}</td>
+                                <td className="rowSeat">{A}</td>
                                 <td>
                                     {
                                         lstBookingTicket.danhSachGhe?.slice(0, 16).map((ghe, index) => {
@@ -224,7 +244,7 @@ export default function Booking(props) {
                                 </td>
                             </tr>
                             <tr>
-                                <td>{B}</td>
+                                <td className="rowSeat">{B}</td>
                                 <td>
                                     {
                                         lstBookingTicket.danhSachGhe?.slice(16, 32).map((ghe, index) => {
@@ -247,7 +267,7 @@ export default function Booking(props) {
                                 </td>
                             </tr>
                             <tr>
-                                <td>{D}</td>
+                                <td className="rowSeat">{C}</td>
                                 <td>
                                     {
                                         lstBookingTicket.danhSachGhe?.slice(32, 48).map((ghe, index) => {
@@ -263,7 +283,7 @@ export default function Booking(props) {
                                             return ghe.daDat ? <button key={index} className=" seatBooking">
                                                 X </button>
                                                 :
-                                                <button key={index} onClick={() => { datGhe(`${B}`, ghe); booking(`${B}`, ghe.stt, ghe.giaVe)}} className={` seat ${classGheDangDat}  ${classGheVip} `}>
+                                                <button key={index} onClick={() => { datGhe(`${C}`, ghe); booking(`${C}`, ghe.stt, ghe.giaVe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
                                                     {ghe.stt}
                                                 </button>
                                         })
@@ -271,7 +291,7 @@ export default function Booking(props) {
                                 </td>
                             </tr>
                             <tr>
-                                <td>{C}</td>
+                                <td className="rowSeat">{D}</td>
                                 <td>
                                     {
                                         lstBookingTicket.danhSachGhe?.slice(48, 64).map((ghe, index) => {
@@ -287,7 +307,7 @@ export default function Booking(props) {
                                             return ghe.daDat ? <button key={index} className=" seatBooking">
                                                 X </button>
                                                 :
-                                                <button key={index} onClick={() => { datGhe(`${C}`, ghe); booking(`${C}`, ghe.stt, ghe.giaVe)}} className={` seat ${classGheDangDat}  ${classGheVip} `}>
+                                                <button key={index} onClick={() => { datGhe(`${D}`, ghe); booking(`${D}`, ghe.stt, ghe.giaVe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
                                                     {ghe.stt}
                                                 </button>
                                         })
@@ -295,7 +315,7 @@ export default function Booking(props) {
                                 </td>
                             </tr>
                             <tr>
-                                <td>{D}</td>
+                                <td className="rowSeat">{E}</td>
                                 <td>
                                     {
                                         lstBookingTicket.danhSachGhe?.slice(64, 80).map((ghe, index) => {
@@ -311,7 +331,7 @@ export default function Booking(props) {
                                             return ghe.daDat ? <button key={index} className=" seatBooking">
                                                 X </button>
                                                 :
-                                                <button key={index} onClick={() => { datGhe(ghe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
+                                                <button key={index} onClick={() => { datGhe(`${E}`, ghe); booking(`${E}`, ghe.stt, ghe.giaVe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
                                                     {ghe.stt}
                                                 </button>
                                         })
@@ -319,7 +339,7 @@ export default function Booking(props) {
                                 </td>
                             </tr>
                             <tr>
-                                <td>{E}</td>
+                                <td className="rowSeat">{F}</td>
                                 <td>
                                     {
                                         lstBookingTicket.danhSachGhe?.slice(80, 96).map((ghe, index) => {
@@ -335,7 +355,7 @@ export default function Booking(props) {
                                             return ghe.daDat ? <button key={index} className=" seatBooking">
                                                 X </button>
                                                 :
-                                                <button key={index} onClick={() => { datGhe(ghe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
+                                                <button key={index} onClick={() => { datGhe(`${F}`, ghe); booking(`${F}`, ghe.stt, ghe.giaVe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
                                                     {ghe.stt}
                                                 </button>
                                         })
@@ -343,7 +363,7 @@ export default function Booking(props) {
                                 </td>
                             </tr>
                             <tr>
-                                <td>{F}</td>
+                                <td className="rowSeat">{G}</td>
                                 <td>
                                     {
                                         lstBookingTicket.danhSachGhe?.slice(96, 112).map((ghe, index) => {
@@ -359,7 +379,7 @@ export default function Booking(props) {
                                             return ghe.daDat ? <button key={index} className=" seatBooking">
                                                 X </button>
                                                 :
-                                                <button key={index} onClick={() => { datGhe(ghe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
+                                                <button key={index} onClick={() => { datGhe(`${G}`, ghe); booking(`${G}`, ghe.stt, ghe.giaVe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
                                                     {ghe.stt}
                                                 </button>
                                         })
@@ -367,7 +387,7 @@ export default function Booking(props) {
                                 </td>
                             </tr>
                             <tr>
-                                <td>{G}</td>
+                                <td className="rowSeat">{H}</td>
                                 <td>
                                     {
                                         lstBookingTicket.danhSachGhe?.slice(112, 128).map((ghe, index) => {
@@ -383,7 +403,7 @@ export default function Booking(props) {
                                             return ghe.daDat ? <button key={index} className=" seatBooking">
                                                 X </button>
                                                 :
-                                                <button key={index} onClick={() => { datGhe(ghe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
+                                                <button key={index} onClick={() => { datGhe(`${H}`, ghe); booking(`${H}`, ghe.stt, ghe.giaVe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
                                                     {ghe.stt}
                                                 </button>
                                         })
@@ -391,7 +411,7 @@ export default function Booking(props) {
                                 </td>
                             </tr>
                             <tr>
-                                <td>{H}</td>
+                                <td className="rowSeat">{I}</td>
                                 <td>
                                     {
                                         lstBookingTicket.danhSachGhe?.slice(128, 144).map((ghe, index) => {
@@ -401,13 +421,12 @@ export default function Booking(props) {
 
 
                                             let indexGhe = danhSachGheDangDat.findIndex(gheDangDat => gheDangDat.stt === ghe.stt);
-
                                             let classGheDangDat = indexGhe !== -1 ? 'seatSelect' : '';
 
                                             return ghe.daDat ? <button key={index} className=" seatBooking">
                                                 X </button>
                                                 :
-                                                <button key={index} onClick={() => { datGhe(ghe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
+                                                <button key={index} onClick={() => { datGhe(`${I}`, ghe); booking(`${I}`, ghe.stt, ghe.giaVe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
                                                     {ghe.stt}
                                                 </button>
                                         })
@@ -415,7 +434,7 @@ export default function Booking(props) {
                                 </td>
                             </tr>
                             <tr>
-                                <td>{I}</td>
+                                <td className="rowSeat">{J}</td>
                                 <td>
                                     {
                                         lstBookingTicket.danhSachGhe?.slice(144, 160).map((ghe, index) => {
@@ -431,7 +450,7 @@ export default function Booking(props) {
                                             return ghe.daDat ? <button key={index} className=" seatBooking">
                                                 X </button>
                                                 :
-                                                <button key={index} onClick={() => { datGhe(ghe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
+                                                <button key={index} onClick={() => { datGhe(`${J}`, ghe); booking(`${J}`, ghe.stt, ghe.giaVe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
                                                     {ghe.stt}
                                                 </button>
                                         })
@@ -441,8 +460,27 @@ export default function Booking(props) {
 
                         </table>
 
+                        <div className="contentBottom ">
+                            <div className="item">
+                                <div className="seat"></div>
+                                <p>Ghế chưa chọn</p>
+                            </div>
+                            <div className="item mt-2">
+                                <div className="seatVip"></div>
+                                <p>Ghếp Vip</p>
+                            </div>
+                            <div className="item">
+                                <div className="seatBooking"></div>
+                                <p>Ghếp đã có người chọn</p>
+                            </div>
+                            <div className="item">
+                                <div className="seatSelect"></div>
+                                <p>Ghếp đã đang chọn</p>
+                            </div>
+                        </div>
 
                     </div>
+
                     <div className="col-md-12 col-lg-4 contentRight ">
                         <div className="card ">
                             <div className="card-header totalCost">
@@ -546,6 +584,7 @@ export default function Booking(props) {
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
