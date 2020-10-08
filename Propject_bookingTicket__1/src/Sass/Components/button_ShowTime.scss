@@ -7,14 +7,16 @@
     text-align:center;
     line-height: 35px;
     display: inline-block;
-    border: 1px solid $color-orange;
-    background-color: transparent;
+    border: 1px solid $color-gray-3;
+    background-color: rgba(245, 245, 245, 0.7);
+    border-radius: 5px;
   
     @include styleText($color-orange,$fs-3,$fw-normal);
     &:hover{
         background-color: #eb7633;
         color: white;
         text-decoration: none;
+        border-color: $color-orange;
     }
     &:focus{
        outline: none;

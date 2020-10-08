@@ -5,7 +5,7 @@
     background-color: #fff;
     padding-top: 100px;
     padding-bottom: 100px;
-   
+
 
     .cinemaList {
         h4 {
@@ -54,7 +54,9 @@
 
         .cinemaGroupList_content {
             border-radius: 0px;
-            border-color: $color-gray-2;
+            border: 0.5px solid $color-gray-3;
+            overflow: auto;
+            max-height: 450px;
 
             .cinemaGroupList_item {
                 opacity: 0.5;
@@ -70,9 +72,14 @@
                 opacity: 1;
                 background-color: $color-gray-4;
                 border-color: $color-gray-3;
+                border: none;
             }
 
+            .scrollbar {
+                background-color: $color-orange;
+            }
         }
+
     }
 
     .cinemaMovie {

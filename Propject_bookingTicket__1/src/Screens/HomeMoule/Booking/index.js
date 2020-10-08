@@ -57,11 +57,7 @@ export default function Booking(props) {
     }, [JSON.stringify(lstBookingTicket)])
 
     let datGhe = (rowSeat, ghe) => {
-        //Kiểm tra trong mảng ghế đang đặt có ghế vừa click không
-        //Nếu có: => remove ra khỏi mảng
-        //Nếu chưa có: => push vào mảng
-
-
+     
         let danhSachGheDangDatUpdate = [...danhSachGheDangDat];
         let index = danhSachGheDangDatUpdate.findIndex(gheDangDat => gheDangDat.stt === ghe.stt);
         if (index != -1) {
@@ -153,12 +149,12 @@ export default function Booking(props) {
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire(
-                    'THANH TOÁN HOÀN TẤT!',
+                    'Thanh toán hoàn tất!',
                     'Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi',
                     'success'
                 ).then((value) => {
                     if (value) {
-                        // window.location.replace("/");
+                        window.location.replace("/");
                     }
                 });
                 datVe()

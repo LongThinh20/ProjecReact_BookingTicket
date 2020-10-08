@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import img from '../../img/logo.svg';
@@ -13,10 +13,17 @@ export default function Header1() {
 
     const dispatch = useDispatch();
 
+
     const handleSignOut = () => {
         dispatch({
             type: 'DELETE_ACCOUNT'
-        })
+        });
+        if (typeof (Storage) !== 'undefined') {
+            localStorage.setItem('credentials', null);
+        } else {
+            alert('Trình duyệt của bạn không hỗ trợ localStorage. Hãy nâng cấp trình duyệt để sử dụng!');
+        }
+
     }
     const checkSignOut = () => {
         Swal.fire({
@@ -30,13 +37,14 @@ export default function Header1() {
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire(
-                    'ĐĂNG XUẤT THÀNH CÔNG',
-                    // window.location.replace('/')
+                    'Đăng xuất thành công !',
+                    // window.location.reload()
                 )
                 handleSignOut()
             }
         })
     }
+
 
     // const [scrollInfo, setRef] = useScrollInfo();
     // console.log(scrollInfo);
@@ -56,7 +64,7 @@ export default function Header1() {
                         <span className="account_icon"><i className=" fa fa-user-circle mr-2" /></span>
                         <div type=" button" className="account_detail btn dropdown-toggle pl-4 pr-4" data-toggle="dropdown">
                             {
-                                credentials ? credentials.hoTen : '.......'
+                                credentials !== null ? credentials.hoTen : '.......'
                             }
                         </div>
                         <div className="dropdown-menu">
@@ -84,7 +92,7 @@ export default function Header1() {
                                 <a className="nav-link" href="#booking">MUA VÉ</a>
                             </li>
                             {
-                                credentials ? <li className="nav-item">
+                                credentials !== null ? <li className="nav-item">
                                     <a className="nav-link" activeStyle={{ color: 'orange' }} onClick={() => { checkSignOut() }}>ĐĂNG XUẤT</a>
                                 </li>
                                     : <>

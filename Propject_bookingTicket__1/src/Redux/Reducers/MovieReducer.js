@@ -6,7 +6,7 @@ let initialState = {
     movieDetail: null,
     cinema: [],
     cinemaGroup: [],
-    maHeThongRap: 'BHDStar',
+    maHeThongRap: null,
     lstMovie: [],
     lstSeatBooking: []
 

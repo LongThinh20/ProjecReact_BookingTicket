@@ -97,7 +97,7 @@ export default function ListGroup(props) {
 
               <div className="tab-pane fade show active" id={maHeThongRap} role="tabpanel" aria-labelledby={maHeThongRap}>
                 <div className="cinemaGroupList_content list-group" id="list-tab" role="tablist">
-                  {
+                  {maHeThongRap !== null ?
                     Object.entries(showtimeCinema).map(([index, item]) => {
                       return (
                         Object.entries(item.lstCumRap).map(([index, item]) => {
@@ -109,11 +109,13 @@ export default function ListGroup(props) {
                               <p>Tên rạp: <span>{item.tenCumRap}</span></p>
                               <p>Địa chỉ : <span>{item.diaChi}</span></p>
                             </a>
+
                           )
                         })
 
                       )
                     })
+                    : <p className="text-center mt-4">Vui lòng chọn rạp</p>
                   }
                 </div>
               </div>
@@ -127,30 +129,32 @@ export default function ListGroup(props) {
               <div className="cinemaMovie_content tab-pane fade show active" id={maCumRap} role="tabpanel" aria-labelledby={maHeThongRap}>
 
                 {
-                  Object.entries(lstMovie).map(([index, item]) => {
-                    return (
-                      <div className="cinemaMovie_item row" >
-                        <div className="col-2  cinemaMovie_img">
-                          <img src={item.hinhAnh} className="img-fluid ml-2" />
-                        </div>
-                        <div className="col cinemaMovie_detail">
-                          <h3>{item.tenPhim}</h3>
-                          <p className="mr-lg-2"><i className="fa fa-clock" /> THỜI GIAN : <span>120 phút</span></p>
+                  maHeThongRap !== null ?
+                    Object.entries(lstMovie).map(([index, item]) => {
+                      return (
+                        <div className="cinemaMovie_item row" >
+                          <div className="col-2  cinemaMovie_img">
+                            <img src={item.hinhAnh} className="img-fluid ml-2" />
+                          </div>
+                          <div className="col cinemaMovie_detail">
+                            <h3>{item.tenPhim}</h3>
+                            <p className="mr-lg-2"><i className="fa fa-clock" /> THỜI GIAN : <span>120 phút</span></p>
 
-                          {
-                            Object.entries(item.lstLichChieuTheoPhim).slice(0, 10).map(([index, item]) => {
-                              return (
-                                credentials ?
-                                  (<NavLink to={`/booking/${item.maLichChieu}`} className="button_ShowTime mb-2" > <span className="text_Green" style={{ fontSize: '13px' }}>{moment(item.ngayChieuGioChieu).format('DD.MM')}~</span> { moment(item.ngayChieuGioChieu).format('hh:mm a')}</NavLink>)
-                                  : (<NavLink to={`/signIn`} className="button_ShowTime mb-2"><span className="text_Green" style={{ fontSize: '13px' }}>{moment(item.ngayChieuGioChieu).format('DD.MM')}~</span> {moment(item.ngayChieuGioChieu).format('hh:mm a')}</NavLink>)
-                              )
-                            })
-                          }
+                            {
+                              Object.entries(item.lstLichChieuTheoPhim).slice(0, 10).map(([index, item]) => {
+                                return (
+                                  credentials ?
+                                    (<NavLink to={`/booking/${item.maLichChieu}`} className="button_ShowTime mb-2" > <span className="text_Green" style={{ fontSize: '13px' }}>{moment(item.ngayChieuGioChieu).format('DD.MM')}~</span> { moment(item.ngayChieuGioChieu).format('hh:mm a')}</NavLink>)
+                                    : (<NavLink to={`/signIn`} className="button_ShowTime mb-2"><span className="text_Green" style={{ fontSize: '13px' }}>{moment(item.ngayChieuGioChieu).format('DD.MM')}~</span> {moment(item.ngayChieuGioChieu).format('hh:mm a')}</NavLink>)
+                                )
+                              })
+                            }
+                          </div>
                         </div>
-                      </div>
 
-                    )
-                  })
+                      )
+                    })
+                    : <p className="text-center mt-4">Vui lòng chọn cụm rạp</p>
                 }
               </div>
 

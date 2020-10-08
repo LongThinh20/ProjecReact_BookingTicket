@@ -52,25 +52,36 @@
     .center_content {
         position: relative;
         margin-top: 50px;
-        ul{
-           li{
-               margin-right: 20px;
-              .active{
-                  background-color: $color-orange;
-              }
-              a{
-                  color: $color-yellow;
-              }
-           }            
-        }
-        .content_showTime{
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-            ul{
-                li{
-                    text-align: center;
+
+        ul {
+            li {
+                margin-right: 20px;
+
+                .active {
+                    background-color: $color-orange;
+                }
+
+                a {
+                    color: $color-yellow;
                 }
             }
         }
+
+        .logo_detail {
+
+            ul {
+                margin: auto;
+
+            }
+
+        }
+
+        .content_showTime {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            padding: 30px;
+            margin-top: 20px;
+        }
+
     }
 }

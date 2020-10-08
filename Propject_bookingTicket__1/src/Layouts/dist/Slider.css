@@ -92,7 +92,15 @@
   opacity: 0;
   transition: all 0.5s;
 }
-.mySlider .slick-slider .item .newIn__img .newIn__play i {
+.mySlider .slick-slider .item .newIn__img .newIn__play a {
+  font-size: 13px;
+  cursor: pointer;
+  letter-spacing: 4px;
+  margin: 10px 0;
+  text-decoration: none;
+  color: white;
+}
+.mySlider .slick-slider .item .newIn__img .newIn__play a i {
   width: 70px;
   height: 70px;
   border: 2px solid #fff;
@@ -103,14 +111,8 @@
   margin: 0 auto;
   transition: all 0.5s;
 }
-.mySlider .slick-slider .item .newIn__img .newIn__play i:hover {
+.mySlider .slick-slider .item .newIn__img .newIn__play a i:hover {
   transform: scale(0.9);
-}
-.mySlider .slick-slider .item .newIn__img .newIn__play a {
-  font-size: 13px;
-  cursor: pointer;
-  letter-spacing: 4px;
-  margin: 10px 0;
 }
 .mySlider .slick-slider .item .newIn__img:hover .newIn__play {
   opacity: 1;
@@ -131,6 +133,7 @@
   letter-spacing: 4px;
   margin: 10px 0;
   color: white;
+  text-decoration: none;
 }
 .mySlider .slick-slider .item .newIn__img .newIn__payTicket .detailMovie {
   height: 45px;

@@ -11,10 +11,9 @@ export const login = (user) => {
                 dispatch(createAction(FETCH_CREDENTIALS, res.data));
 
                 swal({
-                    title: "Good job!",
-                    text: "You clicked the button!",
+                    title: "Đăng nhập thành công !",
                     icon: "success",
-                    button: "Aww yiss!",
+                    button: "OK",
                 })
                     .then((value) => {
                         window.location.replace("/");

@@ -20,10 +20,9 @@ var login = function login(user) {
     _index.userService.signIn(user).then(function (res) {
       dispatch((0, _.createAction)(_type.FETCH_CREDENTIALS, res.data));
       (0, _sweetalert["default"])({
-        title: "Good job!",
-        text: "You clicked the button!",
+        title: "Đăng nhập thành công !",
         icon: "success",
-        button: "Aww yiss!"
+        button: "OK"
       }).then(function (value) {
         window.location.replace("/");
       });

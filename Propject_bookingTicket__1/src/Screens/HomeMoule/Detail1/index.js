@@ -10,7 +10,7 @@ export default function DetailMovie1(props) {
 
    const [lstmovieDetail, setlstmovieDetail] = useState({});
    const [lstmovie, setlstmovie] = useState([]);
-   console.log(lstmovie.heThongRapChieu);
+
 
    useEffect(() => {
       movieService.fetchMovieDetail(props.match.params.Id)
@@ -85,6 +85,7 @@ export default function DetailMovie1(props) {
             </div>
 
             <div className="center_content">
+
                <ul className="nav nav-pills ">
                   <li className="nav-item">
                      <a className="nav-link active" data-toggle="pill" href="#home">LỊCH CHIẾU</a>
@@ -98,51 +99,50 @@ export default function DetailMovie1(props) {
                </ul>
 
                <div className="tab-content">
-                  <div className="tab-pane container active mt-4 content_showTime" id="home">
+                  <div className="tab-pane container active mt-4 " id="home">
                      {/*  */}
-                     <div className="row">
-                        <div className="col-2">
-                           <ul className="nav nav-pills flex-column ">
-                              {
-                                 lstmovie.heThongRapChieu?.map((item, index) => {
-                                    return (
-                                       <li className="nav-item">
-                                          <a className="nav-link " data-toggle="pill" href={`#${item.maHeThongRap}`}>
-                                             <img src={item.logo} style={{ height: '50px', width: '50px' }}></img>
-                                          </a>
-                                       </li>
-                                    )
-                                 })
-                              }
+                     <div className="logo_detail">
 
-                           </ul>
-                        </div>
-                        <div className="col">
-                           <div className="tab-content">
-                              {
-                                 lstmovie.heThongRapChieu?.map((item, index) => {
-                                    return (
-                                       <div className="tab-pane container pt-4 pb-4" id={item.maHeThongRap}>
-                                          {
-                                             item.cumRapChieu?.map((item, index) => {
-                                                return (
-                                                   <div key={index}>
-                                                      <h3 style={{ color: 'white' }}>{item.tenCumRap}</h3>
-                                                      <p style={{ color: 'white' }}>271 Nguyễn Trãi, Q.1</p>
-                                                      {item.lichChieuPhim?.slice(0, 12).map((item, index) => {
-                                                         return <NavLink to={`/booking/${item.maLichChieu}`} className="button_ShowTime mr-2 mb-2"><span className="text_Green" style={{ fontSize: '13px' }}>{moment(item.ngayChieuGioChieu).format('DD.MM')}~</span> {moment(item.ngayChieuGioChieu).format('hh:mm a')}</NavLink>
-                                                      })}
-                                                   </div>
-                                                )
-                                             })
-                                          }
-                                       </div>
-                                    )
-                                 })
-                              }
+                        <ul className="nav nav-pills ">
+                           {
+                              lstmovie.heThongRapChieu?.map((item, index) => {
+                                 return (
+                                    <li className="nav-item">
+                                       <a className="nav-link " data-toggle="pill" href={`#${item.maHeThongRap}`}>
+                                          <img src={item.logo} style={{ height: '50px', width: '50px' }}></img>
+                                       </a>
+                                    </li>
+                                 )
+                              })
+                           }
+                        </ul>
 
-                           </div>
-                        </div>
+                     </div>
+
+                     <div className="tab-content ">
+                        {
+                           lstmovie.heThongRapChieu?.map((item, index) => {
+                              return (
+                                 <div className="tab-pane content_showTime " id={item.maHeThongRap}>
+                                    {
+                                       item.cumRapChieu?.map((item, index) => {
+                                          return (
+                                             <div key={index}>
+                                                <h3 style={{ color: 'white', marginTop: '20px' }}>{item.tenCumRap}</h3>
+                                                <p style={{ color: 'white' }}>271 Nguyễn Trãi, Q.1</p>
+                                                {item.lichChieuPhim?.slice(0, 12).map((item, index) => {
+                                                   return <NavLink to={`/booking/${item.maLichChieu}`} className="button_ShowTime mr-2 mb-2"><span className="text_Green" style={{ fontSize: '13px' }}>{moment(item.ngayChieuGioChieu).format('DD.MM')}~</span> {moment(item.ngayChieuGioChieu).format('hh:mm a')}</NavLink>
+                                                })}
+                                             </div>
+                                          )
+                                       })
+                                    }
+                                 </div>
+                              )
+                           })
+                        }
+
+
                      </div>
 
 
