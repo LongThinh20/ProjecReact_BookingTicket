@@ -54,18 +54,17 @@
 }
 .mySlider .slick-slider .item {
   padding: 0 10px;
+  position: relative;
 }
 .mySlider .slick-slider .item .newIn__img {
   position: relative;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 2px;
   margin-bottom: 20px;
 }
 .mySlider .slick-slider .item .newIn__img img {
-  position: relative;
-  border-radius: 10px;
   width: 100%;
-  height: 100%;
+  height: 400px;
 }
 .mySlider .slick-slider .item .newIn__img .overlay {
   position: absolute;
@@ -77,9 +76,6 @@
   transform: skewX(30deg) translateX(-125%);
   transition: all 0.5s;
   top: 0;
-}
-.mySlider .slick-slider .item .newIn__img:hover .overlay {
-  transform: skewX(30deg) translateX(-20%);
 }
 .mySlider .slick-slider .item .newIn__img .newIn__play {
   position: absolute;
@@ -114,45 +110,64 @@
 .mySlider .slick-slider .item .newIn__img .newIn__play a i:hover {
   transform: scale(0.9);
 }
-.mySlider .slick-slider .item .newIn__img:hover .newIn__play {
-  opacity: 1;
-}
-.mySlider .slick-slider .item .newIn__img .newIn__payTicket {
-  position: absolute;
-  display: flex;
-  bottom: 0;
-  width: 100%;
-  height: 70px;
-  background-color: rgba(0, 0, 0, 0.349);
-  opacity: 0;
-  transition: all 0.5s;
-}
-.mySlider .slick-slider .item .newIn__img .newIn__payTicket a {
-  font-size: 13px;
-  cursor: pointer;
-  letter-spacing: 4px;
-  margin: 10px 0;
-  color: white;
-  text-decoration: none;
-}
-.mySlider .slick-slider .item .newIn__img .newIn__payTicket .detailMovie {
-  height: 45px;
-  width: 50%;
-  text-align: center;
-  line-height: 40px;
-  margin: auto;
-  border: 2px solid #fff;
-}
-.mySlider .slick-slider .item .newIn__img .newIn__payTicket .detailMovie:hover {
-  background-color: #eb7633;
-}
-.mySlider .slick-slider .item .newIn__img:hover .newIn__payTicket {
+.mySlider .slick-slider .item .newIn__text {
   opacity: 1;
 }
 .mySlider .slick-slider .item .newIn__text p {
   font-size: 18px;
   color: white;
 }
+.mySlider .slick-slider .item .newIn__text p span {
+  width: 35px;
+  height: 23px;
+  text-align: center;
+  background-color: green;
+  border-radius: 5px;
+  display: inline-block;
+}
+.mySlider .slick-slider .item .newIn__text div {
+  color: white;
+}
+.mySlider .slick-slider .item .newIn__payTicket {
+  width: 100%;
+  height: 70px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+}
+.mySlider .slick-slider .item .newIn__payTicket .detailMovie {
+  opacity: 1;
+  height: 45px;
+  width: 93%;
+  text-align: center;
+  line-height: 40px;
+  margin: auto;
+  border: 1px solid #fff;
+  background-color: #eb7633;
+  cursor: pointer;
+}
+.mySlider .slick-slider .item .newIn__payTicket .detailMovie a {
+  font-size: 14px;
+  letter-spacing: 3px;
+  width: 100%;
+  margin: 10px 0;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
 .mySlider .slick-slider .item:focus {
   outline: none;
+}
+.mySlider .slick-slider .item:hover .newIn__img:hover .overlay {
+  transform: skewX(30deg) translateX(-20%);
+}
+.mySlider .slick-slider .item:hover .newIn__img:hover .newIn__play {
+  opacity: 1;
+}
+.mySlider .slick-slider .item:hover .newIn__text {
+  opacity: 0;
+}
+.mySlider .slick-slider .item:hover .newIn__payTicket {
+  opacity: 1;
 }

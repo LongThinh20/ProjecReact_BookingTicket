@@ -1,8 +1,24 @@
 @import '../Helpers/mixin';
+@import '../Helpers/variables';
 
 * {
     margin: 0;
     padding: 0;
+}
+
+/* Works on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+    width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+    background: $color-gray-3;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: $color-gray-0;
+    border-radius: 5px;
+    border: 1px solid white;
 }
 
 html,

@@ -5,16 +5,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import button_ShowTime from '../../../Sass/Components/button_ShowTime.scss';
 import text_Green from '../../../Sass/Components/text_Green.scss';
+import usePageLoading from '../../../Components/Hook/usePageLoading'
 
 export default function DetailMovie1(props) {
 
    const [lstmovieDetail, setlstmovieDetail] = useState({});
    const [lstmovie, setlstmovie] = useState([]);
 
+   const [loader, showLoader, hideLoader] = usePageLoading();
 
    useEffect(() => {
+
+      showLoader();
+
       movieService.fetchMovieDetail(props.match.params.Id)
          .then(res => {
+            
+            hideLoader();
+
             let lstdetailMovie = res.data;
             setlstmovieDetail(lstdetailMovie)
 
@@ -179,6 +187,7 @@ export default function DetailMovie1(props) {
 
 
          </div>
+         {loader}
       </section >
    )
 }

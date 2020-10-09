@@ -21,10 +21,11 @@ import React, { useEffect, useState } from 'react'
 import { movieService } from '../../../Service';
 import Axios from 'axios';
 import { date, object } from 'yup';
-import SeatList from './SeatList';
+// import SeatList from './SeatList';
 import { useDispatch, useSelector } from 'react-redux';
 import countDownComponent from '../../../Components/countDownComponent';
 import { Fade } from 'react-bootstrap';
+import  usePageLoading  from '../../../Components/Hook/usePageLoading';
 
 export default function Booking(props) {
 
@@ -43,12 +44,14 @@ export default function Booking(props) {
     let [danhSachGheDangDat, setDanhSachGheDangDat] = useState([]);
     let lstSeatBooking = useSelector(state => state.movie.lstSeatBooking);
 
-
+    const [loader, showLoader, hideLoader] = usePageLoading();
 
     useEffect(() => {
+        showLoader();
+
         movieService.fetchBookingTicket(props.match.params.Id)
             .then(res => {
-
+                hideLoader();
                 setlstBookingTicket(res.data)
             })
             .catch(err => {
@@ -57,7 +60,7 @@ export default function Booking(props) {
     }, [JSON.stringify(lstBookingTicket)])
 
     let datGhe = (rowSeat, ghe) => {
-     
+
         let danhSachGheDangDatUpdate = [...danhSachGheDangDat];
         let index = danhSachGheDangDatUpdate.findIndex(gheDangDat => gheDangDat.stt === ghe.stt);
         if (index != -1) {
@@ -172,12 +175,12 @@ export default function Booking(props) {
     const renderer = ({ minutes, seconds, completed }) => {
         if (completed) {
             // Render a complete state
-            console.log(completed);
+
             return <Completionist />;
+
         } else {
             // Render a countdown
-            return (
-                <h4 style={{ color: 'orange' }}>{minutes}:{seconds}</h4>);
+            return (<h4 style={{ color: 'orange' }}>{minutes}:{seconds}</h4>);
         }
     };
     const couter = 1000 * 60 * 5
@@ -212,7 +215,7 @@ export default function Booking(props) {
 
                     <div className="col-md-12 col-lg-8 col-xl-8 seatList_detail">
 
-                        <div className="screen col-12"></div>
+                        <div className="screen col-md-12 col-lg-8"></div>
                         <table style={{ margin: 'auto' }}>
 
                             <tr>
@@ -527,17 +530,19 @@ export default function Booking(props) {
                                 <li className="list-group-item">
                                     <div className="row">
                                         <div className="col-5">
-                                            <div className="text_Form_Title">Ghế</div>
+                                            <div className="text_Form_Title">Ghế: </div>
                                         </div>
                                         <div className="col pl-0">
                                             {
                                                 lstSeatBooking?.map((item, index) => {
                                                     return (
                                                         <span className="text_Orange mr-2">{item.rowSeat}{`${item.stt}`} - <span className="text_Green">{item.price.toLocaleString()
-                                                        }</span></span>
+                                                        }</span>
+                                                        </span>
                                                     )
                                                 })
                                             }
+
 
                                         </div>
                                     </div>
@@ -575,6 +580,7 @@ export default function Booking(props) {
                                     </div>
                                 </li>
                             </ul>
+                            <div></div>
                             <div className="card-foot">
                                 <button onClick={() => { checkPay() }} className="button_Form bookingEdit">Đặt Vé</button>
                             </div>
@@ -583,7 +589,8 @@ export default function Booking(props) {
 
                 </div>
             </div>
-        </section>
+            {loader}
+        </section >
 
 
     )

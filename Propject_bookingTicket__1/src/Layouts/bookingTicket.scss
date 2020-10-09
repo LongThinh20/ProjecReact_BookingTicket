@@ -55,9 +55,10 @@
         .cinemaGroupList_content {
             border-radius: 0px;
             border: 0.5px solid $color-gray-3;
-            overflow: auto;
-            max-height: 450px;
-
+            max-height: 700px;
+            overflow-y: auto ;
+            overflow-x: hidden; 
+            
             .cinemaGroupList_item {
                 opacity: 0.5;
                 color: $color-black-0;
@@ -74,12 +75,9 @@
                 border-color: $color-gray-3;
                 border: none;
             }
-
-            .scrollbar {
-                background-color: $color-orange;
-            }
+         
         }
-
+     
     }
 
     .cinemaMovie {
@@ -93,7 +91,9 @@
 
         .cinemaMovie_content {
             border: 0.5px solid $color-gray-3;
-
+            max-height: 700px;
+            overflow-y: auto ;
+            overflow-x: hidden; 
             .cinemaMovie_item {
                 margin-bottom: 30px;
                 margin-top: 10px;
@@ -119,4 +119,8 @@
             }
         }
     }
+
+
+
 }
+

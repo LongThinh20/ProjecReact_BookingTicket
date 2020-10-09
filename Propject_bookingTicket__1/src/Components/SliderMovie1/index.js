@@ -11,7 +11,7 @@ import { NavLink } from 'react-bootstrap';
 import Skeleton from 'react-loading-skeleton';
 
 
-export default function SliderMovie1() {
+export default function SliderMovie1(props) {
     const settings = {
         dots: false,
         infinite: false,
@@ -24,8 +24,13 @@ export default function SliderMovie1() {
     let [movieList, setmovieList] = useState({});
 
     useEffect(() => {
+        props.showLoader();
+
         movieService.fetchMovie()
             .then(res => {
+
+                props.hideLoader();
+
                 let danhSachPhim = res.data;
                 setmovieList(danhSachPhim)
             })
