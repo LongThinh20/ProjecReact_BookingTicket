@@ -12,25 +12,17 @@ import Booking from './Screens/HomeMoule/Booking';
 import { useDispatch } from 'react-redux';
 import Header1 from './Components/Header1';
 import DetailMovie1 from './Screens/HomeMoule/Detail1';
-import usePageLoading from './Components/Hook/usePageLoading';
+
 // import Demo from './Components/ShowLoader'
 
-
-
-
 function App() {
-
-  const [loader, showLoader, hideLoader] = usePageLoading();
 
   const dispatch = useDispatch();
   const getCredentialFormLocal = () => {
 
-    showLoader();
 
     const credentialStr = localStorage.getItem('credentials');
     if (credentialStr) {
-
-      hideLoader();
 
       dispatch({
         type: 'FETCH_CREDENTIALS',
@@ -38,11 +30,10 @@ function App() {
       })
     }
   }
+
   useEffect(() => {
     getCredentialFormLocal()
   }, [])
-
-
 
   return (
     <BrowserRouter>
@@ -64,10 +55,10 @@ function App() {
           <Route path="" component={PageNotFound} />
         </Switch>
         <Footer />
-        {loader}
       </Fragment>
     </BrowserRouter>
   );
 }
 
 export default App;
+
