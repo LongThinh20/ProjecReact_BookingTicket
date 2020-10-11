@@ -24,7 +24,6 @@ export default function SeatList(props) {
     const [lstCheck, setlstCheck] = useState([]);
 
 
-
     const showErr = () => {
         Swal.fire({
             // title: 'Bạn không thể bỏ trống 1 ghế ở đầu mỗi dãy',
@@ -83,6 +82,8 @@ export default function SeatList(props) {
             price: price
         }
 
+        console.log(lstSeatBooking);
+
         dispatch({
             type: 'CHECK_SEAT_BOOKING',
             payload: lstSeatBooking
@@ -91,32 +92,6 @@ export default function SeatList(props) {
 
     }
 
-
-
-    let checking = (stt) => {
-
-        let lstUpdate = [...lstCheck];
-
-        let index = lstUpdate.findIndex(e => e === stt);
-        if (index !== -1) {
-            lstUpdate.splice(index, 1);
-        } else {
-            lstUpdate.push(stt);
-        }
-
-        setlstCheck(lstUpdate);
-
-    }
-
-    if (lstCheck[0] === 2 || lstCheck[0] === 15) {
-        showErr();
-    } else if (lstCheck[0] === 1 && lstCheck[1] === 3) {
-        showErr()
-    } else if (lstCheck[0] === 3 && (lstCheck[1] === 5 || lstCheck[1] === 1)) {
-        showErr()
-    } else if (lstCheck[0] === 4 && (lstCheck[1] === 2) || lstCheck[1] === 6) {
-        showErr()
-    }
 
 
     return (
@@ -143,7 +118,7 @@ export default function SeatList(props) {
                             return (ghe.daDat ? <button key={index} className=" seatBooking">
                                 X </button>
                                 :
-                                <button key={index} onClick={() => { checking(i); datGhe(`${A}`, ghe); booking(`${A}`, i, ghe.giaVe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
+                                <button key={index} onClick={() => { datGhe(`${A}`, ghe); booking(`${A}`, i, ghe.giaVe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
                                     {i}
                                 </button>)
 
@@ -371,7 +346,7 @@ export default function SeatList(props) {
                     }
                 </td>
             </tr>
-
+            {loader}
         </table>
 
 

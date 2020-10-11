@@ -12,7 +12,6 @@ import text_Normal from '../../../Sass/Components/text_Normal.scss';
 import demoText from '../../../Sass/Components/demoText.scss';
 import rowSeat from '../../../Sass/Components/rowSeat.scss';
 import moment from 'moment'
-import Swal from 'sweetalert2'
 import Countdown from 'react-countdown-now';
 import swal from 'sweetalert';
 
@@ -21,37 +20,28 @@ import React, { useEffect, useState } from 'react'
 import { movieService } from '../../../Service';
 import Axios from 'axios';
 import { date, object } from 'yup';
-// import SeatList from './SeatList';
 import { useDispatch, useSelector } from 'react-redux';
 import countDownComponent from '../../../Components/countDownComponent';
-import { Fade } from 'react-bootstrap';
-import usePageLoading from '../../../Components/Hook/usePageLoading';
 import SeatList from './SeatList';
+import PayList from './PayList';
 
 export default function Booking(props) {
 
     const param = props.match.params.Id;
 
-    let lstSeatBooking = useSelector(state => state.movie.lstSeatBooking);
     let [lstBookingTicket, setlstBookingTicket] = useState({});
 
-    const [loader, showLoader, hideLoader] = usePageLoading();
-
-    let [danhSachGheDangDat, setDanhSachGheDangDat] = useState([]);
-
     useEffect(() => {
-        showLoader();
 
-        movieService.fetchBookingTicket(props.match.params.Id)
+        movieService.fetchBookingTicket(param)
             .then(res => {
-                hideLoader();
+
                 setlstBookingTicket(res.data)
             })
             .catch(err => {
                 console.log(err);
             })
     }, [JSON.stringify(lstBookingTicket)])
-
 
     // const datVe = () => {
 
@@ -79,44 +69,6 @@ export default function Booking(props) {
 
     // }
 
-
-    const datVe = () => {
-        let taiKhoan = JSON.parse(localStorage.getItem('credentials')).taiKhoan
-        console.log((taiKhoan));
-
-        let objectDatVe = {
-            "maLichChieu": props.match.params.maLichChieu,
-            "danhSachVe": danhSachGheDangDat,
-            "taiKhoanNguoiDung": taiKhoan
-        }
-
-        localStorage.setItem('obj', JSON.stringify(objectDatVe))
-
-    }
-
-    const checkPay = () => {
-        Swal.fire({
-            title: 'Bạn có chắc muốn thanh toán không',
-            icon: 'info',
-            showCancelButton: false,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'THANH TOÁN'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire(
-                    'Thanh toán hoàn tất!',
-                    'Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi',
-                    'success'
-                ).then((value) => {
-                    if (value) {
-                        window.location.replace("/");
-                    }
-                });
-                datVe()
-            }
-        })
-    }
 
     const Completionist = () => (
         swal("Hết thời gian đặt ghế vui lòng đặt ghế trong thời gian 5 phút,tiến hành đặt lại!!")
@@ -193,116 +145,10 @@ export default function Booking(props) {
 
                     </div>
 
-                    <div className="col-md-12 col-lg-4 contentRight ">
-                        <div className="card ">
-                            <div className="card-header totalCost">
-                                {
-                                    lstSeatBooking.reduce((total, lst, index) => {
-                                        return total += lst.price
-                                    }, 0).toLocaleString()
-                                } đ </div>
-                            <ul className="list-group list-group-flush">
-                                <li className="list-group-item">
-                                    <div className="row">
-                                        <div className="col-5">
-                                            <div className="text_Form_Title">Tên phim : </div>
-                                        </div>
-                                        <div className="col pl-0">
-
-
-                                            <div className="text_Normal">
-                                                {
-                                                    Object.entries(lstBookingTicket).map(([index, item]) => {
-                                                        return (
-                                                            item.tenPhim
-                                                        )
-                                                    })
-                                                }
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li className="list-group-item">
-                                    <div className="row">
-                                        <div className="col-5">
-                                            <div className="text_Form_Title">Cụm rạp : </div>
-                                        </div>
-                                        <div className="col pl-0">
-                                            <div className="text_Normal">
-                                                {
-                                                    Object.entries(lstBookingTicket).map(([index, item]) => {
-                                                        return (
-                                                            item.tenCumRap
-                                                        )
-                                                    })
-                                                }
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li className="list-group-item">
-                                    <div className="row">
-                                        <div className="col-5">
-                                            <div className="text_Form_Title">Ghế: </div>
-                                        </div>
-                                        <div className="col pl-0">
-                                            {
-                                                lstSeatBooking?.map((item, index) => {
-                                                    return (
-                                                        <span className="text_Orange mr-2">{item.rowSeat}{`${item.stt}`} - <span className="text_Green">{item.price.toLocaleString()
-                                                        }</span>
-                                                        </span>
-                                                    )
-                                                })
-                                            }
-
-
-                                        </div>
-                                    </div>
-                                </li>
-                                <li className="list-group-item">
-                                    <div className="row">
-                                        <div className="col-5">
-                                            <div className="text_Form_Title">Rạp : </div>
-                                        </div>
-                                        <div className="col pl-0">
-                                            <div className="text_Normal">
-                                                {
-                                                    Object.entries(lstBookingTicket).map(([index, item]) => {
-                                                        return (item.tenRap)
-                                                    })
-                                                }
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li className="list-group-item">
-                                    <div className="row">
-                                        <div className="col-5">
-                                            <div className="text_Form_Title">Ngày chiếu : và giờ chiếu </div>
-                                        </div>
-                                        <div className="col pl-0">
-                                            {
-                                                Object.entries(lstBookingTicket).slice(0, 1).map(([index, item]) => {
-                                                    return (
-                                                        <div className="text_Normal">{moment(item.ngayChieuGioChieu).format('DD.MM')} ~ <span className="text_Orange">{moment(item.ngayChieuGioChieu).format('hh:mm a')}</span></div>
-                                                    )
-                                                })
-                                            }
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                            <div></div>
-                            <div className="card-foot">
-                                <button onClick={() => { checkPay() }} className="button_Form bookingEdit">Đặt Vé</button>
-                            </div>
-                        </div>
-                    </div>
+                    <PayList param={param} />
 
                 </div>
             </div>
-            {loader}
         </section >
 
 

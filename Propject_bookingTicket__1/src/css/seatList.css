@@ -78,4 +78,19 @@
   line-height: 50px;
   height: 50px;
 }
+
+.seatList .contentRight .discountInput label {
+  margin: 0;
+}
+
+.seatList .contentRight .discountInput input {
+  border: none;
+  padding: 0;
+}
+
+.seatList .contentRight .discountInput input:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
 /*# sourceMappingURL=seatList.css.map */
