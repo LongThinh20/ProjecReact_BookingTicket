@@ -2,8 +2,6 @@ import React, { Fragment, useEffect } from 'react';
 import './App.scss';
 import HomePage from './Screens/HomeMoule/Home';
 import SignUp from './Screens/HomeMoule/SignUp';
-import DetailMovie from './Screens/HomeMoule/Detail';
-import Header from './Components/Header';
 import Footer from './Components/Footer';
 import PageNotFound from './Screens/PageNotFound'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
@@ -32,7 +30,7 @@ function App() {
   }
 
   useEffect(() => {
-    getCredentialFormLocal()
+    getCredentialFormLocal();
   }, [])
 
   return (

@@ -39,27 +39,27 @@ export default function MobileApp() {
                         <Slider {...setting}>
                             <>
                                 <div className="out_line">
-                                    <img src={img1}></img>
+                                    <img src={img1} alt=""></img>
                                 </div>
                             </>
                             <>
                                 <div className="out_line">
-                                    <img src={img2}></img>
+                                    <img src={img2} alt=""></img>
                                 </div>
                             </>
                             <>
                                 <div className="out_line">
-                                    <img src={img3}></img>
+                                    <img src={img3} alt=""></img>
                                 </div>
                             </>
                             <>
                                 <div className="out_line">
-                                    <img src={img4}></img>
+                                    <img src={img4} alt=""></img>
                                 </div>
                             </>
                             <>
                                 <div className="out_line">
-                                    <img src={img5}></img>
+                                    <img src={img5} alt=""></img>
                                 </div>
                             </>
 

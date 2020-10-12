@@ -1,14 +1,13 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../Layouts/bookingTicket.scss';
-import button_ShowTime from '../../Sass/Components/button_ShowTime.scss';
-import text_Green from '../../Sass/Components/text_Green.scss';
-import { connect, useDispatch, useSelector, useStore } from 'react-redux';
-import { fetchCinemaAction, fetchCinemaGroupAction } from '../../Redux/Actions/movie';
+import '../../Sass/Components/button_ShowTime.scss';
+import '../../Sass/Components/text_Green.scss';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { movieService } from '../../Service';
 import moment from 'moment';
-import _ from 'lodash';
-import useScrollInfo from 'react-element-scroll-hook';
+
+
 
 
 export default function ListGroup(props) {
@@ -73,16 +72,16 @@ export default function ListGroup(props) {
               {
                 Object.entries(cinemaList).map(([index, item]) => {
                   return (
-                    maHeThongRap == item.maHeThongRap ? (<a className="cinemaList_item list-group-item list-group-item-action active"
+                    maHeThongRap === item.maHeThongRap ? (<a className="cinemaList_item list-group-item list-group-item-action active"
                       id="list-home-list" data-toggle="list" href={`#${item.maHeThongRap}`} role="tab" aria-controls={item.maHeThongRap}
                       onClick={() => onIncrement(item.maHeThongRap)} key={index}>
-                      <img className="Cinema_Icon" src={item.logo} style={{ width: '50px', height: '50px' }} />
+                      <img className="Cinema_Icon" src={item.logo} style={{ width: '50px', height: '50px' }} alt="" />
                     </a>
                     )
                       : (<a className="cinemaList_item list-group-item list-group-item-action"
                         id="list-home-list" data-toggle="list" href={`#${item.maHeThongRap}`} role="tab" aria-controls="home"
                         onClick={() => onIncrement(item.maHeThongRap)} key={index}>
-                        <img className="Cinema_Icon" src={item.logo} style={{ width: '50px', height: '50px' }} />
+                        <img className="Cinema_Icon" src={item.logo} style={{ width: '50px', height: '50px' }} alt="" />
                       </a>
                       )
                   )
@@ -134,7 +133,7 @@ export default function ListGroup(props) {
                       return (
                         <div className="cinemaMovie_item row" >
                           <div className="col-2  cinemaMovie_img">
-                            <img src={item.hinhAnh} className="img-fluid ml-2" />
+                            <img src={item.hinhAnh} className="img-fluid ml-2" alt="" />
                           </div>
                           <div className="col cinemaMovie_detail">
                             <h3>{item.tenPhim}</h3>

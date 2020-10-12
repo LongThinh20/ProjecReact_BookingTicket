@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import SampleNextArrow from './Arrow/nextArrow';
 import SamplePrevArrow from './Arrow/prevArrow';
-import SliderItems from './SliderItems';
+import SliderItemsOnShow from './SliderItemsOnShow';
+import SilderItemsComingSoon from './SilderItemsComingSoon'
 import '../../Layouts/Slider.scss';
 import Slider from 'react-slick';
-import { useSelector } from 'react-redux';
-import { fetchMovieAction } from '../../Redux/Actions/movie';
+// import { useSelector } from 'react-redux';
+// import { fetchMovieAction } from '../../Redux/Actions/movie';
 import { movieService } from '../../Service';
-import { NavLink } from 'react-bootstrap';
-import Skeleton from 'react-loading-skeleton';
+// import { NavLink } from 'react-bootstrap';
+
 
 
 export default function SliderMovie1(props) {
@@ -65,10 +66,8 @@ export default function SliderMovie1(props) {
                         {
                             Object.entries(movieList).map(([index, item]) =>
                                 (
-                                    <SliderItems item={item} />
+                                    <SliderItemsOnShow item={item} index={index}/>
                                 )
-
-
                             )
                         }
                     </Slider>
@@ -78,7 +77,7 @@ export default function SliderMovie1(props) {
                         {
                             Object.entries(movieList).map(([index, item]) =>
                                 (
-                                    <SliderItems item={item} />
+                                    <SilderItemsComingSoon item={item} />
                                 )
 
 

@@ -2,25 +2,25 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Swal from 'sweetalert2'
 
-export default function SliderItems(props) {
+export default function SilderItemsComingSoon(props) {
     const showModal = () => {
         Swal.fire({
             title: '',
             icon: '',
             html:
-                ' <iframe width="400" height="315" src="https://www.youtube.com/embed/T1D4-t-59V4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
-       
-         
+                ` <iframe width="400" height="315" src=${props.item.trailer} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
+
+
         })
     }
     return (
         <div className="item carousel__detail">
 
             <div className="newIn__img img-fluid">
-                <img src={props.item.hinhAnh} alt />
+                <img src={props.item.hinhAnh} alt="" />
                 <div className="overlay" />
                 <div className="newIn__play">
-                    <a onClick={() => { showModal() }}>
+                    <a onClick={() => { showModal() }} href="#/">
                         <i className="fa fa-play d-block" />
                     </a>
                 </div>

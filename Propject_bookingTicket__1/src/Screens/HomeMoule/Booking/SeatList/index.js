@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import usePageLoading from '../../../../Components/Hook/usePageLoading';
 import { movieService } from '../../../../Service';
-import Swal from 'sweetalert2'
+
 
 export default function SeatList(props) {
 
@@ -21,28 +21,29 @@ export default function SeatList(props) {
 
     let [lstBookingTicket, setlstBookingTicket] = useState({});
     let [danhSachGheDangDat, setDanhSachGheDangDat] = useState([]);
-    const [lstCheck, setlstCheck] = useState([]);
+  
 
 
-    const showErr = () => {
-        Swal.fire({
-            // title: 'Bạn không thể bỏ trống 1 ghế ở đầu mỗi dãy',
-            text: "Bạn không thể bỏ trống 1 ghế ở đầu mỗi dãy",
-            icon: 'warning',
-            showCancelButton: false,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'OK'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // Swal.fire(
-                //     'Deleted!',
-                //     'Your file has been deleted.',
-                //     'success'
-                // )
-            }
-        })
-    }
+    // const showErr = () => {
+    //     Swal.fire({
+    //         // title: 'Bạn không thể bỏ trống 1 ghế ở đầu mỗi dãy',
+    //         text: "Bạn không thể bỏ trống 1 ghế ở đầu mỗi dãy",
+    //         icon: 'warning',
+    //         showCancelButton: false,
+    //         confirmButtonColor: '#3085d6',
+    //         cancelButtonColor: '#d33',
+    //         confirmButtonText: 'OK'
+    //     }).then((result) => {
+    //         if (result.isConfirmed) {
+    //             // Swal.fire(
+    //             //     'Deleted!',
+    //             //     'Your file has been deleted.',
+    //             //     'success'
+    //             // )
+    //         }
+    //     })
+    // }
+
     useEffect(() => {
         showLoader();
 

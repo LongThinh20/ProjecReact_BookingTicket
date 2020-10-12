@@ -93,4 +93,26 @@
   -webkit-box-shadow: none;
           box-shadow: none;
 }
+
+.seatList .contentRight .payMents label {
+  line-height: 35px;
+}
+
+.seatList .contentRight .payMents label .form-check-label .form-check-input {
+  padding-top: 10px;
+}
+
+.seatList .contentRight .payMents .ATM_content button {
+  border: 1px solid #e1e1e1;
+  background-color: transparent;
+  width: 60px;
+  height: 50px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.seatList .contentRight .payMents .ATM_content button:focus {
+  outline: none;
+  border-color: #eb7633;
+}
 /*# sourceMappingURL=seatList.css.map */

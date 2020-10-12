@@ -3,7 +3,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import {userService} from '../../../Service';
 import { signupUserSchema } from '../../../Service/user';
 import '../../../Layouts/signUp.scss';
-import button_Form from '../../../Sass/Components/button_Form.scss'
+import '../../../Sass/Components/button_Form.scss'
+
 
 
 class SignUp extends Component {
@@ -125,7 +126,7 @@ class SignUp extends Component {
                                     </ErrorMessage>
                                 </div>
                                 <div className="text-center">
-                                    <button type="submit" className="btn button_Form">ĐĂNG KÍ</button>
+                                    <button type="submit" className="btn button_Form" >ĐĂNG KÍ</button>
                                 </div>
                             </Form>
                         )} ></Formik>

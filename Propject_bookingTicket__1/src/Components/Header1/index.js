@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import img from '../../img/logo.svg';
@@ -57,7 +57,7 @@ export default function Header1() {
                 <div className="header_account row" style={{ display: isTopOfPage ? 'flex' : 'none' }}>
                     <div className="col text-left">
                         <NavLink className="navbar-brand header-img" to="/">
-                            <img src={img} className="img-fluid" />
+                            <img src={img} className="img-fluid" alt="" />
                         </NavLink>
                     </div>
                     <div className="col text-right">
@@ -68,7 +68,7 @@ export default function Header1() {
                             }
                         </div>
                         <div className="dropdown-menu">
-                            <a className="acount_logout dropdown-item" href="#">Thông tin cá nhân</a>
+                            <a className="acount_logout dropdown-item" href="#/">Thông tin cá nhân</a>
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@ export default function Header1() {
                     <div className="collapse navbar-collapse " id="movieNavbar">
                         <ul className="navbar-nav m-auto">
                             <li className="nav-item active">
-                                <a className="nav-link" href="#">TRANG CHỦ</a>
+                                <a className="nav-link" href="/">TRANG CHỦ</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="#showlstMovie">LỊCH CHIẾU</a>
@@ -93,7 +93,7 @@ export default function Header1() {
                             </li>
                             {
                                 credentials !== null ? <li className="nav-item">
-                                    <a className="nav-link" activeStyle={{ color: 'orange' }} onClick={() => { checkSignOut() }}>ĐĂNG XUẤT</a>
+                                    <a className="nav-link" activeStyle={{ color: 'orange' }} onClick={() => { checkSignOut() }} href="#/" >ĐĂNG XUẤT</a>
                                 </li>
                                     : <>
                                         <li className="nav-item">

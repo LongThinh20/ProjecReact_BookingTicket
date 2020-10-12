@@ -3,5 +3,5 @@
 @import '../Helpers/variables';
 
 .text_Normal{
-    @include  styleText($color-gray-0,18px,$fw-normal);
+    @include  styleText($color-gray-0,15px,$fw-normal);
 }

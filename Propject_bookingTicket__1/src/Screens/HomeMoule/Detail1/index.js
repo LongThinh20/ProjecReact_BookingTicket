@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import moment from 'moment';
 import { movieService } from '../../../Service';
-import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import button_ShowTime from '../../../Sass/Components/button_ShowTime.scss';
-import text_Green from '../../../Sass/Components/text_Green.scss';
 import usePageLoading from '../../../Components/Hook/usePageLoading'
+import  '../../../Sass/Components/backgroundMovie.scss';
+import  '../../../Sass/Components/button_Trailer.scss';
+import  '../../../Sass/Components/button_Cinema.scss';
+import  '../../../Layouts/detail.scss';
 
 export default function DetailMovie1(props) {
 
@@ -20,7 +21,7 @@ export default function DetailMovie1(props) {
 
       movieService.fetchMovieDetail(props.match.params.Id)
          .then(res => {
-            
+
             hideLoader();
 
             let lstdetailMovie = res.data;
@@ -50,7 +51,6 @@ export default function DetailMovie1(props) {
          })
    }, [])
 
-
    return (
       <section className="detail" style={imgStyle}>
          <div className="container">
@@ -63,16 +63,16 @@ export default function DetailMovie1(props) {
                      </a>
                   </div>
 
-                  <div className="modal fade" id="exampleModalCenter" tabIndex={-1} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="htrue">
+                  <div className="modal fade" id="exampleModalCenter" tabIndex={-1} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                      <div className="modal-dialog modal-dialog-centered" role="document">
                         <div className="modal-content">
-                           <iframe width="560" height="315" src={lstmovieDetail.trailer} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                           <iframe width="560" height="315" src={lstmovieDetail.trailer} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="" ></iframe>
                         </div>
                      </div>
                   </div>
 
                   <div className="detail_Img">
-                     <img src={lstmovieDetail.hinhAnh} ></img>
+                     <img src={lstmovieDetail.hinhAnh} alt="" ></img>
                   </div>
 
                </div>
@@ -117,7 +117,7 @@ export default function DetailMovie1(props) {
                                  return (
                                     <li className="nav-item">
                                        <a className="nav-link " data-toggle="pill" href={`#${item.maHeThongRap}`}>
-                                          <img src={item.logo} style={{ height: '50px', width: '50px' }}></img>
+                                          <img src={item.logo} style={{ height: '50px', width: '50px' }} alt=""></img>
                                        </a>
                                     </li>
                                  )

@@ -1,27 +1,22 @@
 import '../../../Layouts/seatList.scss';
-import demo from '../../../Sass/Components/demo.scss';
-import seatSelect from '../../../Sass/Components/seatSelect.scss';
-import seat from '../../../Sass/Components/seat.scss';
-import seatVip from '../../../Sass/Components/seatVip.scss';
-import seatBooking from '../../../Sass/Components/seatBooking.scss';
-import button_Form from '../../../Sass/Components/button_Form.scss';
-import text_Form_Title from '../../../Sass/Components/text_Form_Title.scss';
-import text_Green from '../../../Sass/Components/text_Green.scss';
-import text_Orange from '../../../Sass/Components/text_Orange.scss';
-import text_Normal from '../../../Sass/Components/text_Normal.scss';
-import demoText from '../../../Sass/Components/demoText.scss';
-import rowSeat from '../../../Sass/Components/rowSeat.scss';
-import moment from 'moment'
+import '../../../Sass/Components/demo.scss';
+import '../../../Sass/Components/seatSelect.scss';
+import '../../../Sass/Components/seat.scss';
+import '../../../Sass/Components/seatVip.scss';
+import '../../../Sass/Components/seatBooking.scss';
+import '../../../Sass/Components/button_Form.scss';
+import '../../../Sass/Components/text_Form_Title.scss';
+import '../../../Sass/Components/text_Green.scss';
+import '../../../Sass/Components/text_Orange.scss';
+import '../../../Sass/Components/text_Normal.scss';
+import '../../../Sass/Components/demoText.scss';
+import '../../../Sass/Components/rowSeat.scss';
+
 import Countdown from 'react-countdown-now';
 import swal from 'sweetalert';
 
-
 import React, { useEffect, useState } from 'react'
 import { movieService } from '../../../Service';
-import Axios from 'axios';
-import { date, object } from 'yup';
-import { useDispatch, useSelector } from 'react-redux';
-import countDownComponent from '../../../Components/countDownComponent';
 import SeatList from './SeatList';
 import PayList from './PayList';
 

@@ -6,7 +6,7 @@ import '../../Layouts/ShowLoader.scss';
 const ShowLoader = () => {
     return (
         <div className="loader_container">
-            <img src={spiner} className="loader_img"></img>
+            <img src={spiner} className="loader_img" alt=""></img>
         </div>
     )
 }

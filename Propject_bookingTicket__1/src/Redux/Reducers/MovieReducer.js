@@ -48,7 +48,7 @@ const MovieReducer = (state = initialState, action) => {
 
             let lstSeatBookingUpdate = [...state.lstSeatBooking];
             let index = lstSeatBookingUpdate.findIndex(gheDangDat => (gheDangDat.stt === action.payload.stt) && (gheDangDat.rowSeat === action.payload.rowSeat));
-            if (index != -1) {
+            if (index !== -1) {
                 lstSeatBookingUpdate.splice(index, 1);
             } else {
                 lstSeatBookingUpdate.push(action.payload);
