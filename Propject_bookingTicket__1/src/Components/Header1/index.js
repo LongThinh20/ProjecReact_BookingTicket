@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import img from '../../img/logo.svg';
 import '../../Layouts/header.scss';
 import useScrollTop from 'react-hook-scrolltop';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+
 
 export default function Header1() {
     const credentials = useSelector(state => state.user.credentials);
@@ -46,8 +47,11 @@ export default function Header1() {
     }
 
 
-    // const [scrollInfo, setRef] = useScrollInfo();
-    // console.log(scrollInfo);
+
+    // const [color, setColor] = useState(ColorList[0]);
+
+
+
 
     return (
         <header className="header" style={{ backgroundColor: isTopOfPage ? 'black' : 'black' }}>
@@ -61,7 +65,10 @@ export default function Header1() {
                         </NavLink>
                     </div>
                     <div className="col text-right">
-                        <span className="account_icon"><i className=" fa fa-user-circle mr-2" /></span>
+                        <span className="account_icon">
+                            <i className=" fa fa-user-circle mr-2" />
+                           
+                        </span>
                         <div type=" button" className="account_detail btn dropdown-toggle pl-4 pr-4" data-toggle="dropdown">
                             {
                                 credentials !== null ? credentials.hoTen : '.......'

@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux';
 import Header1 from './Components/Header1';
 import DetailMovie1 from './Screens/HomeMoule/Detail1';
 
-// import Demo from './Components/ShowLoader'
+import Demo from './Components/Demo'
 
 function App() {
 
@@ -46,7 +46,7 @@ function App() {
         <Switch>
           <Route path="/detail/:Id" component={DetailMovie1} />
           <Route path="/signup" component={SignUp} />
-          {/* <Route path="/demo" component={demo} /> */}
+          <Route path="/demo" component={Demo} />
           <Route path="/signin" component={SignIn} />
           <Route path="/booking/:Id" component={Booking} />
           <Route path="/" component={HomePage} />

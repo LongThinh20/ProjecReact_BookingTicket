@@ -7,6 +7,7 @@ import  '../../../Sass/Components/backgroundMovie.scss';
 import  '../../../Sass/Components/button_Trailer.scss';
 import  '../../../Sass/Components/button_Cinema.scss';
 import  '../../../Layouts/detail.scss';
+import FeedBack from './FeedBack';
 
 export default function DetailMovie1(props) {
 
@@ -107,7 +108,7 @@ export default function DetailMovie1(props) {
                </ul>
 
                <div className="tab-content">
-                  <div className="tab-pane container active mt-4 " id="home">
+                  <div className="tab-pane active mt-4 " id="home">
                      {/*  */}
                      <div className="logo_detail">
 
@@ -180,11 +181,11 @@ export default function DetailMovie1(props) {
                      </div>
 
                   </div>
-                  <div className="tab-pane container fade" id="menu2">...</div>
+                  <div className="tab-pane container fade" id="menu2">
+                     <FeedBack/>
+                  </div>
                </div>
             </div>
-
-
 
          </div>
          {loader}

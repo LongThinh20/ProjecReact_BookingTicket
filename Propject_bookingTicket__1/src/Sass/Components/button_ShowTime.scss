@@ -13,7 +13,7 @@
   
     @include styleText($color-orange,$fs-3,$fw-normal);
     &:hover{
-        background-color: #eb7633;
+        background-color: $color-yellow;
         color: white;
         text-decoration: none;
         border-color: $color-orange;
