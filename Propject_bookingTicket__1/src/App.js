@@ -1,23 +1,61 @@
 import React, { Fragment, useEffect } from 'react';
 import './App.scss';
-import HomePage from './Screens/HomeMoule/Home';
-import SignUp from './Screens/HomeMoule/SignUp';
-import Footer from './Components/Footer';
 import PageNotFound from './Screens/PageNotFound'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import SignIn from './Screens/HomeMoule/SignIn';
-import Booking from './Screens/HomeMoule/Booking';
 import { useDispatch } from 'react-redux';
-import Header1 from './Components/Header1';
-import DetailMovie1 from './Screens/HomeMoule/Detail1';
-
-import Demo from './Components/Demo'
+import HomeTemplate from './Template/HomeTemplate';
+import BookingTemplate from './Template/BookingTemplate';
+import AdminTemplate from './Template/AdminTemplate';
+import { routesAdmin, routesBooking, routesHome } from './Routes';
 
 function App() {
 
+  const showHomeLayout = routes => {
+    if (routes && routes.length > 0) {
+      return routes.map((item, index) => {
+        return (
+          <HomeTemplate
+            key={index}
+            exact={item.exact}
+            path={item.path}
+            Component={item.component}
+          />
+        )
+      })
+    }
+  }
+
+  const showBookingLayout = routes => {
+    if (routes && routes.length > 0) {
+      return routes.map((item, index) => {
+        return (
+          <BookingTemplate
+            key={index}
+            exact={item.exact}
+            path={item.path}
+            Component={item.component}
+          />
+        )
+      })
+    }
+  }
+  const showAdminLayout = routes => {
+    if (routes && routes.length > 0) {
+      return routes.map((item, index) => {
+        return (
+          <AdminTemplate
+            key={index}
+            exact={item.exact}
+            path={item.path}
+            Component={item.component}
+          />
+        );
+      });
+    }
+  };
+
   const dispatch = useDispatch();
   const getCredentialFormLocal = () => {
-
 
     const credentialStr = localStorage.getItem('credentials');
     if (credentialStr) {
@@ -42,17 +80,14 @@ function App() {
           </header>
         </div>
 
-        <Header1 />
+
         <Switch>
-          <Route path="/detail/:Id" component={DetailMovie1} />
-          <Route path="/signup" component={SignUp} />
-          <Route path="/demo" component={Demo} />
-          <Route path="/signin" component={SignIn} />
-          <Route path="/booking/:Id" component={Booking} />
-          <Route path="/" component={HomePage} />
+          {showHomeLayout(routesHome)}
+          {showBookingLayout(routesBooking)}
+          {showAdminLayout(routesAdmin)}
           <Route path="" component={PageNotFound} />
         </Switch>
-        <Footer />
+
       </Fragment>
     </BrowserRouter>
   );

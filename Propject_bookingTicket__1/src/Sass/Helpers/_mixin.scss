@@ -58,7 +58,7 @@
     }  
 }
 
-@mixin styleTextTile ($fs){
+@mixin styleTextTile ($fs,$w){
         color: #eb7633;
         font-size: $fs;
         letter-spacing: 2px;
@@ -67,11 +67,11 @@
         position: relative;
         &::after{
             content: " ";
-            width: 160px;
-            height: 3px;
+            width: $w;
+            height: 2px;
             background: linear-gradient(to right, #f8b85d,#eb7633);
             position: absolute;
-            bottom: -1px;
+            bottom: -4px;
             left: 0;
         }
 }

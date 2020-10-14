@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import img from '../../img/logo.svg';
 import '../../Layouts/header.scss';
 import useScrollTop from 'react-hook-scrolltop';
 import Swal from 'sweetalert2';
-
+import { Avatar } from 'antd';
+import 'antd/dist/antd.css';
 
 export default function Header1() {
     const credentials = useSelector(state => state.user.credentials);
@@ -46,13 +47,6 @@ export default function Header1() {
         })
     }
 
-
-
-    // const [color, setColor] = useState(ColorList[0]);
-
-
-
-
     return (
         <header className="header" style={{ backgroundColor: isTopOfPage ? 'black' : 'black' }}>
             <div className="container">
@@ -65,18 +59,25 @@ export default function Header1() {
                         </NavLink>
                     </div>
                     <div className="col text-right">
-                        <span className="account_icon">
-                            <i className=" fa fa-user-circle mr-2" />
-                           
+                        <span className="account_icon ">
+                            {/* <i className=" fa fa-user-circle mr-2" /> */}
+                            <Avatar style={{ color: '#f56a00', backgroundColor: '#fde3cf' }}>I</Avatar>
                         </span>
                         <div type=" button" className="account_detail btn dropdown-toggle pl-4 pr-4" data-toggle="dropdown">
                             {
                                 credentials !== null ? credentials.hoTen : '.......'
                             }
                         </div>
-                        <div className="dropdown-menu">
-                            <a className="acount_logout dropdown-item" href="#/">Thông tin cá nhân</a>
-                        </div>
+                        {
+                            credentials !== null ?
+                                (<div className="dropdown-menu">
+                                    <a className="acount_logout dropdown-item" href="/info">Thông tin cá nhân</a>
+                                </div>)
+                                : (<div className="dropdown-menu ">
+                                    <a className="acount_logout dropdown-item  disabled" href="/info">Thông tin cá nhân</a>
+                                </div>)
+                        }
+
                     </div>
                 </div>
 
@@ -100,7 +101,7 @@ export default function Header1() {
                             </li>
                             {
                                 credentials !== null ? <li className="nav-item">
-                                    <a className="nav-link" activeStyle={{ color: 'orange' }} onClick={() => { checkSignOut() }} href="#/" >ĐĂNG XUẤT</a>
+                                    <a className="nav-link" onClick={() => { checkSignOut() }} href="#/" >ĐĂNG XUẤT</a>
                                 </li>
                                     : <>
                                         <li className="nav-item">

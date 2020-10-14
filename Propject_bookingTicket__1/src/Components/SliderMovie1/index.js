@@ -25,12 +25,12 @@ export default function SliderMovie1(props) {
     let [movieList, setmovieList] = useState({});
 
     useEffect(() => {
-        props.showLoader();
+
 
         movieService.fetchMovie()
             .then(res => {
 
-                props.hideLoader();
+
 
                 let danhSachPhim = res.data;
                 setmovieList(danhSachPhim)
@@ -66,7 +66,7 @@ export default function SliderMovie1(props) {
                         {
                             Object.entries(movieList).map(([index, item]) =>
                                 (
-                                    <SliderItemsOnShow item={item} index={index}/>
+                                    <SliderItemsOnShow item={item} index={index} />
                                 )
                             )
                         }

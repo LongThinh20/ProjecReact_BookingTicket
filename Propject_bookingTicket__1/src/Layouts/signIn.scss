@@ -12,7 +12,7 @@
         color: white;
 
         h1 {
-            @include styleTextTile(30px)
+            @include styleTextTile(25px,200px)
         }
     }
 }

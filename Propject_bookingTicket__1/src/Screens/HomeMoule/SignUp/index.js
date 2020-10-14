@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import {userService} from '../../../Service';
+import { userService } from '../../../Service';
 import { signupUserSchema } from '../../../Service/user';
 import '../../../Layouts/signUp.scss';
 import '../../../Sass/Components/button_Form.scss'
@@ -9,13 +9,13 @@ import '../../../Sass/Components/button_Form.scss'
 
 class SignUp extends Component {
     _handleSubmit = values => {
-       userService.signUp(values)
-       .then(res=>{
-           console.log(res);
-       })
-       .catch(err=>{
-           console.log(err);
-       })
+        userService.signUp(values)
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
     render() {
         return (
@@ -46,7 +46,7 @@ class SignUp extends Component {
                                         onChange={formikProps.handleChange}
                                     />
                                     <ErrorMessage name="hoTen">
-                                        {msg => <div className="alert alert-danger">{msg}</div>}
+                                        {msg => <div className="alert alert-danger mt-2">{msg}</div>}
                                     </ErrorMessage>
 
                                 </div>
@@ -60,7 +60,7 @@ class SignUp extends Component {
                                         onChange={formikProps.handleChange}
                                     />
                                     <ErrorMessage name="taiKhoan">
-                                        {msg => <div className="alert alert-danger">{msg}</div>}
+                                        {msg => <div className="alert alert-danger mt-2">{msg}</div>}
                                     </ErrorMessage>
                                 </div>
                                 <div className="form-group">
@@ -73,7 +73,7 @@ class SignUp extends Component {
                                         onChange={formikProps.handleChange}
                                     />
                                     <ErrorMessage name="matKhau">
-                                        {msg => <div className="alert alert-danger">{msg}</div>}
+                                        {msg => <div className="alert alert-danger mt-2">{msg}</div>}
                                     </ErrorMessage>
                                 </div>
                                 <div className="form-group">
@@ -86,7 +86,7 @@ class SignUp extends Component {
                                         onChange={formikProps.handleChange}
                                     />
                                     <ErrorMessage name="email">
-                                        {msg => <div className="alert alert-danger">{msg}</div>}
+                                        {msg => <div className="alert alert-danger mt-2">{msg}</div>}
                                     </ErrorMessage>
                                 </div>
                                 <div className="form-group">
@@ -132,7 +132,7 @@ class SignUp extends Component {
                         )} ></Formik>
                 </div>
             </section>
-           
+
 
         )
     }

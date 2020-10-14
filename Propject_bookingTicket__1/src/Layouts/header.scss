@@ -1,86 +1,78 @@
-@import '../Sass/Helpers/mixin';
-@import '../Sass/Helpers/variables';
+@import "../Sass/Helpers/mixin";
+@import "../Sass/Helpers/variables";
 
 .header {
-    position: fixed;
-    z-index: 100;
-    left: 50%;
-    transform: translateX(-50%);
-    background: black;
-    width: 100%;
-    opacity: 0.8;
+  position: fixed;
+  z-index: 100;
+  left: 50%;
+  transform: translateX(-50%);
+  background: black;
+  width: 100%;
+  opacity: 0.8;
 
+  .header_account {
+    margin-top: 10px;
+    .account_detail {
+      background-color: transparent;
+      border: 1px solid $color-orange;
+      color: wheat;
 
-    .header_account {
-        .account_detail {
-            background-color: transparent;
-            border: 1px solid $color-orange;
-            color: wheat;
-            margin-top: -20px;
+      &:focus {
+        background-color: transparent;
+        outline: none;
+      }
 
-            &:focus {
-                background-color: transparent;
-                outline: none;
-            }
-
-            &:active {
-                background-color: transparent;
-                outline: none;
-            }
-
-        }
-
-        .acount_logout {
-            &:focus {
-                background-color: $color-orange;
-            }
-        }
-
-        .account_icon {
-            font-size: 40px;
-
-
-        }
+      &:active {
+        background-color: transparent;
+        outline: none;
+      }
     }
 
-    .header__nav {
-
-        .navbar-nav {
-            border-bottom: 1px solid rgba(255, 255, 255, .2);
-            transition: all .5;
-
-            .nav-item {
-                .nav-link {
-                    color: white;
-                    padding: 0 30px 15px 30px;
-                    font-size: 18px;
-                    border-right: 1px solid rgba(255, 255, 255, .2);
-                }
-
-                &::after {
-                    content: "";
-                    width: 0;
-                    height: 2px;
-                    display: block;
-                    background: linear-gradient(to right, $color-yellow, $color-orange);
-                    transition: all .3s;
-                }
-
-                &:hover::after {
-                    width: 100%;
-                }
-
-                &:active::after {
-                    width: 100%;
-                }
-
-
-            }
-
-          .active {
-              color: yellow !important;
-          }
-
-        }
+    .acount_logout {
+      &:focus {
+        background-color: $color-orange;
+      }
     }
+
+    .account_icon {
+      margin-right: 10px;
+    }
+  }
+
+  .header__nav {
+    .navbar-nav {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.5;
+
+      .nav-item {
+        .nav-link {
+          color: white;
+          padding: 0 30px 15px 30px;
+          font-size: 18px;
+          border-right: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        &::after {
+          content: "";
+          width: 0;
+          height: 2px;
+          display: block;
+          background: linear-gradient(to right, $color-yellow, $color-orange);
+          transition: all 0.3s;
+        }
+
+        &:hover::after {
+          width: 100%;
+        }
+
+        &:active::after {
+          width: 100%;
+        }
+      }
+
+      .active {
+        color: yellow !important;
+      }
+    }
+  }
 }
