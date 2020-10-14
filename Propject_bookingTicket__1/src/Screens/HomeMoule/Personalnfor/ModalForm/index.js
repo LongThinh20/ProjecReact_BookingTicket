@@ -1,28 +1,56 @@
 
-
-
-
 import React from "react";
 import { useForm } from "react-hook-form";
 import '../../../../Sass/Components/button_Form.scss';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { signupUserSchema } from "../../../../Service/user";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { userService } from "../../../../Service";
+import Swal from 'sweetalert2';
+import Axios from "axios";
+import { update } from "../../../../Redux/Actions/user";
 
-
-
-
-export default function ChangePassword() {
-
-    const { register, errors, handleSubmit } = useForm({
-        resolver: yupResolver(signupUserSchema)
-    });
-    const onSubmit = values => {
-        console.log(values);
-    }
+export default function ModalForm() {
     const credentials = useSelector(state => state.user.credentials);
+    const { register, errors, handleSubmit } = useForm();
+    const dispatch = useDispatch();
+
+    console.log(credentials.maLoaiNguoiDung);
 
 
+    const onSubmit = (values) => {
+        dispatch(update(values, credentials.accessToken));
+        // Axios({
+        //     method: "PUT",
+        //     url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
+        //     data: values,
+        //     headers: {
+        //         'Authorization': `Bearer ${credentials.accessToken}`
+        //     }
+        // }).then(res => {
+        //     Swal.fire({
+        //         title: 'Cập nhật thành công !!',
+        //         icon: 'success',
+        //         confirmButtonText: 'OK',
+        //         showCancelButton: false,
+        //         showCloseButton: true
+        //     }).then((result) => {
+        //         if (result) {
+
+        //         } else {
+
+        //         }
+        //     })
+        //     console.log(res.data);
+        // }).catch(err => {
+        //     Swal.fire({
+        //         title: 'Cập nhật thất bại  thành công !!',
+        //         text: `${err.response.data}`,
+        //         icon: 'error',
+        //         confirmButtonText: 'OK',
+        //         showCancelButton: false,
+        //         showCloseButton: true
+        //     })
+        // })
+    }
 
 
     return (
@@ -38,11 +66,13 @@ export default function ChangePassword() {
                     <input
                         type="text"
                         name="hoTen"
-                        placeholder="Enter email"
-                        ref={register}
+                        placeholder="Nhập họ và tên"
+                        ref={register({
+                            required: "Họ Tên không được rỗng !!"
+                        })}
                         className={`form-control ${errors.hoTen ? "is-invalid" : ""}`}
                         defaultValue={credentials.hoTen}
-                    // onClick={setValue("hoTen", credentials.hoTen)}
+
                     />
                     <p className="invalid-feedback" name="hoTen">{errors.hoTen?.message}</p>
                 </div>
@@ -52,11 +82,13 @@ export default function ChangePassword() {
                     <input
                         type="text"
                         name="taiKhoan"
-                        placeholder="Enter email"
-                        ref={register}
+                        placeholder="Nhập tài khoản "
+                        ref={register({
+                            required: "Tài khoản không được rỗng !!"
+                        })}
                         className={`form-control ${errors.taiKhoan ? "is-invalid" : ""}`}
                         defaultValue={credentials.taiKhoan}
-                    // onClick={setValue("taiKhoan", credentials.taiKhoan)}
+
                     />
                     <p className="invalid-feedback" name="taiKhoan">{errors.taiKhoan?.message}</p>
                 </div>
@@ -66,11 +98,13 @@ export default function ChangePassword() {
                     <input
                         name="password"
                         type="password"
-                        placeholder="Enter password"
-                        ref={register}
+                        placeholder="Nhập password"
+                        ref={register({
+                            required: "Mật khẩu không được rỗng !!"
+                        })}
                         className={`form-control ${errors.password ? "is-invalid" : ""}`}
                         defaultValue="******"
-                    // onClick={setValue("password", "***********")}
+
                     />
                     <p className="invalid-feedback" name="password">{errors.password?.message}</p>
                 </div>
@@ -80,10 +114,16 @@ export default function ChangePassword() {
                     <input
                         name="email"
                         type="email"
-                        ref={register}
+                        placeholder="Nhập email"
+                        ref={register({
+                            required: "Email không được rỗng !!",
+                            pattern: {
+                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                                message: "Email không hợp lệ !!"
+                            }
+                        })}
                         className={`form-control ${errors.email ? "is-invalid" : ""}`}
                         defaultValue={credentials.email}
-                    // onClick={setValue("email", credentials.email)}
                     />
                     <p className="invalid-feedback" name="email">{errors.email?.message}</p>
                 </div>
@@ -92,20 +132,41 @@ export default function ChangePassword() {
                     <input
                         name="soDT"
                         type="text"
-                        ref={register}
+                        placeholder="Nhập số điện thoại"
+                        ref={register({
+                            required: "Số điện thoại không được rỗng !!",
+                            pattern: {
+                                value: /^(0|\+84)(\s|\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\d)(\s|\.)?(\d{3})(\s|\.)?(\d{3})$/,
+                                message: "Số điện thoại không hợp lệ !!"
+                            }
+                        })}
                         className={`form-control ${errors.soDT ? "is-invalid" : ""}`}
                         defaultValue={credentials.soDT}
-                    // onClick={setValue("soDT", credentials.soDT)}
                     />
                     <p className="invalid-feedback" name="soDT">{errors.soDT?.message}</p>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="maLoaiNguoiDung">Loại người dùng </label>
+                    <input
+                        name="maLoaiNguoiDung"
+                        type="text"
+                        placeholder=""
+                        ref={register}
+                        className={`form-control ${errors.maLoaiNguoiDung ? "is-invalid" : ""}  `}
+                        defaultValue={credentials.maLoaiNguoiDung}
+                    />
+
                 </div>
                 <div className="form-group">
                     <label htmlFor="email">Mã nhóm</label>
                     <select
                         name="maNhom"
                         className={`form-control ${errors.maNhom ? "is-invalid" : ""}`}
-                        ref={register}
-                    // value="GP03"
+                        ref={register({
+                            required: "Mã không được rỗng !!"
+                        })}
+                        defaultValue={credentials.maNhom}
+
                     >
                         <option>GP01</option>
                         <option>GP02</option>
@@ -119,14 +180,10 @@ export default function ChangePassword() {
                         <option>GP10</option>
                     </select>
                     <p className="invalid-feedback" name="maNhom">{errors.maNhom?.message}</p>
-
                 </div>
-
-
                 <div>
                     <button type="submit" className="btn button_Form" >HOÀN TẤT</button>
                 </div>
-
                 <div className="forgotPass text-info"><a>Quên mật khẩu hiện tại ??</a></div>
             </form>
         </div>

@@ -10,8 +10,8 @@ import '../../../Sass/Components/button_Form.scss'
 export default function SignIn() {
 
     const [user, setuser] = useState({
-        account: '',
-        pass: ''
+        taiKhoan: '',
+        matKhau: ''
     });
 
     const dispatch = useDispatch();

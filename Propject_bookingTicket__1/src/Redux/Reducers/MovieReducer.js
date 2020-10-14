@@ -8,7 +8,8 @@ let initialState = {
     cinemaGroup: [],
     maHeThongRap: null,
     lstMovie: [],
-    lstSeatBooking: []
+    lstSeatBooking: [],
+    lstBooking: [],
 
 }
 
@@ -44,6 +45,7 @@ const MovieReducer = (state = initialState, action) => {
             state.lstMovie = action.payload;
             return { ...state }
         }
+       
         case 'CHECK_SEAT_BOOKING': {
 
             let lstSeatBookingUpdate = [...state.lstSeatBooking];
@@ -57,6 +59,7 @@ const MovieReducer = (state = initialState, action) => {
 
             return { ...state }
         }
+
 
         default:
             return state;

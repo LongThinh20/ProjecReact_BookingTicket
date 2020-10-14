@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import Swal from "sweetalert2";
 import { movieService } from "../../../../Service";
@@ -12,55 +12,79 @@ import img6 from '../../../../img/payoo.jpg';
 import img7 from '../../../../img/zalopay_icon.png';
 import '../../../../Layouts/seatList.scss';
 
+
 export default function PayList(props) {
   let lstSeatBooking = useSelector((state) => state.movie.lstSeatBooking);
   let [lstBookingTicket, setlstBookingTicket] = useState({});
-  let [danhSachGheDangDat, setDanhSachGheDangDat] = useState([]);
   const user = useSelector((state) => state.user.credentials);
+
+  let check = false;
+  if (lstSeatBooking.length >= 1) {
+    check = true;
+  } else {
+  }
 
   useEffect(() => {
     movieService
       .fetchBookingTicket(props.param)
       .then((res) => {
         setlstBookingTicket(res.data);
+
       })
       .catch((err) => {
         console.log(err);
       });
   }, [JSON.stringify(lstBookingTicket)]);
 
-  const checkPay = () => {
-    Swal.fire({
-      title: "Bạn có chắc muốn thanh toán không",
-      icon: "info",
-      showCancelButton: false,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "THANH TOÁN",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          "Thanh toán hoàn tất!",
-          "Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi",
-          "success"
-        ).then((value) => {
-          if (value) {
-            window.location.replace("/");
-          }
-        });
-        datVe();
-      }
-    });
+
+
+  const checkPay = (tenPhim, maLichChieu, ngayChieu, gioChieu) => {
+    if (check) {
+      Swal.fire({
+        title: "Bạn có chắc muốn thanh toán không",
+        icon: "info",
+        showCancelButton: false,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "THANH TOÁN",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            "Thanh toán hoàn tất!",
+            "Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi",
+            "success"
+          ).then((value) => {
+            if (value) {
+              window.location.replace("/");
+            }
+          });
+          datVe(tenPhim, maLichChieu, ngayChieu, gioChieu);
+
+        }
+      });
+    } else {
+      Swal.fire({
+        icon: 'info',
+        title: 'Chưa có ghế nào được chọn ??'
+      })
+    }
   };
 
-  const datVe = () => {
-    let taiKhoan = JSON.parse(localStorage.getItem("credentials")).taiKhoan;
-    console.log(taiKhoan);
 
+
+
+  const datVe = (tenPhim, maLichChieu, ngayChieu, gioChieu) => {
+    let taiKhoan = JSON.parse(localStorage.getItem("credentials")).taiKhoan;
+
+    console.log(tenPhim);
     let objectDatVe = {
-      maLichChieu: props.match.params.maLichChieu,
-      danhSachVe: danhSachGheDangDat,
-      taiKhoanNguoiDung: taiKhoan,
+
+      'tenPhim': tenPhim,
+      'maLichChieu': maLichChieu,
+      'danhSachVe': lstSeatBooking,
+      'taiKhoanNguoiDung': taiKhoan,
+      'gioChieu': gioChieu,
+      'ngayChieu': ngayChieu
     };
 
     localStorage.setItem("obj", JSON.stringify(objectDatVe));
@@ -70,12 +94,10 @@ export default function PayList(props) {
     <div className="col-md-12 col-lg-4 contentRight ">
       <div className="card ">
         <div className="card-header totalCost">
-          {lstSeatBooking
-            .reduce((total, lst, index) => {
-              return (total += lst.price);
-            }, 0)
-            .toLocaleString()}{" "}
-          đ{" "}
+          {
+            check ? (lstSeatBooking.reduce((total, lst) => { return (total += lst.price); }, 0).toLocaleString() + ' đ') : "0 đ"
+          }
+
         </div>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
@@ -154,7 +176,7 @@ export default function PayList(props) {
               </div>
 
               <div className="col-4">
-                <button className="btn btn-success">Áp dụng</button>
+                <button className="btn btn-success" >Áp dụng</button>
               </div>
             </div>
           </li>
@@ -225,14 +247,11 @@ export default function PayList(props) {
         </ul>
         <div></div>
         <div className="card-foot">
-          <button
-            onClick={() => {
-              checkPay();
-            }}
-            className="button_Form bookingEdit"
-          >
-            Đặt Vé
-          </button>
+          {Object.entries(lstBookingTicket).slice(0, 1).map(([index, item]) => {
+            // console.log(item.tenPhim)
+            return (<button onClick={() => { checkPay(item.tenPhim, item.maLichChieu, item.ngayChieu, item.gioChieu) }} className="button_Form bookingEdit" > Đặt Vé </button>)
+          })}
+
         </div>
       </div>
     </div >

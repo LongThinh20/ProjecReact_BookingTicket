@@ -1,7 +1,42 @@
-@import '../Sass/Helpers/mixin';
-@import '../Sass/Helpers/variables';
+@import "../Sass/Helpers/mixin";
+@import "../Sass/Helpers/variables";
 
-.PersonalInfo{
-    padding: 200px 0;
-
+.PersonalInfo {
+  padding: 200px 0;
+  .avatar_Info{
+    ul{
+        li{
+          a{
+              color: $color-gray-0;
+          }
+            .active{
+                height: 40px;
+                width: 100%;
+                text-align:center;
+                
+                display: inline-block;
+                background-color: $color-yellow;
+                border: 1px solid $color-orange;
+                @include styleText(white,$fs-3,$fw-normal);
+                &:hover{
+                    background-color: $color-orange;
+                    color: white;
+                }
+                &:focus{
+                    border: 1px solid $color-orange;
+                    outline: none;
+                    box-shadow: none;
+                }
+            }
+        }
+    }  
+  }
+  .personal_Info {
+    h3 {
+      @include styleTextTile(23px, 300px);
+    }
+    td{
+        width: 50px;
+    }
+  }
 }
