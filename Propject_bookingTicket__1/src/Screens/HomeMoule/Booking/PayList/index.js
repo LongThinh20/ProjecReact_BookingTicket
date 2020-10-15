@@ -17,6 +17,7 @@ export default function PayList(props) {
   let lstSeatBooking = useSelector((state) => state.movie.lstSeatBooking);
   let [lstBookingTicket, setlstBookingTicket] = useState({});
   const user = useSelector((state) => state.user.credentials);
+  const dispatch = useDispatch();
 
   let check = false;
   if (lstSeatBooking.length >= 1) {
@@ -55,7 +56,7 @@ export default function PayList(props) {
             "success"
           ).then((value) => {
             if (value) {
-              window.location.replace("/");
+              // window.location.replace("/");
             }
           });
           datVe(tenPhim, maLichChieu, ngayChieu, gioChieu);
@@ -76,18 +77,23 @@ export default function PayList(props) {
   const datVe = (tenPhim, maLichChieu, ngayChieu, gioChieu) => {
     let taiKhoan = JSON.parse(localStorage.getItem("credentials")).taiKhoan;
 
-    console.log(tenPhim);
     let objectDatVe = {
-
-      'tenPhim': tenPhim,
-      'maLichChieu': maLichChieu,
-      'danhSachVe': lstSeatBooking,
       'taiKhoanNguoiDung': taiKhoan,
-      'gioChieu': gioChieu,
-      'ngayChieu': ngayChieu
+      'lst': {
+        'tenPhim': tenPhim,
+        'maLichChieu': maLichChieu,
+        'danhSachVe': lstSeatBooking,
+        'gioChieu': gioChieu,
+        'ngayChieu': ngayChieu
+      }
+
     };
 
-    localStorage.setItem("obj", JSON.stringify(objectDatVe));
+    dispatch({
+      type: 'ADD_MOVIEBOOKING_INFO_PROM_PAYLIST',
+      payload: objectDatVe
+    })
+
   };
 
   return (

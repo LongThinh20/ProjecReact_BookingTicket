@@ -10,6 +10,7 @@ let initialState = {
     lstMovie: [],
     lstSeatBooking: [],
     lstBooking: [],
+    lstInfoMovieBooking: []
 
 }
 
@@ -45,7 +46,6 @@ const MovieReducer = (state = initialState, action) => {
             state.lstMovie = action.payload;
             return { ...state }
         }
-       
         case 'CHECK_SEAT_BOOKING': {
 
             let lstSeatBookingUpdate = [...state.lstSeatBooking];
@@ -56,6 +56,18 @@ const MovieReducer = (state = initialState, action) => {
                 lstSeatBookingUpdate.push(action.payload);
             }
             state.lstSeatBooking = lstSeatBookingUpdate;
+
+            return { ...state }
+        }
+        case 'ADD_MOVIEBOOKING_INFO_PROM_PAYLIST': {
+            console.log(action.payload);
+            let lstInfoMovieBookingUpdate = [...state.lstInfoMovieBooking];
+
+            lstInfoMovieBookingUpdate.push(action.payload);
+
+            state.lstInfoMovieBooking = lstInfoMovieBookingUpdate;
+
+            localStorage.setItem("thongTinDatVe", JSON.stringify(state.lstInfoMovieBooking));
 
             return { ...state }
         }

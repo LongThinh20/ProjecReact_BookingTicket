@@ -29,7 +29,8 @@ class SignUp extends Component {
                             hoTen: "",
                             email: "",
                             soDt: "",
-                            maNhom: "GP03"
+                            maNhom: "GP03",
+                            maLoaiNguoiDung:"KhachHang",
                         }}
                         validationSchema={signupUserSchema}
                         onSubmit={this._handleSubmit

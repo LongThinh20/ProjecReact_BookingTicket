@@ -9,11 +9,14 @@
   opacity: 0.8;
 }
 
+.header .header_account {
+  margin-top: 10px;
+}
+
 .header .header_account .account_detail {
   background-color: transparent;
   border: 1px solid #eb7633;
   color: wheat;
-  margin-top: -20px;
 }
 
 .header .header_account .account_detail:focus {
@@ -31,13 +34,13 @@
 }
 
 .header .header_account .account_icon {
-  font-size: 40px;
+  margin-right: 10px;
 }
 
 .header .header__nav .navbar-nav {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  -webkit-transition: all .5;
-  transition: all .5;
+  -webkit-transition: all 0.5;
+  transition: all 0.5;
 }
 
 .header .header__nav .navbar-nav .nav-item .nav-link {
@@ -54,8 +57,8 @@
   display: block;
   background: -webkit-gradient(linear, left top, right top, from(#f8b85d), to(#eb7633));
   background: linear-gradient(to right, #f8b85d, #eb7633);
-  -webkit-transition: all .3s;
-  transition: all .3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .header .header__nav .navbar-nav .nav-item:hover::after {

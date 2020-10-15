@@ -7,12 +7,44 @@ import '../../../Sass/Components/text_Orange.scss';
 import '../../../Sass/Components/button_Form.scss';
 import '../../../Sass/Components/text_Form_Title.scss'
 import ModalForm from './ModalForm';
+import Axios from 'axios';
 
 export default function PersonalInfo() {
 
    const credentials = useSelector(state => state.user.credentials);
 
-   const lstBooking = JSON.parse(localStorage.getItem('obj'));
+   const lstBooking = JSON.parse(localStorage.getItem('thongTinDatVe'));
+
+
+
+   // let objThongTin = {
+   //    "taiKhoan": "aa",
+   //    "matKhau": "aa",
+   //    "hoTen": null,
+   //    "email": "aa",
+   //    "soDT": "aa",
+   //    "maNhom": "GP01",
+   //    "loaiNguoiDung": null,
+   //    "thongTinDatVe": []
+   // }
+
+   // Axios({
+   //    method: 'POST',
+   //    url: 'https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThongTinTaiKhoan',
+   //    data: objThongTin,
+   //    headers: {
+   //       'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiMTIzMTJkc2FkIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiUXVhblRyaSIsIm5iZiI6MTU5NzkwODQyMywiZXhwIjoxNTk3OTEyMDIzfQ.VrseOj1KDWVg8EeTP24__7n-ZAKUIVz3XYRhBwkqa6k`
+   //    }
+   // }).then(res => {
+   //    console.log(res.data);
+   // }).catch(err => {
+   //    console.log(err.response.data);
+   // })
+
+
+
+
+
 
 
    return (
@@ -101,17 +133,85 @@ export default function PersonalInfo() {
                            <table class="table">
                               <thead>
                                  <tr>
+                                    <th>STT</th>
                                     <th>Tên phim</th>
-                                    <th>Loại vé</th>
-                                    <th>Giá tiền</th>
+                                    <th>ID</th>
+                                    <th>Ngày & giờ chiếu </th>
+                                    <th>Thông Tin đặt ghế</th>
                                  </tr>
                               </thead>
                               <tbody>
-                                 
-                                    <tr>
-                                      
-                                    </tr>
-                                 
+                                 {
+                                    lstBooking.map((item, index) => {
+
+                                       return (item.taiKhoanNguoiDung === credentials.taiKhoan) ?
+                                          (
+                                                <tr>
+                                                   <td className="text-center font-weight-bold">{index + 1}</td>
+                                                   <td>{item.lst.tenPhim}</td>
+                                                   <td>{item.lst.maLichChieu}</td>
+                                                   <td>{item.lst.ngayChieu} - {item.lst.gioChieu}</td>
+                                                   <td>
+                                                      <tr className="title_Info">
+                                                         <th>STT</th>
+                                                         <th>Ghế</th>
+                                                         <th>Loại ghế</th>
+                                                         <th>Giá</th>
+                                                      </tr>
+                                                      {item.lst.danhSachVe.map((item, index) => {
+                                                         return (
+                                                            <tr>
+                                                               <td className="font-weight-bold">{index + 1}</td>
+                                                               <td>{item.rowSeat}{item.stt}</td>
+                                                               <td>{item.type === 'Thuong' ? 'Thường' : 'Vip'}</td>
+                                                               <td>{item.price.toLocaleString()} đ</td>
+                                                            </tr>
+                                                         )
+                                                      })}
+                                                   </td>
+                                                </tr>
+                                             
+                                          )
+                                          : ("")
+
+                                    })
+                                 }
+                                 {/* {
+                                    lstBooking.map((item, index) => {
+
+                                       return (item.taiKhoanNguoiDung === credentials.taiKhoan) ?
+                                          (item.lst.map((item, index) => {
+                                             return (
+                                                <tr>
+                                                   <td className="text-center font-weight-bold">{index + 1}</td>
+                                                   <td>{item.tenPhim}</td>
+                                                   <td>{item.maLichChieu}</td>
+                                                   <td>{item.ngayChieu} - {item.gioChieu}</td>
+                                                   <td>
+                                                      <tr className="title_Info">
+                                                         <th>STT</th>
+                                                         <th>Ghế</th>
+                                                         <th>Loại ghế</th>
+                                                         <th>Giá</th>
+                                                      </tr>
+                                                      {item.danhSachVe.map((item, index) => {
+                                                         return (
+                                                            <tr>
+                                                               <td className="font-weight-bold">{index + 1}</td>
+                                                               <td>{item.rowSeat}{item.stt}</td>
+                                                               <td>{item.type === 'Thuong' ? 'Thường' : 'Vip'}</td>
+                                                               <td>{item.price.toLocaleString()} đ</td>
+                                                            </tr>
+                                                         )
+                                                      })}
+                                                   </td>
+                                                </tr>
+                                             )
+                                          }))
+                                          : ("")
+
+                                    })
+                                 } */}
 
                               </tbody>
                            </table>
