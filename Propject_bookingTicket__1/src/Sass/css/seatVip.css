@@ -26,4 +26,33 @@
 .seatVip:focus {
   outline: none;
 }
+
+@media screen and (max-width: 576px) {
+  .seatVip {
+    height: 20px;
+    width: 18px;
+    text-align: center;
+    background: #f8b85d;
+    color: transparent;
+    border: 1px solid  transparent;
+    border-radius: 3px;
+    position: relative;
+    color: white;
+  }
+  .seatVip::before {
+    content: "";
+    width: 11px;
+    height: 13px;
+    position: absolute;
+    background: #f8b85d;
+    border-radius: 2px;
+    border: 2px solid rgba(255, 255, 255, 0.856);
+    top: -4px;
+    left: 2px;
+    color: #f8b85d;
+  }
+  .seatVip:focus {
+    outline: none;
+  }
+}
 /*# sourceMappingURL=seatVip.css.map */

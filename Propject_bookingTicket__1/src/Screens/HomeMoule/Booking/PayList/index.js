@@ -30,7 +30,6 @@ export default function PayList(props) {
       .fetchBookingTicket(props.param)
       .then((res) => {
         setlstBookingTicket(res.data);
-
       })
       .catch((err) => {
         console.log(err);
@@ -73,7 +72,6 @@ export default function PayList(props) {
 
 
 
-
   const datVe = (tenPhim, maLichChieu, ngayChieu, gioChieu) => {
     let taiKhoan = JSON.parse(localStorage.getItem("credentials")).taiKhoan;
 
@@ -94,10 +92,13 @@ export default function PayList(props) {
       payload: objectDatVe
     })
 
+
+
+
   };
 
   return (
-    <div className="col-md-12 col-lg-4 contentRight ">
+    <div className=" contentRight ">
       <div className="card ">
         <div className="card-header totalCost">
           {

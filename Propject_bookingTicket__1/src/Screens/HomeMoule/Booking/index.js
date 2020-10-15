@@ -20,6 +20,7 @@ import { movieService } from '../../../Service';
 import SeatList from './SeatList';
 import PayList from './PayList';
 import { useSelector } from 'react-redux';
+import { Spin } from 'antd';
 
 export default function Booking(props) {
 
@@ -28,7 +29,6 @@ export default function Booking(props) {
     let [lstBookingTicket, setlstBookingTicket] = useState({});
 
     const movieNameToPersonal = useSelector(state => state.movie.lstMovie)
-    console.log(movieNameToPersonal);
 
     useEffect(() => {
 
@@ -117,35 +117,36 @@ export default function Booking(props) {
 
                 <div className="row">
 
-                    <div className="col-md-12 col-lg-8 col-xl-8 seatList_detail">
+                    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8 seatList_detail">
 
-                        <div className="screen col-md-12 col-lg-8"></div>
+                        <div className="screen "></div>
 
                         <SeatList param={param} />
 
                         <div className="contentBottom ">
-                            <div className="item">
+                            <span className="item">
                                 <div className="seat"></div>
-                                <p>Ghế chưa chọn</p>
-                            </div>
-                            <div className="item mt-2">
+                                <span>Ghế chưa chọn</span>
+                            </span>
+                            <span className="item mt-2">
                                 <div className="seatVip"></div>
-                                <p>Ghếp Vip</p>
-                            </div>
-                            <div className="item">
+                                <>Ghếp Vip</>
+                            </span>
+                            <span className="item">
                                 <div className="seatBooking"></div>
-                                <p>Ghếp đã có người chọn</p>
-                            </div>
-                            <div className="item">
+                                <span>Ghếp đã có người chọn</span>
+                            </span>
+                            <span className="item">
                                 <div className="seatSelect"></div>
-                                <p>Ghếp đã đang chọn</p>
-                            </div>
+                                <span>Ghếp đã đang chọn</span>
+                            </span>
+
                         </div>
 
                     </div>
-
-                    <PayList param={param} />
-
+                    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl">
+                        <PayList param={param} />
+                    </div>
                 </div>
             </div>
         </section >

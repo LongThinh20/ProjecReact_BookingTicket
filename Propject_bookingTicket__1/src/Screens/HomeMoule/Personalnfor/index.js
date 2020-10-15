@@ -9,12 +9,12 @@ import '../../../Sass/Components/text_Form_Title.scss'
 import ModalForm from './ModalForm';
 import Axios from 'axios';
 
+
 export default function PersonalInfo() {
 
    const credentials = useSelector(state => state.user.credentials);
 
    const lstBooking = JSON.parse(localStorage.getItem('thongTinDatVe'));
-
 
 
    // let objThongTin = {
@@ -40,10 +40,6 @@ export default function PersonalInfo() {
    // }).catch(err => {
    //    console.log(err.response.data);
    // })
-
-
-
-
 
 
 
@@ -88,23 +84,27 @@ export default function PersonalInfo() {
                               <tbody>
                                  <tr>
                                     <td className="text_Form_Title left_Info">Tài khoản :</td>
-                                    <td className="text-secondary">{credentials.taiKhoan}</td>
+                                    <td className="text-secondary">{credentials === null ? "" : credentials.taiKhoan}</td>
                                  </tr>
                                  <tr>
                                     <td className="text_Form_Title left_Info">Số điện thoại : </td>
-                                    <td className="text-secondary">{credentials.soDT}</td>
+                                    <td className="text-secondary">{credentials === null ? "" : credentials.soDT}</td>
                                  </tr>
                                  <tr>
                                     <td className="text_Form_Title left_Info">Họ và tên :</td>
-                                    <td className="text-secondary">{credentials.hoTen}</td>
+                                    <td className="text-secondary">{credentials === null ? "" : credentials.hoTen}</td>
                                  </tr>
                                  <tr>
                                     <td className="text_Form_Title left_Info">Email : </td>
-                                    <td className="text-secondary">{credentials.email}</td>
+                                    <td className="text-secondary">{credentials === null ? "" : credentials.email}</td>
                                  </tr>
                               </tbody>
                            </table>
-                           <button type="button" className="btn  button_Form" data-toggle="modal" data-target="#modelId">CẬP NHẬT THÔNG TIN</button>
+                           {
+                              credentials === null ? <button type="button" className="btn  button_Form" data-toggle="modal" data-target="#modelId" disabled>CẬP NHẬT THÔNG TIN</button>
+                                 : <button type="button" className="btn  button_Form" data-toggle="modal" data-target="#modelId">CẬP NHẬT THÔNG TIN</button>
+                           }
+
                         </div>
                         <div className="modal fade" id="modelId" tabIndex={-1} role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                            <div className="modal-dialog" role="document">
@@ -141,78 +141,41 @@ export default function PersonalInfo() {
                                  </tr>
                               </thead>
                               <tbody>
-                                 {
+                                 {credentials === null ? "" :
                                     lstBooking.map((item, index) => {
 
                                        return (item.taiKhoanNguoiDung === credentials.taiKhoan) ?
                                           (
-                                                <tr>
-                                                   <td className="text-center font-weight-bold">{index + 1}</td>
-                                                   <td>{item.lst.tenPhim}</td>
-                                                   <td>{item.lst.maLichChieu}</td>
-                                                   <td>{item.lst.ngayChieu} - {item.lst.gioChieu}</td>
-                                                   <td>
-                                                      <tr className="title_Info">
-                                                         <th>STT</th>
-                                                         <th>Ghế</th>
-                                                         <th>Loại ghế</th>
-                                                         <th>Giá</th>
-                                                      </tr>
-                                                      {item.lst.danhSachVe.map((item, index) => {
-                                                         return (
-                                                            <tr>
-                                                               <td className="font-weight-bold">{index + 1}</td>
-                                                               <td>{item.rowSeat}{item.stt}</td>
-                                                               <td>{item.type === 'Thuong' ? 'Thường' : 'Vip'}</td>
-                                                               <td>{item.price.toLocaleString()} đ</td>
-                                                            </tr>
-                                                         )
-                                                      })}
-                                                   </td>
-                                                </tr>
-                                             
+                                             <tr>
+                                                <td className="text-center font-weight-bold">{index + 1}</td>
+                                                <td>{item.lst.tenPhim}</td>
+                                                <td>{item.lst.maLichChieu}</td>
+                                                <td>{item.lst.ngayChieu} - {item.lst.gioChieu}</td>
+                                                <td>
+                                                   <tr className="title_Info">
+                                                      <th>STT</th>
+                                                      <th>Ghế</th>
+                                                      <th>Loại ghế</th>
+                                                      <th>Giá</th>
+                                                   </tr>
+                                                   {item.lst.danhSachVe.map((item, index) => {
+                                                      return (
+                                                         <tr>
+                                                            <td className="font-weight-bold">{index + 1}</td>
+                                                            <td>{item.rowSeat}{item.stt}</td>
+                                                            <td>{item.type === 'Thuong' ? 'Thường' : 'Vip'}</td>
+                                                            <td>{item.price.toLocaleString()} đ</td>
+                                                         </tr>
+                                                      )
+                                                   })}
+                                                </td>
+                                             </tr>
+
                                           )
                                           : ("")
 
                                     })
                                  }
-                                 {/* {
-                                    lstBooking.map((item, index) => {
-
-                                       return (item.taiKhoanNguoiDung === credentials.taiKhoan) ?
-                                          (item.lst.map((item, index) => {
-                                             return (
-                                                <tr>
-                                                   <td className="text-center font-weight-bold">{index + 1}</td>
-                                                   <td>{item.tenPhim}</td>
-                                                   <td>{item.maLichChieu}</td>
-                                                   <td>{item.ngayChieu} - {item.gioChieu}</td>
-                                                   <td>
-                                                      <tr className="title_Info">
-                                                         <th>STT</th>
-                                                         <th>Ghế</th>
-                                                         <th>Loại ghế</th>
-                                                         <th>Giá</th>
-                                                      </tr>
-                                                      {item.danhSachVe.map((item, index) => {
-                                                         return (
-                                                            <tr>
-                                                               <td className="font-weight-bold">{index + 1}</td>
-                                                               <td>{item.rowSeat}{item.stt}</td>
-                                                               <td>{item.type === 'Thuong' ? 'Thường' : 'Vip'}</td>
-                                                               <td>{item.price.toLocaleString()} đ</td>
-                                                            </tr>
-                                                         )
-                                                      })}
-                                                   </td>
-                                                </tr>
-                                             )
-                                          }))
-                                          : ("")
-
-                                    })
-                                 } */}
-
                               </tbody>
                            </table>
                            <div>

@@ -8,13 +8,11 @@ import Swal from 'sweetalert2';
 import Axios from "axios";
 import { update } from "../../../../Redux/Actions/user";
 
+
 export default function ModalForm() {
     const credentials = useSelector(state => state.user.credentials);
     const { register, errors, handleSubmit } = useForm();
     const dispatch = useDispatch();
-
-    console.log(credentials.maLoaiNguoiDung);
-
 
     const onSubmit = (values) => {
         dispatch(update(values, credentials.accessToken));
@@ -71,7 +69,7 @@ export default function ModalForm() {
                             required: "Họ Tên không được rỗng !!"
                         })}
                         className={`form-control ${errors.hoTen ? "is-invalid" : ""}`}
-                        defaultValue={credentials.hoTen}
+                        defaultValue={credentials === null ? "" : credentials.hoTen}
 
                     />
                     <p className="invalid-feedback" name="hoTen">{errors.hoTen?.message}</p>
@@ -87,7 +85,7 @@ export default function ModalForm() {
                             required: "Tài khoản không được rỗng !!"
                         })}
                         className={`form-control ${errors.taiKhoan ? "is-invalid" : ""}`}
-                        defaultValue={credentials.taiKhoan}
+                        defaultValue={credentials === null ? "" : credentials.taiKhoan}
 
                     />
                     <p className="invalid-feedback" name="taiKhoan">{errors.taiKhoan?.message}</p>
@@ -123,7 +121,7 @@ export default function ModalForm() {
                             }
                         })}
                         className={`form-control ${errors.email ? "is-invalid" : ""}`}
-                        defaultValue={credentials.email}
+                        defaultValue={credentials === null ? "" : credentials.email}
                     />
                     <p className="invalid-feedback" name="email">{errors.email?.message}</p>
                 </div>
@@ -141,7 +139,7 @@ export default function ModalForm() {
                             }
                         })}
                         className={`form-control ${errors.soDT ? "is-invalid" : ""}`}
-                        defaultValue={credentials.soDT}
+                        defaultValue={credentials === null ? "" : credentials.soDT}
                     />
                     <p className="invalid-feedback" name="soDT">{errors.soDT?.message}</p>
                 </div>
@@ -153,7 +151,7 @@ export default function ModalForm() {
                         placeholder=""
                         ref={register}
                         className={`form-control ${errors.maLoaiNguoiDung ? "is-invalid" : ""}  `}
-                        defaultValue={credentials.maLoaiNguoiDung}
+                        defaultValue={credentials === null ? "" : credentials.maLoaiNguoiDung}
                     />
 
                 </div>
@@ -165,7 +163,7 @@ export default function ModalForm() {
                         ref={register({
                             required: "Mã không được rỗng !!"
                         })}
-                        defaultValue={credentials.maNhom}
+                        defaultValue={credentials === null ? "" : credentials.maNhom}
 
                     >
                         <option>GP01</option>

@@ -5,12 +5,7 @@ import SliderItemsOnShow from './SliderItemsOnShow';
 import SilderItemsComingSoon from './SilderItemsComingSoon'
 import '../../Layouts/Slider.scss';
 import Slider from 'react-slick';
-// import { useSelector } from 'react-redux';
-// import { fetchMovieAction } from '../../Redux/Actions/movie';
 import { movieService } from '../../Service';
-// import { NavLink } from 'react-bootstrap';
-
-
 
 export default function SliderMovie1(props) {
     const settings = {
@@ -19,18 +14,49 @@ export default function SliderMovie1(props) {
         slidesToShow: 4,
         slidesToScroll: 3,
         nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />
+        prevArrow: <SamplePrevArrow />,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: false,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 2,
+                  
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+               
+                }
+            }
+        ]
     }
 
     let [movieList, setmovieList] = useState({});
 
     useEffect(() => {
 
-
         movieService.fetchMovie()
             .then(res => {
-
-
 
                 let danhSachPhim = res.data;
                 setmovieList(danhSachPhim)
@@ -39,7 +65,6 @@ export default function SliderMovie1(props) {
                 console.log(err.response.data)
             })
     }, [])
-
 
     return (
         <section className="mySlider " id="showlstMovie">

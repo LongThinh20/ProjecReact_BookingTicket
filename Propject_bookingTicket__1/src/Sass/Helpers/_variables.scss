@@ -62,8 +62,8 @@ $fw-bold: bold;
 
 //break points
 $breakpoints:(
-    'extra-large': 1200px,
-    'large' : 992px,
-    'medium' : 768px,
-    'small' : 576px,
+    'xl': 1200px,
+    'lg' : 992px,
+    'md' : 768px,
+    'sm' : 576px,
 )

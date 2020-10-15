@@ -66,7 +66,7 @@ export default function ListGroup(props) {
       <div className="container">
         <div className="row">
 
-          <div className="col-2 cinemaList">
+          <div className=" col-md-12 col-lg-2 cinemaList">
             <h4 className="cinemaTitle">CHỌN RẠP</h4>
             <div className="cinemaList_content list-group" id="list-tab" role="tablist">
               {
@@ -90,7 +90,7 @@ export default function ListGroup(props) {
             </div>
           </div>
 
-          <div className="col-4 cinemaGroupList">
+          <div className=" col-md-12 col-lg-4 cinemaGroupList">
             <h4 className="cinemaTitle">CHỌN CỤM RẠP</h4>
             <div className="tab-content" id="nav-tabContent">
 
@@ -121,7 +121,7 @@ export default function ListGroup(props) {
             </div>
           </div>
 
-          <div className="col cinemaMovie">
+          <div className=" col-md-12 col-lg cinemaMovie">
             <h4 className="cinemaTitle">CHỌN SUẤT</h4>
             <div className="tab-content" id="nav-tabContent">
 

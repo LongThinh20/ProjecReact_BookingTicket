@@ -27,4 +27,34 @@
 .seat:focus {
   outline: none;
 }
+
+@media screen and (max-width: 576px) {
+  .seat {
+    height: 15px;
+    width: 20px;
+    margin: 2px;
+    text-align: center;
+    background: #3e515d;
+    color: transparent;
+    border: 1px solid #3e515d;
+    border-radius: 3px;
+    position: relative;
+    color: white;
+    font-size: 12px;
+  }
+  .seat::before {
+    content: "";
+    width: 14px;
+    height: 13px;
+    position: absolute;
+    background: #3e515d;
+    border-radius: 2px;
+    border: 1px solid white;
+    top: -2px;
+    left: 2px;
+  }
+  .seat:focus {
+    outline: none;
+  }
+}
 /*# sourceMappingURL=seat.css.map */

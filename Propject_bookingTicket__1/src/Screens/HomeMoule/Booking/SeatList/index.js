@@ -22,27 +22,6 @@ export default function SeatList(props) {
     let [danhSachGheDangDat, setDanhSachGheDangDat] = useState([]);
 
 
-
-    // const showErr = () => {
-    //     Swal.fire({
-    //         // title: 'Bạn không thể bỏ trống 1 ghế ở đầu mỗi dãy',
-    //         text: "Bạn không thể bỏ trống 1 ghế ở đầu mỗi dãy",
-    //         icon: 'warning',
-    //         showCancelButton: false,
-    //         confirmButtonColor: '#3085d6',
-    //         cancelButtonColor: '#d33',
-    //         confirmButtonText: 'OK'
-    //     }).then((result) => {
-    //         if (result.isConfirmed) {
-    //             // Swal.fire(
-    //             //     'Deleted!',
-    //             //     'Your file has been deleted.',
-    //             //     'success'
-    //             // )
-    //         }
-    //     })
-    // }
-
     useEffect(() => {
         showLoader();
 
@@ -67,9 +46,7 @@ export default function SeatList(props) {
         } else {
             danhSachGheDangDatUpdate.push(ghe);
         }
-
         setDanhSachGheDangDat(danhSachGheDangDatUpdate)
-
     }
 
     const dispatch = useDispatch();
@@ -82,7 +59,7 @@ export default function SeatList(props) {
             price: price,
             type: type,
             id: id
-            
+
         }
 
         dispatch({
@@ -119,7 +96,7 @@ export default function SeatList(props) {
                             return (ghe.daDat ? <button key={index} className=" seatBooking">
                                 X </button>
                                 :
-                                <button key={index} onClick={() => { datGhe(ghe); booking(`${A}`, i, ghe.giaVe, ghe.loaiGhe, ghe.stt) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
+                                <button key={index} onClick={() => { datGhe(ghe); booking(`${A}`, i, ghe.giaVe, ghe.loaiGhe, ghe.maGhe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
                                     {i}
                                 </button>)
 
