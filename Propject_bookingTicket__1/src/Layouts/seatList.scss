@@ -32,37 +32,18 @@
     }
 
     .contentBottom {
-      width: 80%;
+      padding-top: 30px;
+      width: 50%;
       margin: auto;
-
-      .item {
-        padding-right: 20px;
-        text-align: center;
-
-
-        div {
-          display: inline-block;
-          height: 20px;
-          width: 23px;
-          border-radius: 5px;
-
-          &::before {
-            width: 16px;
-            height: 18px;
-          }
-        }
-
-        span {
-          @include styleText($color-gray-2, 12px, $fw-normal);
-          padding-left: 5px;
-         
-        }
+      .label {
+        @include styleText($color-gray-2, 12px, $fw-normal);
       }
     }
   }
 
   .contentRight {
     box-shadow: 5px 10px 8px #888888;
+    margin-bottom: 50px;
     .totalCost {
       @include styleText($color-black-0, 60px, $fw-bold);
       text-align: center;
@@ -120,372 +101,104 @@
   }
 }
 
-@include responsive("lg"){
+@include responsive("sm") {
   .seatList {
-    // background-color: $color-black-bg;
-  
-    ._countDown {
-      margin-top: 50px;
-    }
-  
-    .seatList_detail {
-      background: url(../img/screen.png);
-      width: 100px;
-      height: 100%;
-      background-size: contain;
-      background-repeat: no-repeat;
-      padding: 50px 0;
-  
-      table {
-        tbody {
-          tr {
-            td {
-              padding: 5px;
-            }
-  
-            .rowName {
-              padding-right: 40px;
-              @include styleText($color-black-1, 20px, $fw-bold);
-            }
-          }
-        }
-      }
-  
-      .contentBottom {
-        width: 70%;
-        margin: auto;
-        text-align: center;
-        padding-top: 10px;
-  
-        .item {
-          padding-right: 20px;
-          text-align: center;
-          
-  
-          div {
-            display: inline-block;
-            height: 20px;
-            width: 23px;
-            border-radius: 5px;
-  
-            &::before {
-              width: 16px;
-              height: 18px;
-            }
-          }
-  
-          span {
-            @include styleText($color-gray-2, 12px, $fw-normal);
-            padding-left: 5px;
-           
-          }
-        }
-      }
-    }
-  
-    .contentRight {
-      box-shadow: 5px 10px 8px #888888;
-      .totalCost {
-        @include styleText($color-black-0, 60px, $fw-bold);
-        text-align: center;
-      }
-  
-      .bookingEdit {
-        @include styleText(white, 30px, $fw-normal);
-        line-height: 50px;
-        height: 50px;
-      }
-  
-      .discountInput {
-        label {
-          margin: 0;
-        }
-  
-        input {
-          border: none;
-          padding: 0;
-  
-          &:focus {
-            outline: none;
-            box-shadow: none;
-          }
-        }
-      }
-      .payMents {
-        label {
-          line-height: 35px;
-  
-          .form-check-input {
-            height: 20px;
-            width: 20px;
-            margin-top: 8px;
-            &:active {
-              color: $color-orange;
-            }
-          }
-        }
-        .ATM_content {
-          button {
-            border: 1px solid $color-gray-1;
-            background-color: transparent;
-            width: 60px;
-            height: 50px;
-            margin-right: 5px;
-            margin-bottom: 5px;
-            &:focus {
-              outline: none;
-              border-color: $color-orange;
-            }
-          }
-        }
-      }
-    }
-  }
-  
-}
+  // background-color: $color-black-bg;
 
-@include responsive("md"){
-  .seatList {
-    // background-color: $color-black-bg;
-  
-    ._countDown {
-      margin-top: 50px;
-    }
-  
-    .seatList_detail {
-      background: url(../img/screen.png);
-      width: 100px;
-      height: 100%;
-      background-size: contain;
-      background-repeat: no-repeat;
-      padding: 50px 0;
-  
-      table {
-        tbody {
-          tr {
-            td {
-              padding: 2px;
-            }
-  
-            .rowName {
-              padding-right: 20px;
-              @include styleText($color-black-1, 20px, $fw-bold);
-            }
+  ._countDown {
+    margin-top: 50px;
+  }
+
+  .seatList_detail {
+    background: url(../img/screen.png);
+    width: 100px;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 50px 0;
+
+    table {
+      tbody {
+        tr {
+          td {
+            padding: 5px;
           }
-        }
-      }
-  
-      .contentBottom {
-        width: 70%;
-        margin: auto;
-        text-align: center;
-        padding-top: 10px;
-  
-        .item {
-          padding-right: 20px;
-          text-align: center;
-          
-  
-          div {
-            display: inline-block;
-            height: 20px;
-            width: 23px;
-            border-radius: 5px;
-  
-            &::before {
-              width: 16px;
-              height: 18px;
-            }
-          }
-  
-          span {
-            @include styleText($color-gray-2, 12px, $fw-normal);
-            padding-left: 5px;
-           
+
+          .rowName {
+            padding-right: 40px;
+            @include styleText($color-black-1, 20px, $fw-bold);
           }
         }
       }
     }
-  
-    .contentRight {
-      box-shadow: 5px 10px 8px #888888;
-      .totalCost {
-        @include styleText($color-black-0, 60px, $fw-bold);
-        text-align: center;
+
+    .contentBottom {
+      padding-top: 30px;
+      width: 70%;
+      margin: auto;
+      .label {
+        @include styleText($color-gray-2, 12px, $fw-normal);
       }
-  
-      .bookingEdit {
-        @include styleText(white, 30px, $fw-normal);
-        line-height: 50px;
-        height: 50px;
+    }
+  }
+
+  .contentRight {
+    box-shadow: 5px 10px 8px #888888;
+    margin-bottom: 50px;
+    .totalCost {
+      @include styleText($color-black-0, 60px, $fw-bold);
+      text-align: center;
+    }
+
+    .bookingEdit {
+      @include styleText(white, 30px, $fw-normal);
+      line-height: 50px;
+      height: 50px;
+    }
+
+    .discountInput {
+      label {
+        margin: 0;
       }
-  
-      .discountInput {
-        label {
-          margin: 0;
+
+      input {
+        border: none;
+        padding: 0;
+
+        &:focus {
+          outline: none;
+          box-shadow: none;
         }
-  
-        input {
-          border: none;
-          padding: 0;
-  
+      }
+    }
+    .payMents {
+      label {
+        line-height: 35px;
+
+        .form-check-input {
+          height: 20px;
+          width: 20px;
+          margin-top: 8px;
+          &:active {
+            color: $color-orange;
+          }
+        }
+      }
+      .ATM_content {
+        button {
+          border: 1px solid $color-gray-1;
+          background-color: transparent;
+          width: 60px;
+          height: 50px;
+          margin-right: 5px;
+          margin-bottom: 5px;
           &:focus {
             outline: none;
-            box-shadow: none;
-          }
-        }
-      }
-      .payMents {
-        label {
-          line-height: 35px;
-  
-          .form-check-input {
-            height: 20px;
-            width: 20px;
-            margin-top: 8px;
-            &:active {
-              color: $color-orange;
-            }
-          }
-        }
-        .ATM_content {
-          button {
-            border: 1px solid $color-gray-1;
-            background-color: transparent;
-            width: 60px;
-            height: 50px;
-            margin-right: 5px;
-            margin-bottom: 5px;
-            &:focus {
-              outline: none;
-              border-color: $color-orange;
-            }
+            border-color: $color-orange;
           }
         }
       }
     }
   }
-  
 }
-@include responsive("sm"){
-  .seatList {
-    // background-color: $color-black-bg;
-  
-    ._countDown {
-      margin-top: 50px;
-    }
-  
-    .seatList_detail {
-      background: url(../img/screen.png);
-      width: 60%;
-      height: 60%;
-      background-size: contain;
-      background-repeat: no-repeat;
-      padding: 50px 0;
-  
-      table {
-        tbody {
-          tr {
-            td {
-              padding: 2px;
-            }
-            .rowName {
-              padding-right: 5px;
-              @include styleText($color-black-1, 18px, $fw-bold);
-            }
-          }
-        }
-      }
-  
-      .contentBottom {
-        width: 100%;
-        margin: auto;
-        text-align: center;
-        padding-top: 10px;
-  
-        .item {
-          padding-right: 20px;
-          text-align: center;
-          
-  
-          div {
-            display: inline-block;
-            height: 20px;
-            width: 23px;
-            border-radius: 5px;
-  
-            &::before {
-              width: 16px;
-              height: 18px;
-            }
-          }
-  
-          span {
-            @include styleText($color-gray-2, 12px, $fw-normal);
-            padding-left: 5px;
-           
-          }
-        }
-      }
-    }
-  
-    .contentRight {
-      box-shadow: 5px 10px 8px #888888;
-      .totalCost {
-        @include styleText($color-black-0, 60px, $fw-bold);
-        text-align: center;
-      }
-  
-      .bookingEdit {
-        @include styleText(white, 30px, $fw-normal);
-        line-height: 50px;
-        height: 50px;
-      }
-  
-      .discountInput {
-        label {
-          margin: 0;
-        }
-  
-        input {
-          border: none;
-          padding: 0;
-  
-          &:focus {
-            outline: none;
-            box-shadow: none;
-          }
-        }
-      }
-      .payMents {
-        label {
-          line-height: 35px;
-  
-          .form-check-input {
-            height: 20px;
-            width: 20px;
-            margin-top: 8px;
-            &:active {
-              color: $color-orange;
-            }
-          }
-        }
-        .ATM_content {
-          button {
-            border: 1px solid $color-gray-1;
-            background-color: transparent;
-            width: 60px;
-            height: 50px;
-            margin-right: 5px;
-            margin-bottom: 5px;
-            &:focus {
-              outline: none;
-              border-color: $color-orange;
-            }
-          }
-        }
-      }
-    }
-  }
-  
 }

@@ -20,7 +20,7 @@ import { movieService } from '../../../Service';
 import SeatList from './SeatList';
 import PayList from './PayList';
 import { useSelector } from 'react-redux';
-import { Spin } from 'antd';
+
 
 export default function Booking(props) {
 
@@ -104,7 +104,7 @@ export default function Booking(props) {
                             }
                         </p>
                     </div>
-                    <div className="col">
+                    <div className="col text-right text-lg-right text-xl-left">
 
                         <div className="text_Normal">Thời gian giữ ghế:</div>
                         <Countdown
@@ -124,23 +124,42 @@ export default function Booking(props) {
                         <SeatList param={param} />
 
                         <div className="contentBottom ">
-                            <span className="item">
-                                <div className="seat"></div>
-                                <span>Ghế chưa chọn</span>
-                            </span>
-                            <span className="item mt-2">
-                                <div className="seatVip"></div>
-                                <>Ghếp Vip</>
-                            </span>
-                            <span className="item">
-                                <div className="seatBooking"></div>
-                                <span>Ghếp đã có người chọn</span>
-                            </span>
-                            <span className="item">
-                                <div className="seatSelect"></div>
-                                <span>Ghếp đã đang chọn</span>
-                            </span>
+                            <div className="row">
+                                <div className="col" >
+                                    <div className="seat" />
+                                    <div className="label">Ghế chưa chọn</div>
+                                </div>
+                                <div className="col" >
+                                    <div className="seatVip" />
+                                    <div className="label">Ghế VIP</div>
+                                </div>
+                                <div className="col" >
+                                    <div className="seatSelect" />
+                                    <div className="label">Ghế đã có người chọn</div>
+                                </div>
+                                <div className="col" >
+                                    <div className="seatBooking" />
+                                    <div className="label">Ghế đang chọn</div>
+                                </div>
+                            </div>
 
+
+                            {/* <table class="table">
+                                <tbod>
+                                    <tr>
+                                        <td class="Icon text-center"><div className="seat"></div></td>
+                                        <td class="Icon"><div className="seatVip"></div></td>
+                                        <td class="Icon"><div className="seatBooking"></div></td>
+                                        <td class="Icon"><div className="seatSelect"></div></td>
+                                    </tr>
+                                    <tr>
+                                        <td className="label">Ghế chưa chọn</td>
+                                        <td className="label">Ghếp Vip</td>
+                                        <td className="label">Ghếp đã có người chọn</td>
+                                        <td className="label">Ghếp đã đang chọn</td>
+                                    </tr>
+                                </tbod>
+                            </table> */}
                         </div>
 
                     </div>

@@ -58,7 +58,7 @@ export default function DetailMovie1(props) {
          <div className="container">
             <div className="backgroundMovie"></div>
             <div className="row">
-               <div className="col-3 left_content">
+               <div className="col-md-12 col-lg-3 left_content">
                   <div className="button_Trailer">
                      <a href={lstmovieDetail.trailer} data-toggle="modal" data-target="#exampleModalCenter">
                         <i className="fa fa-play d-block" />
@@ -77,11 +77,11 @@ export default function DetailMovie1(props) {
                      <img src={lstmovieDetail.hinhAnh} alt="" ></img>
                   </div>
                </div>
-               <div className="col right_content">
+               <div className="col-md-12 col-lg right_content">
                   <h1> {lstmovieDetail.tenPhim}</h1>
 
                   <div className="row mt-4">
-                     <div className="col-1 pr-0">
+                     <div className="col-2 pr-0">
                         <div>Ngày :  </div>
                      </div>
                      <div className="col" >
@@ -89,7 +89,7 @@ export default function DetailMovie1(props) {
                      </div>
                   </div>
                   <div className="row mt-4">
-                     <div className="col-1 pr-0 w-auto">
+                     <div className="col-2 pr-0 w-auto">
                         <div>Đánh giá:</div>
                      </div>
                      <div className="col" >
@@ -97,7 +97,7 @@ export default function DetailMovie1(props) {
                      </div>
                   </div>
                   <div className="row mt-4">
-                     <div className="col-1 pr-0">
+                     <div className="col-2 pr-0">
                         <div>Mô tả : </div>
                      </div>
                      <div className="col description" >

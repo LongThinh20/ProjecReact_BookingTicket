@@ -47,11 +47,11 @@ export default function PersonalInfo() {
       <section className="PersonalInfo">
          <div className="container">
             <div className="row">
-               <div className="col-12 col-md-4 avatar_Info">
+               <div className="col-12 col-lg-4 avatar_Info">
                   <div className="card text-left text-center">
                      <div className="avatar_Info mt-4">
                         <Avatar
-                           size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }}
+                           size={{ xs: 60, sm: 60, md: 80, lg: 80, xl: 80, xxl: 100 }}
                            icon={<AntDesignOutlined />}
                         />
                      </div>
@@ -74,7 +74,7 @@ export default function PersonalInfo() {
                   </div>
 
                </div>
-               <div className="col-12 col-md">
+               <div className="col-12 col-lg">
                   <div className="tab-content" id="pills-tabContent">
                      <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                         <div className="personal_Info">

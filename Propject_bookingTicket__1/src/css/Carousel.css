@@ -1,5 +1,5 @@
 .movieCarousel #movieSlider .carousel-indicators {
-  margin: 0;
+  margin: auto;
   padding-bottom: 50px;
 }
 
@@ -50,7 +50,6 @@
 
 @media screen and (max-width: 992px) {
   .movieCarousel #movieSlider .carousel-indicators {
-    margin: 0;
     padding-bottom: 50px;
   }
   .movieCarousel #movieSlider .carousel-indicators li {

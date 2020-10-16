@@ -55,7 +55,7 @@ export default function PayList(props) {
             "success"
           ).then((value) => {
             if (value) {
-              // window.location.replace("/");
+              window.location.replace("/");
             }
           });
           datVe(tenPhim, maLichChieu, ngayChieu, gioChieu);

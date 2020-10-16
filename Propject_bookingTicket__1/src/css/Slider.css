@@ -1,7 +1,7 @@
 .mySlider {
   padding-top: 100px;
   background-color: #333;
-  height: 700px;
+  max-height: 1200px;
 }
 
 .mySlider ul li a .__title {
@@ -57,11 +57,15 @@
 .mySlider .slick-slider .slick-prev::before {
   position: absolute;
   font-size: 40px;
-  left: -15px;
+  left: -60%;
+  top: -60%;
 }
 
 .mySlider .slick-slider .slick-next::before {
   font-size: 40px;
+  position: absolute;
+  left: -50%;
+  top: -60%;
 }
 
 .mySlider .slick-slider .item {
@@ -139,14 +143,15 @@
 
 .mySlider .slick-slider .item .newIn__text {
   opacity: 1;
+  height: 100px;
 }
 
-.mySlider .slick-slider .item .newIn__text p {
+.mySlider .slick-slider .item .newIn__text .name {
   font-size: 18px;
   color: white;
 }
 
-.mySlider .slick-slider .item .newIn__text p span {
+.mySlider .slick-slider .item .newIn__text .name span {
   width: 35px;
   height: 23px;
   text-align: center;
@@ -155,15 +160,16 @@
   display: inline-block;
 }
 
-.mySlider .slick-slider .item .newIn__text div {
-  color: white;
+.mySlider .slick-slider .item .newIn__text .time {
+  padding-top: 5px;
+  color: #f8b85d;
 }
 
 .mySlider .slick-slider .item .newIn__payTicket {
   width: 100%;
   height: 70px;
   position: absolute;
-  bottom: 0;
+  bottom: 20px;
   left: 0;
   opacity: 0;
 }
@@ -284,12 +290,12 @@
           transform: scale(0.9);
 }
 
-.mySlider .slick-slider .itemComingSoon .newIn__text p {
+.mySlider .slick-slider .itemComingSoon .newIn__text .name {
   font-size: 18px;
   color: white;
 }
 
-.mySlider .slick-slider .itemComingSoon .newIn__text p span {
+.mySlider .slick-slider .itemComingSoon .newIn__text .name span {
   width: 35px;
   height: 23px;
   text-align: center;
@@ -298,15 +304,16 @@
   display: inline-block;
 }
 
-.mySlider .slick-slider .itemComingSoon .newIn__text div {
-  color: white;
+.mySlider .slick-slider .itemComingSoon .newIn__text .button_Cinema {
+  padding-top: 5px;
+  color: #f8b85d;
 }
 
 .mySlider .slick-slider .itemComingSoon .newIn__payTicket {
   width: 100%;
   height: 70px;
   position: absolute;
-  bottom: 0;
+  bottom: 20px;
   left: 0;
   opacity: 0;
 }
@@ -347,92 +354,19 @@
 }
 
 @media screen and (max-width: 992px) {
-  .mySlider {
-    padding-top: 100px;
-    background-color: #333;
-    height: 700px;
-  }
-  .mySlider ul li a .__title {
-    color: #eb7633;
-    letter-spacing: 2px;
-    margin-bottom: 40px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    position: relative;
-    opacity: 0.5;
-  }
-  .mySlider ul li a .__title::after {
-    content: " ";
-    width: 0;
-    height: 3px;
-    background: -webkit-gradient(linear, left top, right top, from(#f8b85d), to(#eb7633));
-    background: linear-gradient(to right, #f8b85d, #eb7633);
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    -webkit-transition: all 0.3s;
-    transition: all 0.3s;
-  }
-  .mySlider ul li a .__title:hover::after {
-    width: 100%;
-  }
-  .mySlider ul li .active {
-    background-color: transparent !important;
-  }
-  .mySlider ul li .active .__title {
-    color: #eb7633;
-    opacity: 1;
-    letter-spacing: 2px;
-    margin-bottom: 40px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    position: relative;
-  }
-  .mySlider ul li .active .__title::after {
-    content: " ";
-    width: 160px;
-    height: 3px;
-    background: -webkit-gradient(linear, left top, right top, from(#f8b85d), to(#eb7633));
-    background: linear-gradient(to right, #f8b85d, #eb7633);
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-  }
   .mySlider .slick-slider .slick-prev::before {
-    position: absolute;
-    font-size: 40px;
-    left: -15px;
     display: none;
   }
   .mySlider .slick-slider .slick-next::before {
-    font-size: 40px;
     display: none;
   }
   .mySlider .slick-slider .item {
     padding: 0 10px;
     position: relative;
   }
-  .mySlider .slick-slider .item .newIn__img {
-    position: relative;
-    overflow: hidden;
-    border-radius: 2px;
-    margin-bottom: 20px;
-  }
   .mySlider .slick-slider .item .newIn__img img {
     width: 100%;
-    height: 400px;
-  }
-  .mySlider .slick-slider .item .newIn__img .overlay {
-    position: absolute;
-    left: 0;
-    height: 100%;
-    width: 250%;
-    opacity: 0.8;
-    background: -webkit-gradient(linear, left top, left bottom, from(#f8b85d), to(#eb7633));
-    background: linear-gradient(to bottom, #f8b85d, #eb7633);
-    -webkit-transform: skewX(30deg) translateX(-125%);
-            transform: skewX(30deg) translateX(-125%);
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s;
-    top: 0;
+    height: 300px;
   }
   .mySlider .slick-slider .item .newIn__img .newIn__play {
     position: absolute;
@@ -473,12 +407,13 @@
   }
   .mySlider .slick-slider .item .newIn__text {
     opacity: 1;
+    height: 100px;
   }
-  .mySlider .slick-slider .item .newIn__text p {
+  .mySlider .slick-slider .item .newIn__text .name {
     font-size: 18px;
     color: white;
   }
-  .mySlider .slick-slider .item .newIn__text p span {
+  .mySlider .slick-slider .item .newIn__text .name span {
     width: 35px;
     height: 23px;
     text-align: center;
@@ -486,14 +421,15 @@
     border-radius: 5px;
     display: inline-block;
   }
-  .mySlider .slick-slider .item .newIn__text div {
-    color: white;
+  .mySlider .slick-slider .item .newIn__text .time {
+    padding-top: 5px;
+    color: #f8b85d;
   }
   .mySlider .slick-slider .item .newIn__payTicket {
     width: 100%;
     height: 70px;
     position: absolute;
-    bottom: 0;
+    bottom: 20px;
     left: 0;
     opacity: 0;
   }
@@ -545,7 +481,7 @@
   }
   .mySlider .slick-slider .itemComingSoon .newIn__img img {
     width: 100%;
-    height: 400px;
+    height: 300px;
   }
   .mySlider .slick-slider .itemComingSoon .newIn__img .overlay {
     position: absolute;
@@ -598,11 +534,15 @@
     -webkit-transform: scale(0.9);
             transform: scale(0.9);
   }
-  .mySlider .slick-slider .itemComingSoon .newIn__text p {
+  .mySlider .slick-slider .itemComingSoon .newIn__text {
+    opacity: 1;
+    height: 100px;
+  }
+  .mySlider .slick-slider .itemComingSoon .newIn__text .name {
     font-size: 18px;
     color: white;
   }
-  .mySlider .slick-slider .itemComingSoon .newIn__text p span {
+  .mySlider .slick-slider .itemComingSoon .newIn__text .name span {
     width: 35px;
     height: 23px;
     text-align: center;
@@ -610,14 +550,241 @@
     border-radius: 5px;
     display: inline-block;
   }
-  .mySlider .slick-slider .itemComingSoon .newIn__text div {
-    color: white;
+  .mySlider .slick-slider .itemComingSoon .newIn__text .time {
+    padding-top: 5px;
+    color: #f8b85d;
   }
   .mySlider .slick-slider .itemComingSoon .newIn__payTicket {
     width: 100%;
     height: 70px;
     position: absolute;
-    bottom: 0;
+    bottom: 20px;
+    left: 0;
+    opacity: 0;
+  }
+  .mySlider .slick-slider .itemComingSoon .newIn__payTicket .detailMovie {
+    opacity: 1;
+    height: 45px;
+    width: 93%;
+    text-align: center;
+    line-height: 40px;
+    margin: auto;
+    border: 1px solid #fff;
+    background-color: #eb7633;
+    cursor: pointer;
+  }
+  .mySlider .slick-slider .itemComingSoon .newIn__payTicket .detailMovie a {
+    font-size: 14px;
+    letter-spacing: 3px;
+    width: 100%;
+    margin: 10px 0;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .mySlider .slick-slider .itemComingSoon:focus {
+    outline: none;
+  }
+  .mySlider .slick-slider .itemComingSoon:hover .newIn__img:hover .overlay {
+    -webkit-transform: skewX(30deg) translateX(-20%);
+            transform: skewX(30deg) translateX(-20%);
+  }
+  .mySlider .slick-slider .itemComingSoon:hover .newIn__img:hover .newIn__play {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .mySlider {
+    padding-top: 150px;
+  }
+  .mySlider .slick-slider .slick-prev::before {
+    display: none;
+  }
+  .mySlider .slick-slider .slick-next::before {
+    display: none;
+  }
+  .mySlider .slick-slider .item {
+    padding: 0 10px;
+    position: relative;
+  }
+  .mySlider .slick-slider .item .newIn__img img {
+    width: 100%;
+    height: 230px;
+  }
+  .mySlider .slick-slider .item .newIn__img .newIn__play {
+    position: absolute;
+    color: white;
+    top: 50%;
+    left: 0;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+  .mySlider .slick-slider .item .newIn__img .newIn__play a {
+    font-size: 13px;
+    cursor: pointer;
+    letter-spacing: 4px;
+    margin: 10px 0;
+    text-decoration: none;
+    color: white;
+  }
+  .mySlider .slick-slider .item .newIn__img .newIn__play a i {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #fff;
+    background-color: rgba(255, 255, 255, 0.192);
+    border-radius: 5px;
+    line-height: 50px;
+    text-align: center;
+    margin: 0 auto;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+  .mySlider .slick-slider .item .newIn__img .newIn__play a i:hover {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  .mySlider .slick-slider .item .newIn__text {
+    opacity: 1;
+    height: 100px;
+  }
+  .mySlider .slick-slider .item .newIn__text .name {
+    font-size: 15px;
+    color: white;
+  }
+  .mySlider .slick-slider .item .newIn__text .name span {
+    width: 35px;
+    height: 23px;
+    text-align: center;
+    background-color: green;
+    border-radius: 5px;
+    display: inline-block;
+  }
+  .mySlider .slick-slider .item .newIn__text .time {
+    padding-top: 5px;
+    color: #f8b85d;
+  }
+  .mySlider .slick-slider .item .newIn__payTicket {
+    width: 100%;
+    height: 70px;
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    opacity: 0;
+  }
+  .mySlider .slick-slider .item .newIn__payTicket .detailMovie {
+    opacity: 1;
+    height: 45px;
+    width: 93%;
+    text-align: center;
+    line-height: 40px;
+    margin: auto;
+    border: 1px solid #fff;
+    background-color: #eb7633;
+    cursor: pointer;
+  }
+  .mySlider .slick-slider .item .newIn__payTicket .detailMovie a {
+    font-size: 14px;
+    letter-spacing: 3px;
+    width: 100%;
+    margin: 10px 0;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .mySlider .slick-slider .item:focus {
+    outline: none;
+  }
+  .mySlider .slick-slider .item:hover .newIn__img:hover .overlay {
+    -webkit-transform: skewX(30deg) translateX(-20%);
+            transform: skewX(30deg) translateX(-20%);
+  }
+  .mySlider .slick-slider .item:hover .newIn__img:hover .newIn__play {
+    opacity: 1;
+  }
+  .mySlider .slick-slider .item:hover .newIn__text {
+    opacity: 0;
+  }
+  .mySlider .slick-slider .item:hover .newIn__payTicket {
+    opacity: 1;
+  }
+  .mySlider .slick-slider .itemComingSoon {
+    padding: 0 10px;
+    position: relative;
+  }
+  .mySlider .slick-slider .itemComingSoon .newIn__img {
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+  .mySlider .slick-slider .itemComingSoon .newIn__img img {
+    width: 100%;
+    height: 230px;
+  }
+  .mySlider .slick-slider .itemComingSoon .newIn__img .newIn__play {
+    position: absolute;
+    color: white;
+    top: 50%;
+    left: 0;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+  .mySlider .slick-slider .itemComingSoon .newIn__img .newIn__play a {
+    font-size: 13px;
+    cursor: pointer;
+    letter-spacing: 4px;
+    margin: 10px 0;
+    text-decoration: none;
+    color: white;
+  }
+  .mySlider .slick-slider .itemComingSoon .newIn__img .newIn__play a i {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #fff;
+    background-color: rgba(255, 255, 255, 0.192);
+    border-radius: 5px;
+    line-height: 50px;
+    text-align: center;
+    margin: 0 auto;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+  .mySlider .slick-slider .itemComingSoon .newIn__img .newIn__play a i:hover {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  .mySlider .slick-slider .itemComingSoon .newIn__text .name {
+    font-size: 15px;
+    color: white;
+  }
+  .mySlider .slick-slider .itemComingSoon .newIn__text .name span {
+    width: 35px;
+    height: 23px;
+    text-align: center;
+    background-color: green;
+    border-radius: 5px;
+    display: inline-block;
+  }
+  .mySlider .slick-slider .itemComingSoon .newIn__text .button_Cinema {
+    padding-top: 5px;
+    color: #f8b85d;
+  }
+  .mySlider .slick-slider .itemComingSoon .newIn__payTicket {
+    width: 100%;
+    height: 70px;
+    position: absolute;
+    bottom: 30px;
     left: 0;
     opacity: 0;
   }
@@ -656,9 +823,6 @@
 @media screen and (max-width: 576px) {
   .mySlider {
     padding-top: 150px;
-    background-color: #333;
-    height: 700px;
-    width: 100%;
   }
   .mySlider ul li a .__title {
     color: #eb7633;
@@ -667,11 +831,12 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     position: relative;
     opacity: 0.5;
+    font-size: 20px;
   }
   .mySlider ul li a .__title::after {
     content: " ";
     width: 0;
-    height: 3px;
+    height: 2px;
     background: -webkit-gradient(linear, left top, right top, from(#f8b85d), to(#eb7633));
     background: linear-gradient(to right, #f8b85d, #eb7633);
     position: absolute;
@@ -682,9 +847,6 @@
   }
   .mySlider ul li a .__title:hover::after {
     width: 100%;
-  }
-  .mySlider ul li .active {
-    background-color: transparent !important;
   }
   .mySlider ul li .active .__title {
     color: #eb7633;
@@ -697,55 +859,28 @@
   .mySlider ul li .active .__title::after {
     content: " ";
     width: 160px;
-    height: 3px;
+    height: 2px;
     background: -webkit-gradient(linear, left top, right top, from(#f8b85d), to(#eb7633));
     background: linear-gradient(to right, #f8b85d, #eb7633);
     position: absolute;
     bottom: -1px;
     left: 0;
   }
-  .mySlider .slick-slider .slick-track {
-    width: 100%;
-  }
-  .mySlider .slick-slider .slick-track .slick-prev::before {
-    position: absolute;
-    font-size: 40px;
-    left: -15px;
+  .mySlider .slick-slider .slick-prev::before {
     display: none;
   }
-  .mySlider .slick-slider .slick-track .slick-next::before {
-    font-size: 40px;
+  .mySlider .slick-slider .slick-next::before {
     display: none;
   }
-  .mySlider .slick-slider .slick-track .item {
+  .mySlider .slick-slider .item {
     padding: 0 10px;
     position: relative;
   }
-  .mySlider .slick-slider .slick-track .item .newIn__img {
-    position: relative;
-    overflow: hidden;
-    border-radius: 2px;
-    margin-bottom: 20px;
-  }
-  .mySlider .slick-slider .slick-track .item .newIn__img img {
+  .mySlider .slick-slider .item .newIn__img img {
     width: 100%;
-    height: 100%;
+    height: 160px;
   }
-  .mySlider .slick-slider .slick-track .item .newIn__img .overlay {
-    position: absolute;
-    left: 0;
-    height: 100%;
-    width: 250%;
-    opacity: 0.8;
-    background: -webkit-gradient(linear, left top, left bottom, from(#f8b85d), to(#eb7633));
-    background: linear-gradient(to bottom, #f8b85d, #eb7633);
-    -webkit-transform: skewX(30deg) translateX(-125%);
-            transform: skewX(30deg) translateX(-125%);
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s;
-    top: 0;
-  }
-  .mySlider .slick-slider .slick-track .item .newIn__img .newIn__play {
+  .mySlider .slick-slider .item .newIn__img .newIn__play {
     position: absolute;
     color: white;
     top: 50%;
@@ -758,7 +893,7 @@
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
   }
-  .mySlider .slick-slider .slick-track .item .newIn__img .newIn__play a {
+  .mySlider .slick-slider .item .newIn__img .newIn__play a {
     font-size: 13px;
     cursor: pointer;
     letter-spacing: 4px;
@@ -766,61 +901,66 @@
     text-decoration: none;
     color: white;
   }
-  .mySlider .slick-slider .slick-track .item .newIn__img .newIn__play a i {
-    width: 70px;
-    height: 70px;
-    border: 2px solid #fff;
+  .mySlider .slick-slider .item .newIn__img .newIn__play a i {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #fff;
     background-color: rgba(255, 255, 255, 0.192);
     border-radius: 5px;
-    line-height: 70px;
-    text-align: center;
+    line-height: 50px;
     margin: 0 auto;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
   }
-  .mySlider .slick-slider .slick-track .item .newIn__img .newIn__play a i:hover {
+  .mySlider .slick-slider .item .newIn__img .newIn__play a i:hover {
     -webkit-transform: scale(0.9);
             transform: scale(0.9);
   }
-  .mySlider .slick-slider .slick-track .item .newIn__text {
+  .mySlider .slick-slider .item .newIn__text {
     opacity: 1;
+    height: 100px;
   }
-  .mySlider .slick-slider .slick-track .item .newIn__text p {
-    font-size: 18px;
+  .mySlider .slick-slider .item .newIn__text .name {
+    font-size: 12px;
     color: white;
   }
-  .mySlider .slick-slider .slick-track .item .newIn__text p span {
-    width: 35px;
-    height: 23px;
+  .mySlider .slick-slider .item .newIn__text .name span {
+    width: 25px;
+    height: 18px;
     text-align: center;
     background-color: green;
     border-radius: 5px;
     display: inline-block;
   }
-  .mySlider .slick-slider .slick-track .item .newIn__text div {
-    color: white;
+  .mySlider .slick-slider .item .newIn__text .time {
+    padding-top: 5px;
+    color: #f8b85d;
+    font-size: 12px;
   }
-  .mySlider .slick-slider .slick-track .item .newIn__payTicket {
+  .mySlider .slick-slider .item .newIn__payTicket {
     width: 100%;
-    height: 70px;
+    height: 60px;
     position: absolute;
-    bottom: 0;
+    bottom: 40px;
     left: 0;
     opacity: 0;
   }
-  .mySlider .slick-slider .slick-track .item .newIn__payTicket .detailMovie {
+  .mySlider .slick-slider .item .newIn__payTicket .detailMovie {
     opacity: 1;
-    height: 45px;
-    width: 93%;
+    height: 35px;
+    width: 90%;
     text-align: center;
-    line-height: 40px;
+    line-height: 35px;
     margin: auto;
     border: 1px solid #fff;
     background-color: #eb7633;
     cursor: pointer;
   }
-  .mySlider .slick-slider .slick-track .item .newIn__payTicket .detailMovie a {
-    font-size: 14px;
+  .mySlider .slick-slider .item .newIn__payTicket .detailMovie a {
+    font-size: 12px;
     letter-spacing: 3px;
     width: 100%;
     margin: 10px 0;
@@ -828,51 +968,37 @@
     text-decoration: none;
     cursor: pointer;
   }
-  .mySlider .slick-slider .slick-track .item:focus {
+  .mySlider .slick-slider .item:focus {
     outline: none;
   }
-  .mySlider .slick-slider .slick-track .item:hover .newIn__img:hover .overlay {
+  .mySlider .slick-slider .item:hover .newIn__img:hover .overlay {
     -webkit-transform: skewX(30deg) translateX(-20%);
             transform: skewX(30deg) translateX(-20%);
   }
-  .mySlider .slick-slider .slick-track .item:hover .newIn__img:hover .newIn__play {
+  .mySlider .slick-slider .item:hover .newIn__img:hover .newIn__play {
     opacity: 1;
   }
-  .mySlider .slick-slider .slick-track .item:hover .newIn__text {
+  .mySlider .slick-slider .item:hover .newIn__text {
     opacity: 0;
   }
-  .mySlider .slick-slider .slick-track .item:hover .newIn__payTicket {
+  .mySlider .slick-slider .item:hover .newIn__payTicket {
     opacity: 1;
   }
-  .mySlider .slick-slider .slick-track .itemComingSoon {
+  .mySlider .slick-slider .itemComingSoon {
     padding: 0 10px;
     position: relative;
   }
-  .mySlider .slick-slider .slick-track .itemComingSoon .newIn__img {
+  .mySlider .slick-slider .itemComingSoon .newIn__img {
     position: relative;
     overflow: hidden;
     border-radius: 2px;
     margin-bottom: 20px;
   }
-  .mySlider .slick-slider .slick-track .itemComingSoon .newIn__img img {
+  .mySlider .slick-slider .itemComingSoon .newIn__img img {
     width: 100%;
-    height: 400px;
+    height: 160px;
   }
-  .mySlider .slick-slider .slick-track .itemComingSoon .newIn__img .overlay {
-    position: absolute;
-    left: 0;
-    height: 100%;
-    width: 250%;
-    opacity: 0.8;
-    background: -webkit-gradient(linear, left top, left bottom, from(#f8b85d), to(#eb7633));
-    background: linear-gradient(to bottom, #f8b85d, #eb7633);
-    -webkit-transform: skewX(30deg) translateX(-125%);
-            transform: skewX(30deg) translateX(-125%);
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s;
-    top: 0;
-  }
-  .mySlider .slick-slider .slick-track .itemComingSoon .newIn__img .newIn__play {
+  .mySlider .slick-slider .itemComingSoon .newIn__img .newIn__play {
     position: absolute;
     color: white;
     top: 50%;
@@ -885,7 +1011,7 @@
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
   }
-  .mySlider .slick-slider .slick-track .itemComingSoon .newIn__img .newIn__play a {
+  .mySlider .slick-slider .itemComingSoon .newIn__img .newIn__play a {
     font-size: 13px;
     cursor: pointer;
     letter-spacing: 4px;
@@ -893,57 +1019,59 @@
     text-decoration: none;
     color: white;
   }
-  .mySlider .slick-slider .slick-track .itemComingSoon .newIn__img .newIn__play a i {
-    width: 70px;
-    height: 70px;
-    border: 2px solid #fff;
+  .mySlider .slick-slider .itemComingSoon .newIn__img .newIn__play a i {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #fff;
     background-color: rgba(255, 255, 255, 0.192);
     border-radius: 5px;
-    line-height: 70px;
+    line-height: 50px;
     text-align: center;
     margin: 0 auto;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
   }
-  .mySlider .slick-slider .slick-track .itemComingSoon .newIn__img .newIn__play a i:hover {
+  .mySlider .slick-slider .itemComingSoon .newIn__img .newIn__play a i:hover {
     -webkit-transform: scale(0.9);
             transform: scale(0.9);
   }
-  .mySlider .slick-slider .slick-track .itemComingSoon .newIn__text p {
-    font-size: 18px;
+  .mySlider .slick-slider .itemComingSoon .newIn__text .name {
+    font-size: 12px;
     color: white;
   }
-  .mySlider .slick-slider .slick-track .itemComingSoon .newIn__text p span {
-    width: 35px;
-    height: 23px;
+  .mySlider .slick-slider .itemComingSoon .newIn__text .name span {
+    width: 25px;
+    height: 18px;
     text-align: center;
     background-color: green;
     border-radius: 5px;
     display: inline-block;
   }
-  .mySlider .slick-slider .slick-track .itemComingSoon .newIn__text div {
-    color: white;
+  .mySlider .slick-slider .itemComingSoon .newIn__text .button_Cinema {
+    padding-top: 5px;
+    color: #f8b85d;
+    font-size: 12px;
   }
-  .mySlider .slick-slider .slick-track .itemComingSoon .newIn__payTicket {
+  .mySlider .slick-slider .itemComingSoon .newIn__payTicket {
     width: 100%;
-    height: 70px;
+    height: 60px;
     position: absolute;
-    bottom: 0;
+    bottom: 40px;
     left: 0;
     opacity: 0;
   }
-  .mySlider .slick-slider .slick-track .itemComingSoon .newIn__payTicket .detailMovie {
+  .mySlider .slick-slider .itemComingSoon .newIn__payTicket .detailMovie {
     opacity: 1;
-    height: 45px;
-    width: 93%;
+    height: 35px;
+    width: 90%;
     text-align: center;
-    line-height: 40px;
+    line-height: 35px;
     margin: auto;
     border: 1px solid #fff;
     background-color: #eb7633;
     cursor: pointer;
   }
-  .mySlider .slick-slider .slick-track .itemComingSoon .newIn__payTicket .detailMovie a {
+  .mySlider .slick-slider .itemComingSoon .newIn__payTicket .detailMovie a {
     font-size: 14px;
     letter-spacing: 3px;
     width: 100%;
@@ -952,14 +1080,14 @@
     text-decoration: none;
     cursor: pointer;
   }
-  .mySlider .slick-slider .slick-track .itemComingSoon:focus {
+  .mySlider .slick-slider .itemComingSoon:focus {
     outline: none;
   }
-  .mySlider .slick-slider .slick-track .itemComingSoon:hover .newIn__img:hover .overlay {
+  .mySlider .slick-slider .itemComingSoon:hover .newIn__img:hover .overlay {
     -webkit-transform: skewX(30deg) translateX(-20%);
             transform: skewX(30deg) translateX(-20%);
   }
-  .mySlider .slick-slider .slick-track .itemComingSoon:hover .newIn__img:hover .newIn__play {
+  .mySlider .slick-slider .itemComingSoon:hover .newIn__img:hover .newIn__play {
     opacity: 1;
   }
 }

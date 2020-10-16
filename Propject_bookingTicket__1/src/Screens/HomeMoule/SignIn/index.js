@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux'
 import { login } from '../../../Redux/Actions/user';
 import '../../../Layouts/signIn.scss';
-import '../../../Sass/Components/button_Form.scss'
+import '../../../Sass/Components/button_Form.scss';
 
 
 
@@ -31,7 +31,7 @@ export default function SignIn() {
 
     return (
         <section className="signIn">
-            <div className="signIn_Content mt-4 mb-4">
+            <div className="signIn_Content mt-4 mb-4 ">
                 <h1>ĐĂNG NHẬP</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">

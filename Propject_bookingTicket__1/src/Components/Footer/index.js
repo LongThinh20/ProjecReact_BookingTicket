@@ -7,9 +7,9 @@ export default class Footer extends Component {
             <footer>
                 <div className="container">
                     <div className="background" />
-                    <div className=" footer__content">
+                    <div className=" footer__content text-sm-center">
                         <div className="row">
-                            <div className="footer__items col">
+                            <div className="footer__items col-12 col-md">
                                 <h6>GIỚI THIỆU</h6>
                                 <ul>
                                     <li><a href="#/">VỀ CHÚNG TÔI</a></li>
@@ -17,7 +17,7 @@ export default class Footer extends Component {
                                     <li><a href="#/">THÔNG TIN LIÊN HỆ</a></li>
                                 </ul>
                             </div>
-                            <div className="footer__items col ">
+                            <div className="footer__items col-12 col-md ">
                                 <h6>GÓC ĐIỆN ẢNH </h6>
                                 <ul>
                                     <li><a href="#/">Thể loại phim</a></li>
@@ -25,7 +25,7 @@ export default class Footer extends Component {
                                     <li><a href="#/">Phim hay tháng</a></li>
                                 </ul>
                             </div>
-                            <div className="footer__items col">
+                            <div className="footer__items col-12 col-md">
                                 <h6>HỖ TRỢ</h6>
                                 <ul>
                                     <li><a href="#/">Góp ý</a></li>
@@ -33,7 +33,7 @@ export default class Footer extends Component {
                                     <li><a href="#/">Tuyển dụng</a></li>
                                 </ul>
                             </div>
-                            <div className="footer__items col">
+                            <div className="footer__items col-12 col-md">
                                 <h6>KẾT NỐI VỚI CHÚNG TÔI</h6>
                                 <a href="#/">
                                     <i className="fa fa-facebook-square" style={{ fontSize: '30px' }} />

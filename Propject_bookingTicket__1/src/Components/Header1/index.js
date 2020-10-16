@@ -51,14 +51,13 @@ export default function Header1() {
         <header className="header" style={{ backgroundColor: isTopOfPage ? 'black' : 'black' }}>
             <div className="container">
 
-
                 <div className="header_account row" style={{ display: isTopOfPage ? 'flex' : 'none' }}>
                     <div className="col-6 ">
                         <NavLink className="navbar-brand header-img" to="/">
                             <img src={img} className="img-fluid" alt="" />
                         </NavLink>
                     </div>
-                    <div className="col-6 text-md-right text-lg-center mt-2 account">
+                    <div className="col-6 text-right text-sm-right text-lg-center text-xl-right mt-2 account">
                         <span className="account_icon ">
                             {/* <i className=" fa fa-user-circle mr-2" /> */}
                             <Avatar style={{ color: '#f56a00', backgroundColor: '#fde3cf' }}>I</Avatar>
@@ -81,8 +80,7 @@ export default function Header1() {
                     </div>
                 </div>
 
-
-                <nav className=" header__nav navbar navbar-expand-md navbar-dark ">
+                <nav className=" header__nav navbar navbar-expand-lg navbar-dark ">
 
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#movieNavbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon" />
@@ -113,8 +111,8 @@ export default function Header1() {
                                     </>
 
                             }
-
                         </ul>
+
                     </div>
                 </nav>
             </div>

@@ -67,3 +67,75 @@
     }
   }
 }
+
+
+@include responsive("sm"){
+  .PersonalInfo {
+    padding: 200px 0;
+    min-height: 800px;
+    .avatar_Info {
+      ul {
+        li {
+          a {
+            color: $color-gray-0;
+          }
+          .active {
+            height: 40px;
+            width: 100%;
+            text-align: center;
+  
+            display: inline-block;
+            background-color: $color-yellow;
+            border: 1px solid $color-orange;
+            @include styleText(white, $fs-3, $fw-normal);
+            &:hover {
+              background-color: $color-orange;
+              color: white;
+            }
+            &:focus {
+              border: 1px solid $color-orange;
+              outline: none;
+              box-shadow: none;
+            }
+          }
+        }
+      }
+    }
+    .personal_Info {
+      h3 {
+        @include styleTextTile(23px, 300px);
+      }
+      td {
+        width: 50px;
+      }
+    }
+    .history_Info {
+      h3 {
+        @include styleTextTile(18px, 250px);
+      }
+      table {
+        background-color: $color-yellow;
+  
+        td {
+          color: white;
+          padding: 3px;
+          transition: all 0.3s;
+          font-size: 12px;
+  
+          &:hover {
+            color: $color-orange;
+          }
+        }
+        border-radius: 5px;
+        .title_Info {
+          th {
+            border-top: none;
+            padding-top: 0;
+          }
+          color: $color-orange;
+        }
+      }
+    }
+  }
+  
+}
