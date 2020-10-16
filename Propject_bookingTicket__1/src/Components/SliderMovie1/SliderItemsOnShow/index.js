@@ -27,8 +27,8 @@ export default function SliderItemsOnShow(props) {
             </div>
 
             <div className="newIn__text">
-                <p><span>P</span> {props.item.tenPhim}</p>
-                <div>120 phút</div>
+                <div className="name"><span>P</span> {props.item.tenPhim}</div>
+                <div className="time">120 phút</div>
             </div>
             <div className="newIn__payTicket">
                 <div className="detailMovie">

@@ -9,10 +9,13 @@ import { movieService } from '../../Service';
 
 export default function SliderMovie1(props) {
     const settings = {
+        className: "center",
         dots: false,
         infinite: false,
         slidesToShow: 4,
         slidesToScroll: 3,
+        rows: 2,
+        // slidesPerRow: 2,
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />,
         responsive: [
@@ -30,22 +33,22 @@ export default function SliderMovie1(props) {
                 settings: {
                     slidesToShow: 4,
                     slidesToScroll: 2,
-                  
+
                 }
             },
             {
                 breakpoint: 768,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 4,
                     slidesToScroll: 1
                 }
             },
             {
                 breakpoint: 576,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 4,
                     slidesToScroll: 1,
-               
+
                 }
             }
         ]
@@ -86,7 +89,7 @@ export default function SliderMovie1(props) {
             </div>
 
             <div className="tab-content">
-                <div className="tab-pane container active" id="home">
+                <div className="tab-pane container active pb-4" id="home">
                     <Slider {...settings}>
                         {
                             Object.entries(movieList).map(([index, item]) =>

@@ -28,14 +28,14 @@ export default function MobileApp() {
         <section className="mobileApp">
             <div className="container">
                 <div className="row content">
-                    <div className="col-7 content_left">
+                    <div className="col-12 col-lg-8 content_left">
                         <h1>Ứng dụng dành cho <br /> người yêu điện ảnh </h1>
-                        <p>Không chỉ đặt vé, bạn còn có thể bình luận phim, chấm điểm rạp và đổi quà hấp dẫn</p>
+                        <p>Không chỉ đặt vé, bạn còn có thể bình luận phim, <br></br> chấm điểm rạp và đổi quà hấp dẫn</p>
                         <button className="btn btn-danger">App miễn phí - Tải ngay</button>
                         <p>Có hai phiên bản iOS & Android</p>
 
                     </div>
-                    <div className="col-5 content_right">
+                    <div className="col-12 col-lg-4 content_right">
                         <Slider {...setting}>
                             <>
                                 <div className="out_line">
@@ -62,9 +62,6 @@ export default function MobileApp() {
                                     <img src={img5} alt=""></img>
                                 </div>
                             </>
-
-
-
 
                         </Slider>
                     </div>
