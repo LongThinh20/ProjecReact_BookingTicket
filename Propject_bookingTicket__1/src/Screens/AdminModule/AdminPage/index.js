@@ -2,10 +2,8 @@ import React from 'react'
 
 export default function AdminPage() {
   return (
-    <section className="AdminPage">
-      <div className="container">
-
-      </div>
-    </section>
+    <div style={{ minHeight: '360px' }}>
+13213
+    </div>
   )
 }

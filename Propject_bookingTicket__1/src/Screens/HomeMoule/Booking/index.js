@@ -142,24 +142,6 @@ export default function Booking(props) {
                                     <div className="label">Ghế đang chọn</div>
                                 </div>
                             </div>
-
-
-                            {/* <table class="table">
-                                <tbod>
-                                    <tr>
-                                        <td class="Icon text-center"><div className="seat"></div></td>
-                                        <td class="Icon"><div className="seatVip"></div></td>
-                                        <td class="Icon"><div className="seatBooking"></div></td>
-                                        <td class="Icon"><div className="seatSelect"></div></td>
-                                    </tr>
-                                    <tr>
-                                        <td className="label">Ghế chưa chọn</td>
-                                        <td className="label">Ghếp Vip</td>
-                                        <td className="label">Ghếp đã có người chọn</td>
-                                        <td className="label">Ghếp đã đang chọn</td>
-                                    </tr>
-                                </tbod>
-                            </table> */}
                         </div>
 
                     </div>

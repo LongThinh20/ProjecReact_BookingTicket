@@ -7,6 +7,8 @@ import DetailMovie1 from '../Screens/HomeMoule/Detail1';
 import AdminPage from '../Screens/AdminModule/AdminPage';
 import Booking from '../Screens/HomeMoule/Booking';
 import Personalnfor from '../Screens/HomeMoule/Personalnfor';
+import MovieManager from '../Screens/AdminModule/MovieManager';
+import UserManager from '../Screens/AdminModule/UserManager';
 
 
 
@@ -20,6 +22,11 @@ const routesHome = [
         exact: false,
         path: "/signup",
         component: SignUp
+    },
+    {
+        exact: false,
+        path: "/homepage",
+        component: HomePage
     },
     {
         exact: false,
@@ -47,9 +54,19 @@ const routesBooking = [
 
 const routesAdmin = [
     {
-        exact: false,
+        exact: true,
         path: "/admin",
         component: AdminPage
+    },
+    {
+        exact: false,
+        path: "/admin/movie",
+        component: MovieManager
+    },
+    {
+        exact: false,
+        path: "/admin/user",
+        component: UserManager
     }
 ];
 
