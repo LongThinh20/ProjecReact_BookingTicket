@@ -1,5 +1,4 @@
 
-
 import HomePage from '../Screens/HomeMoule/Home';
 import SignUp from '../Screens/HomeMoule/SignUp';
 import SignIn from '../Screens/HomeMoule/SignIn';
@@ -9,7 +8,8 @@ import Booking from '../Screens/HomeMoule/Booking';
 import Personalnfor from '../Screens/HomeMoule/Personalnfor';
 import MovieManager from '../Screens/AdminModule/MovieManager';
 import UserManager from '../Screens/AdminModule/UserManager';
-
+import Demo from '../Components/Demo'
+import ShowTimeManager from '../Screens/AdminModule/ShowTimeManager';
 
 
 const routesHome = [
@@ -43,6 +43,7 @@ const routesHome = [
         path: "/info",
         component: Personalnfor
     },
+
 ];
 const routesBooking = [
     {
@@ -53,6 +54,11 @@ const routesBooking = [
 ];
 
 const routesAdmin = [
+    {
+        exact: false,
+        path: "/demo",
+        component: Demo
+    },
     {
         exact: true,
         path: "/admin",
@@ -67,6 +73,11 @@ const routesAdmin = [
         exact: false,
         path: "/admin/user",
         component: UserManager
+    },
+    {
+        exact: false,
+        path: "/admin/showtime",
+        component: ShowTimeManager
     }
 ];
 

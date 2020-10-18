@@ -1,57 +1,44 @@
-import React, { createElement, useState } from 'react';
-import { Comment, Tooltip, Avatar } from 'antd';
-import moment from 'moment';
-import { DislikeOutlined, LikeOutlined, DislikeFilled, LikeFilled } from '@ant-design/icons';
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import * as FaIcons from 'react-icons/fa';
+import * as AiIcons from 'react-icons/ai';
+import { SidebarData } from './SidebarData';
 import './style.scss'
 
 
-export default function Demo() {
-    const [likes, setLikes] = useState(0);
-    const [dislikes, setDislikes] = useState(0);
-    const [action, setAction] = useState(null);
+function Demo() {
 
-    const like = () => {
-        setLikes(1);
-        setDislikes(0);
-        setAction('liked');
-    };
+    const [sidebar, setsidebar] = useState(false);
 
-    const dislike = () => {
-        setLikes(0);
-        setDislikes(1);
-        setAction('disliked');
-    };
-
-    const actions = [
-        <Tooltip key="comment-basic-like" title="Like">
-            <span onClick={like}>F
-                {createElement(action === 'liked' ? LikeFilled : LikeOutlined)}
-                <span className="comment-action">{likes}</span>
-            </span>
-        </Tooltip>,
-        <Tooltip key="comment-basic-dislike" title="Dislike">
-            <span onClick={dislike}>
-                {React.createElement(action === 'disliked' ? DislikeFilled : DislikeOutlined)}
-                <span className="comment-action">{dislikes}</span>
-            </span>
-        </Tooltip>,
-        <span key="comment-basic-reply-to">Reply to</span>,
-    ];
+    const showSidebar = () => setsidebar(!sidebar);
 
     return (
-        <Comment
-            actions={actions}
-            author={<a>Han Solo</a>}
-            avatar={<Avatar
-                src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-                alt="Han Solo" />}
-            content={<p>
-                We supply a series of design principles, practical patterns and high quality de                            resources (Sketch and Axure), to help people create their product prototypes beautifully
-                and efficiently.
-            </p>}
-            datetime={<Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
-                <span>{moment().fromNow()}</span>
-            </Tooltip>} />
-    );
+        <div>
+            <div className="navbar" style={{ Height: '500px' }}>
+                <Link to="#" className="menu-bars">
+                    <FaIcons.FaBars />
+                </Link>
+            </div>
+            <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+                <ul className='nav-menu-items'>
+                    <li className='navbar-toggle'>
+                        <Link to="#" className="menu-bars">
+                            <AiIcons.AiOutlineClose />
+                        </Link>
+                    </li>
+                    {SidebarData.map((item, index) => {
+                        return (
+                            <li key={index} className={item.className}>
+                                <Link to={item.path}>
+                                    <span> {item.icon}</span><span>{item.title}</span>
+                                </Link>
+                            </li>
+                        )
+                    })}
+                </ul>
+            </nav>
+        </div>
+    )
 }
 
+export default Demo

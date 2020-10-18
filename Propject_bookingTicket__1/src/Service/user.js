@@ -47,10 +47,29 @@ class UserService {
         })
     }
 
+    getInfo() {
+        return Axios({
+            method: "GET",
+            url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP03",
+
+        })
+    }
+
     upDateInfo(user, accessToken) {
         return Axios({
             method: "PUT",
             url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
+            data: user,
+            headers: {
+                'Authorization': `Bearer ${accessToken}`
+            }
+        })
+    }
+
+    dedeteUser(user, accessToken) {
+        return Axios({
+            method: "DELETE",
+            url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${user}`,
             data: user,
             headers: {
                 'Authorization': `Bearer ${accessToken}`
