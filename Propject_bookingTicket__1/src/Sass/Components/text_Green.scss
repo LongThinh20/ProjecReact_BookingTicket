@@ -3,5 +3,5 @@
 @import '../Helpers/variables';
 
 .text_Green{
-    @include  styleText($color-blue,20px,$fw-bold);
+    @include  styleText($color-blue,18px,$fw-bold);
 }

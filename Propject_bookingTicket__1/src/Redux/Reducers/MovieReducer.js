@@ -10,7 +10,8 @@ let initialState = {
     lstMovie: [],
     lstSeatBooking: [],
     lstBooking: [],
-    lstInfoMovieBooking: []
+    lstInfoMovieBooking: [],
+    objBooking: [],
 
 }
 
@@ -71,7 +72,10 @@ const MovieReducer = (state = initialState, action) => {
 
             return { ...state }
         }
-
+        case 'LSTBOOKING_TO_SEATLST': {
+            state.objBooking = action.payload;
+            return { ...state }
+        }
 
         default:
             return state;

@@ -20,7 +20,9 @@ export default function SeatList(props) {
     const [loader, showLoader, hideLoader] = usePageLoading();
     let [lstBookingTicket, setlstBookingTicket] = useState({});
     let [danhSachGheDangDat, setDanhSachGheDangDat] = useState([]);
+    const dispatch = useDispatch();
 
+  
 
     useEffect(() => {
         showLoader();
@@ -47,9 +49,12 @@ export default function SeatList(props) {
             danhSachGheDangDatUpdate.push(ghe);
         }
         setDanhSachGheDangDat(danhSachGheDangDatUpdate)
+        
+        dispatch({
+            type: 'LSTBOOKING_TO_SEATLST',
+            payload: danhSachGheDangDat
+        })
     }
-
-    const dispatch = useDispatch();
 
     const booking = (rowSeat, stt, price, type, id) => {
 
@@ -69,7 +74,6 @@ export default function SeatList(props) {
 
 
     }
-
 
 
     return (

@@ -18,6 +18,8 @@ export default function PayList(props) {
   let [lstBookingTicket, setlstBookingTicket] = useState({});
   const user = useSelector((state) => state.user.credentials);
   const dispatch = useDispatch();
+  const objBooking = useSelector(state => state.movie.objBooking)
+
 
   let check = false;
   if (lstSeatBooking.length >= 1) {
@@ -37,7 +39,6 @@ export default function PayList(props) {
   }, [JSON.stringify(lstBookingTicket)]);
 
 
-
   const checkPay = (tenPhim, maLichChieu, ngayChieu, gioChieu) => {
     if (check) {
       Swal.fire({
@@ -48,20 +49,10 @@ export default function PayList(props) {
         cancelButtonColor: "#d33",
         confirmButtonText: "THANH TOÁN",
       }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire(
-            "Thanh toán hoàn tất!",
-            "Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi",
-            "success"
-          ).then((value) => {
-            if (value) {
-              window.location.replace("/");
-            }
-          });
-          datVe(tenPhim, maLichChieu, ngayChieu, gioChieu);
+        datVe(tenPhim, maLichChieu, ngayChieu, gioChieu)
+      })
 
-        }
-      });
+
     } else {
       Swal.fire({
         icon: 'info',
@@ -70,10 +61,10 @@ export default function PayList(props) {
     }
   };
 
-
-
   const datVe = (tenPhim, maLichChieu, ngayChieu, gioChieu) => {
     let taiKhoan = JSON.parse(localStorage.getItem("credentials")).taiKhoan;
+    let accessToken = JSON.parse(localStorage.getItem("credentials")).accessToken;
+
 
     let objectDatVe = {
       'taiKhoanNguoiDung': taiKhoan,
@@ -84,16 +75,37 @@ export default function PayList(props) {
         'gioChieu': gioChieu,
         'ngayChieu': ngayChieu
       }
-
     };
+
+    let lstBooking = {
+      'maLichChieu': maLichChieu,
+      'danhSachVe': objBooking,
+      'taiKhoanNguoiDung': taiKhoan
+    }
+
+
+    movieService.booking(lstBooking, accessToken)
+      .then(res => {
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: res.data,
+          showConfirmButton: false,
+          timer: 1500
+        }).then(
+          window.location.replace("/")
+        )
+
+      })
+      .catch(err => {
+        console.log(err.reponse.data);
+      })
+
 
     dispatch({
       type: 'ADD_MOVIEBOOKING_INFO_PROM_PAYLIST',
       payload: objectDatVe
     })
-
-
-
 
   };
 

@@ -80,7 +80,7 @@ export default function Header1() {
                     </div>
                 </div>
 
-                <nav className=" header__nav navbar navbar-expand-lg navbar-dark ">
+                <nav className=" header__nav navbar navbar-expand-lg navbar-dark">
 
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#movieNavbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon" />

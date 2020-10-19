@@ -7,15 +7,14 @@ import '../../../Sass/Components/text_Orange.scss';
 import '../../../Sass/Components/button_Form.scss';
 import '../../../Sass/Components/text_Form_Title.scss'
 import ModalForm from './ModalForm';
-import Axios from 'axios';
 
 
-export default function PersonalInfo() {
+
+export default function PersonalInfo() {''
 
    const credentials = useSelector(state => state.user.credentials);
 
    const lstBooking = JSON.parse(localStorage.getItem('thongTinDatVe'));
-
 
    // let objThongTin = {
    //    "taiKhoan": "aa",
@@ -28,6 +27,10 @@ export default function PersonalInfo() {
    //    "thongTinDatVe": []
    // }
 
+
+
+
+   
    // Axios({
    //    method: 'POST',
    //    url: 'https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThongTinTaiKhoan',

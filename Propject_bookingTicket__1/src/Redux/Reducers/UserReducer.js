@@ -2,7 +2,8 @@
 import { FETCH_CREDENTIALS } from "../Actions/type";
 
 let initialState = {
-    credentials: []
+    credentials: [],
+    account: []
 }
 
 const UserReducer = (state = initialState, action) => {
@@ -15,6 +16,7 @@ const UserReducer = (state = initialState, action) => {
             state.credentials = null;
             return { ...state }
         }
+     
         default:
             return state
     }

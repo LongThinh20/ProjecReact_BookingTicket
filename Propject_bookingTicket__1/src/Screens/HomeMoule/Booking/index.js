@@ -19,7 +19,7 @@ import React, { useEffect, useState } from 'react'
 import { movieService } from '../../../Service';
 import SeatList from './SeatList';
 import PayList from './PayList';
-import { useSelector } from 'react-redux';
+
 
 
 export default function Booking(props) {
@@ -28,7 +28,7 @@ export default function Booking(props) {
 
     let [lstBookingTicket, setlstBookingTicket] = useState({});
 
-    const movieNameToPersonal = useSelector(state => state.movie.lstMovie)
+
 
     useEffect(() => {
 

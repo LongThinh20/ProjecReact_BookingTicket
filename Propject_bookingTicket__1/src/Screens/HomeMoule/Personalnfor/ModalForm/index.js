@@ -3,7 +3,6 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import '../../../../Sass/Components/button_Form.scss';
 import { useDispatch, useSelector } from "react-redux";
-import { userService } from "../../../../Service";
 import Swal from 'sweetalert2';
 import Axios from "axios";
 import { update } from "../../../../Redux/Actions/user";
@@ -15,39 +14,41 @@ export default function ModalForm() {
     const dispatch = useDispatch();
 
     const onSubmit = (values) => {
+
         dispatch(update(values, credentials.accessToken));
-        // Axios({
-        //     method: "PUT",
-        //     url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
-        //     data: values,
-        //     headers: {
-        //         'Authorization': `Bearer ${credentials.accessToken}`
-        //     }
-        // }).then(res => {
-        //     Swal.fire({
-        //         title: 'Cập nhật thành công !!',
-        //         icon: 'success',
-        //         confirmButtonText: 'OK',
-        //         showCancelButton: false,
-        //         showCloseButton: true
-        //     }).then((result) => {
-        //         if (result) {
 
-        //         } else {
+        Axios({
+            method: "PUT",
+            url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
+            data: values,
+            headers: {
+                'Authorization': `Bearer ${credentials.accessToken}`
+            }
+        }).then(res => {
+            Swal.fire({
+                title: 'Cập nhật thành công !!',
+                icon: 'success',
+                confirmButtonText: 'OK',
+                showCancelButton: false,
+                showCloseButton: true
+            }).then((result) => {
+                if (result) {
 
-        //         }
-        //     })
-        //     console.log(res.data);
-        // }).catch(err => {
-        //     Swal.fire({
-        //         title: 'Cập nhật thất bại  thành công !!',
-        //         text: `${err.response.data}`,
-        //         icon: 'error',
-        //         confirmButtonText: 'OK',
-        //         showCancelButton: false,
-        //         showCloseButton: true
-        //     })
-        // })
+                } else {
+
+                }
+            })
+            console.log(res.data);
+        }).catch(err => {
+            Swal.fire({
+                title: 'Cập nhật thất bại  thành công !!',
+                text: `${err.response.data}`,
+                icon: 'error',
+                confirmButtonText: 'OK',
+                showCancelButton: false,
+                showCloseButton: true
+            })
+        })
     }
 
 
@@ -182,7 +183,7 @@ export default function ModalForm() {
                 <div>
                     <button type="submit" className="btn button_Form" >HOÀN TẤT</button>
                 </div>
-                <div className="forgotPass text-info"><a>Quên mật khẩu hiện tại ??</a></div>
+                <div className="forgotPass text-info"><a href="/#">Quên mật khẩu hiện tại ??</a></div>
             </form>
         </div>
     );

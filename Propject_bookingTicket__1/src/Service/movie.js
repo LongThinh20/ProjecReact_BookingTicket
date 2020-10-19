@@ -50,7 +50,16 @@ class MovieService {
         })
     }
 
+    booking(data, token) {
+        return Axios({
+            method: "POST",
+            url: `https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/DatVe`,
+            data: data,
+            headers: {
+                'Authorization': `Bearer ${token}`
 
+            }
+        })
+    }
 }
-
 export default MovieService;

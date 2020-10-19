@@ -625,6 +625,7 @@
   .mySlider {
     padding-top: 150px; ///
     .slick-slider {
+      width: 100%;
       .slick-prev {
         &::before {
           display: none;
@@ -883,6 +884,7 @@
 @include responsive("sm") {
   .mySlider {
     padding-top: 150px; ///
+    
     ul {
       li {
         a {
