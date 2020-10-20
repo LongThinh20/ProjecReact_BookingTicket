@@ -136,7 +136,7 @@ export default function PayList(props) {
                   .slice(0, 1)
                   .map(([index, item]) => {
                     return (
-                      <span className="text_Normal">
+                      <span className="text_Normal" key={index}>
                         {moment(item.ngayChieuGioChieu).format("DD.MM")} ~{" "}
                         <span className="text_Orange">
                           {moment(item.ngayChieuGioChieu).format("hh:mm a")}

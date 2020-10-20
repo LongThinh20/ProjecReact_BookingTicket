@@ -6,7 +6,6 @@ import '../../../Layouts/signUp.scss';
 import '../../../Sass/Components/button_Form.scss'
 
 
-
 class SignUp extends Component {
     _handleSubmit = values => {
         userService.signUp(values)

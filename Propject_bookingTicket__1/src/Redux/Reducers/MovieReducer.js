@@ -68,7 +68,11 @@ const MovieReducer = (state = initialState, action) => {
 
             state.lstInfoMovieBooking = lstInfoMovieBookingUpdate;
 
-            localStorage.setItem("thongTinDatVe", JSON.stringify(state.lstInfoMovieBooking));
+            if (typeof (Storage) !== 'undefined') {
+                localStorage.setItem("thongTinDatVe", JSON.stringify(state.lstInfoMovieBooking));
+            } else {
+                alert('Trình duyệt của bạn không hỗ trợ localStorage. Hãy nâng cấp trình duyệt để sử dụng!')
+            }
 
             return { ...state }
         }

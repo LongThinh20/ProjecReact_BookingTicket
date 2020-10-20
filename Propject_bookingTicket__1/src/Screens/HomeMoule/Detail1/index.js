@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import moment from 'moment';
 import { movieService } from '../../../Service';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import usePageLoading from '../../../Components/Hook/usePageLoading'
 import '../../../Sass/Components/backgroundMovie.scss';
 import '../../../Sass/Components/button_Trailer.scss';
@@ -19,11 +19,14 @@ export default function DetailMovie1(props) {
 
    const [loader, showLoader, hideLoader] = usePageLoading();
 
+   let param = useParams();
+
+
    useEffect(() => {
 
       showLoader();
 
-      movieService.fetchMovieDetail(props.match.params.Id)
+      movieService.fetchMovieDetail(param.Id)
          .then(res => {
 
             hideLoader();
@@ -45,7 +48,7 @@ export default function DetailMovie1(props) {
    }
 
    useEffect(() => {
-      movieService.fetchShowtimeToIdMovie(props.match.params.Id)
+      movieService.fetchShowtimeToIdMovie(param.Id)
          .then(res => {
             let array = res.data;
             setlstmovie(array);
@@ -121,7 +124,7 @@ export default function DetailMovie1(props) {
                      {
                         lstmovie.heThongRapChieu?.map((item, index) => {
                            return (
-                              <li className="nav-item">
+                              <li className="nav-item" key={index}>
                                  <a className="nav-link " data-toggle="pill" href={`#${item.maHeThongRap}`}>
                                     <img src={item.logo} style={{ height: '50px', width: '50px' }} alt=""></img>
                                  </a>

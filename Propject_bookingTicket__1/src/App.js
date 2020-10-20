@@ -56,13 +56,18 @@ function App() {
 
   const dispatch = useDispatch();
   const getCredentialFormLocal = () => {
-    const credentialStr = localStorage.getItem('credentials');
-    if (credentialStr) {
+
+    if (typeof (Storage) !== 'undefined') {
+      const credentialStr = localStorage.getItem('credentials');
       dispatch({
         type: 'FETCH_CREDENTIALS',
         payload: JSON.parse(credentialStr)
       })
+    } else {
+      alert('Trình duyệt của bạn đã quá cũ. Hãy nâng cấp trình duyệt ngay!');
     }
+
+
   }
 
   useEffect(() => {

@@ -10,41 +10,11 @@ import ModalForm from './ModalForm';
 
 
 
-export default function PersonalInfo() {''
+export default function PersonalInfo() {
 
    const credentials = useSelector(state => state.user.credentials);
 
    const lstBooking = JSON.parse(localStorage.getItem('thongTinDatVe'));
-
-   // let objThongTin = {
-   //    "taiKhoan": "aa",
-   //    "matKhau": "aa",
-   //    "hoTen": null,
-   //    "email": "aa",
-   //    "soDT": "aa",
-   //    "maNhom": "GP01",
-   //    "loaiNguoiDung": null,
-   //    "thongTinDatVe": []
-   // }
-
-
-
-
-   
-   // Axios({
-   //    method: 'POST',
-   //    url: 'https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThongTinTaiKhoan',
-   //    data: objThongTin,
-   //    headers: {
-   //       'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiMTIzMTJkc2FkIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiUXVhblRyaSIsIm5iZiI6MTU5NzkwODQyMywiZXhwIjoxNTk3OTEyMDIzfQ.VrseOj1KDWVg8EeTP24__7n-ZAKUIVz3XYRhBwkqa6k`
-   //    }
-   // }).then(res => {
-   //    console.log(res.data);
-   // }).catch(err => {
-   //    console.log(err.response.data);
-   // })
-
-
 
    return (
       <section className="PersonalInfo">

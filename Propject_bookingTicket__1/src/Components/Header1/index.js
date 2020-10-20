@@ -8,13 +8,14 @@ import Swal from 'sweetalert2';
 import { Avatar } from 'antd';
 import 'antd/dist/antd.css';
 
-export default function Header1() {
+export default function Header1(props) {
     const credentials = useSelector(state => state.user.credentials);
 
     const isTopOfPage = useScrollTop();
 
     const dispatch = useDispatch();
 
+   
 
     const handleSignOut = () => {
         dispatch({
@@ -92,10 +93,12 @@ export default function Header1() {
                                 <a className="nav-link" href="/">TRANG CHỦ</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#showlstMovie">LỊCH CHIẾU</a>
+
+                                <a className="nav-link" href="/#showlstMovie">LỊCH CHIẾU</a>
+
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#booking">MUA VÉ</a>
+                                <a className="nav-link" href="/#booking">MUA VÉ</a>
                             </li>
                             {
                                 credentials !== null ? <li className="nav-item">

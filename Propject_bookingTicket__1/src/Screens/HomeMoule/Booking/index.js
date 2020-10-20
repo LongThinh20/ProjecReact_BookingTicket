@@ -19,13 +19,16 @@ import React, { useEffect, useState } from 'react'
 import { movieService } from '../../../Service';
 import SeatList from './SeatList';
 import PayList from './PayList';
+import { useParams } from 'react-router-dom';
 
 export default function Booking(props) {
-    const param = props.match.params.Id;
+
+    let params = useParams();
+  
     let [lstBookingTicket, setlstBookingTicket] = useState({});
 
     useEffect(() => {
-        movieService.fetchBookingTicket(props.match.params.Id)
+        movieService.fetchBookingTicket(params.Id)
             .then(res => {
                 setlstBookingTicket(res.data)
             })
@@ -78,7 +81,7 @@ export default function Booking(props) {
                     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8 seatList_detail">
                         <div className="row">
                             <div className="custom col-12">
-                                <SeatList param={param} />
+                                <SeatList param={params.Id} />
                             </div>
                             <div className="contentBottom col-12">
                                 <div className="row ">
@@ -103,7 +106,7 @@ export default function Booking(props) {
                         </div>
                     </div>
                     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl payList_detail" >
-                        <PayList param={param} />
+                        <PayList param={params.Id} />
                     </div>
                 </div>
             </div>
