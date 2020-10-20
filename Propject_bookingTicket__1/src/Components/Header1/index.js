@@ -57,7 +57,7 @@ export default function Header1() {
                             <img src={img} className="img-fluid" alt="" />
                         </NavLink>
                     </div>
-                    <div className="col-6 text-right text-sm-right text-lg-center text-xl-right mt-2 account">
+                    <div className="col-6 text-center  text-lg-center text-xl-right mt-2 account">
                         <span className="account_icon ">
                             {/* <i className=" fa fa-user-circle mr-2" /> */}
                             <Avatar style={{ color: '#f56a00', backgroundColor: '#fde3cf' }}>I</Avatar>

@@ -8,8 +8,6 @@ import { movieService } from '../../Service';
 import moment from 'moment';
 
 
-
-
 export default function ListGroup(props) {
 
 
@@ -143,7 +141,7 @@ export default function ListGroup(props) {
                               Object.entries(item.lstLichChieuTheoPhim).slice(0, 10).map(([index, item]) => {
                                 return (
                                   credentials ?
-                                    (<NavLink to={`/booking/${item.maLichChieu}`} className="button_ShowTime mb-2" > <span className="text_Green" style={{ fontSize: '13px' }}>{moment(item.ngayChieuGioChieu).format('DD.MM')}~</span> { moment(item.ngayChieuGioChieu).format('hh:mm a')}</NavLink>)
+                                    (<NavLink to={`/booking/${item.maLichChieu}`} className="button_ShowTime mb-2" target="_blank"> <span className="text_Green" style={{ fontSize: '13px' }}>{moment(item.ngayChieuGioChieu).format('DD.MM')}~</span> { moment(item.ngayChieuGioChieu).format('hh:mm a')}</NavLink>)
                                     : (<NavLink to={`/signIn`} className="button_ShowTime mb-2"><span className="text_Green" style={{ fontSize: '13px' }}>{moment(item.ngayChieuGioChieu).format('DD.MM')}~</span> {moment(item.ngayChieuGioChieu).format('hh:mm a')}</NavLink>)
                                 )
                               })

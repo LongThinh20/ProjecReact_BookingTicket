@@ -72,9 +72,7 @@ export default function SeatList(props) {
             payload: lstSeatBooking
         })
 
-
     }
-
 
     return (
 
@@ -84,7 +82,6 @@ export default function SeatList(props) {
                 <td className="rowSeat">{A}</td>
                 <td>
                     {
-
 
                         lstBookingTicket.danhSachGhe?.slice(0, 16).map((ghe, index) => {
 

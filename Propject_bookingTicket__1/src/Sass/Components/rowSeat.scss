@@ -1,17 +1,23 @@
-@import '../Helpers/mixin';
-@import '../Helpers/variables';
-
+@import "../Helpers/mixin";
+@import "../Helpers/variables";
 
 .rowSeat {
-    @include styleText($color-black-bg, $fs-0, $fw-bold);
-   padding-right: 30px;
+  @include styleText($color-black-bg, $fs-0, $fw-bold);
+  padding-right: 30px;
 }
 
-@include responsive("sm"){
-    .rowSeat {
-        @include styleText($color-black-bg,12px, $fw-bold);
-       padding-right: 5px;
-       padding-left: 5px;
-    }
-    
+@include reponsive_min_max(577px, 767px) {
+  .rowSeat {
+    @include styleText($color-black-bg, 12px, $fw-bold);
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+}
+
+@include responsive("sm") {
+  .rowSeat {
+    @include styleText($color-black-bg, 12px, $fw-bold);
+    padding-right: 5px;
+    padding-left: 5px;
+  }
 }

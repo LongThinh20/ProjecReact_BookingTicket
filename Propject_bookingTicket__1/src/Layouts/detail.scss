@@ -89,6 +89,7 @@
   }
 }
 
+
 @include responsive("md") {
   .detail {
     position: relative;
@@ -96,11 +97,11 @@
     min-height: 800px;
 
     .left_content {
-      .button_Trailer{
+      .button_Trailer {
         left: 0;
       }
       .detail_Img {
-        height: 400px;
+        max-height: 700px;
         overflow: hidden;
         img {
           height: 100%;

@@ -46,8 +46,18 @@ export default function SliderMovie1(props) {
             {
                 breakpoint: 576,
                 settings: {
-                    slidesToShow: 4,
+                    slidesToShow: 3,
                     slidesToScroll: 1,
+                    rows: 3,
+
+                }
+            },
+            {
+                breakpoint: 360,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    rows: 4,
 
                 }
             }

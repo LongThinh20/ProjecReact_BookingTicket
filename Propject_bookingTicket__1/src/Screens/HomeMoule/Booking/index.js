@@ -20,21 +20,13 @@ import { movieService } from '../../../Service';
 import SeatList from './SeatList';
 import PayList from './PayList';
 
-
-
 export default function Booking(props) {
-
     const param = props.match.params.Id;
-
     let [lstBookingTicket, setlstBookingTicket] = useState({});
 
-
-
     useEffect(() => {
-
-        movieService.fetchBookingTicket(param)
+        movieService.fetchBookingTicket(props.match.params.Id)
             .then(res => {
-
                 setlstBookingTicket(res.data)
             })
             .catch(err => {
@@ -42,48 +34,16 @@ export default function Booking(props) {
             })
     }, [JSON.stringify(lstBookingTicket)])
 
-    // const datVe = () => {
-
-    //     let taiKhoan = JSON.parse(localStorage.getItem('userLogin')).taiKhoan;
-
-    //     let objectDatVe = {
-    //         "maLichChieu": props.match.params.Id,
-    //         "danhSachVe": danhSachGheDangDat,
-    //         "taiKhoanNguoiDung": taiKhoan
-    //     }
-
-
-    //     Axios({
-    //         url: `http://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/DatVe`,
-    //         method: 'POST',
-    //         data: objectDatVe,
-    //         headers: {
-    //             'Authorization': `Bearer ${localStorage.getItem('token')}`
-    //         }
-    //     }).then(res => {
-    //         // console.log(res.data);
-    //     }).catch(err => {
-    //         console.log(err.response.data);
-    //     })
-
-    // }
-
-
     const Completionist = () => (
         swal("Hết thời gian đặt ghế vui lòng đặt ghế trong thời gian 5 phút,tiến hành đặt lại!!")
             .then((value) => {
                 window.location.reload()
             })
     )
-
     const renderer = ({ minutes, seconds, completed }) => {
         if (completed) {
-            // Render a complete state
-
             return <Completionist />;
-
         } else {
-            // Render a countdown
             return (<h4 style={{ color: 'orange' }}>{minutes}:{seconds}</h4>);
         }
     };
@@ -93,7 +53,7 @@ export default function Booking(props) {
 
             <div className="container">
                 <div className="row  _countDown">
-                    <div className="col">
+                    <div className="col-6">
                         <p className="demoText">
                             {
                                 Object.entries(lstBookingTicket).map(([index, item]) => {
@@ -104,48 +64,45 @@ export default function Booking(props) {
                             }
                         </p>
                     </div>
-                    <div className="col text-right text-lg-right text-xl-left">
-
+                    <div className="col-6 text-right text-lg-right text-xl-left">
                         <div className="text_Normal">Thời gian giữ ghế:</div>
                         <Countdown
                             date={Date.now() + couter}
                             renderer={renderer}
                         />
-
                     </div>
                 </div>
 
                 <div className="row">
 
                     <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8 seatList_detail">
-
-                        <div className="screen "></div>
-
-                        <SeatList param={param} />
-
-                        <div className="contentBottom ">
-                            <div className="row">
-                                <div className="col" >
-                                    <div className="seat" />
-                                    <div className="label">Ghế chưa chọn</div>
-                                </div>
-                                <div className="col" >
-                                    <div className="seatVip" />
-                                    <div className="label">Ghế VIP</div>
-                                </div>
-                                <div className="col" >
-                                    <div className="seatSelect" />
-                                    <div className="label">Ghế đã có người chọn</div>
-                                </div>
-                                <div className="col" >
-                                    <div className="seatBooking" />
-                                    <div className="label">Ghế đang chọn</div>
+                        <div className="row">
+                            <div className="custom col-12">
+                                <SeatList param={param} />
+                            </div>
+                            <div className="contentBottom col-12">
+                                <div className="row ">
+                                    <div className="col" >
+                                        <div className="seat" />
+                                        <div className="label">Ghế chưa chọn</div>
+                                    </div>
+                                    <div className="col" >
+                                        <div className="seatVip" />
+                                        <div className="label">Ghế VIP</div>
+                                    </div>
+                                    <div className="col" >
+                                        <div className="seatSelect" />
+                                        <div className="label">Ghế đã có người chọn</div>
+                                    </div>
+                                    <div className="col" >
+                                        <div className="seatBooking" />
+                                        <div className="label">Ghế đang chọn</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
-                    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl">
+                    <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl payList_detail" >
                         <PayList param={param} />
                     </div>
                 </div>

@@ -70,7 +70,7 @@ export default function DetailMovie1(props) {
                   <div className="modal fade" id="exampleModalCenter" tabIndex={-1} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                      <div className="modal-dialog modal-dialog-centered" role="document">
                         <div className="modal-content">
-                           <iframe width="560" height="315" src={lstmovieDetail.trailer} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title='' ></iframe>
+                           <iframe width="560" height="315" src={lstmovieDetail.trailer} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="myFrame" ></iframe>
                         </div>
                      </div>
                   </div>
@@ -146,7 +146,7 @@ export default function DetailMovie1(props) {
                                           <p style={{ color: 'white' }}>271 Nguyễn Trãi, Q.1</p>
                                           {item.lichChieuPhim?.slice(0, 12).map((item, index) => {
                                              return (
-                                                credentials ? (<NavLink to={`/booking/${item.maLichChieu}`} className="button_ShowTime mr-2 mb-2"><span className="text_Green" style={{ fontSize: '13px' }}>{moment(item.ngayChieuGioChieu).format('DD.MM')}~</span> {moment(item.ngayChieuGioChieu).format('hh:mm a')}</NavLink>)
+                                                credentials ? (<NavLink to={`/booking/${item.maLichChieu}`} className="button_ShowTime mr-2 mb-2" target="_blank"><span className="text_Green" style={{ fontSize: '13px' }}>{moment(item.ngayChieuGioChieu).format('DD.MM')}~</span> {moment(item.ngayChieuGioChieu).format('hh:mm a')}</NavLink>)
                                                    : (<NavLink to={`/signIn`} className="button_ShowTime mr-2 mb-2"><span className="text_Green" style={{ fontSize: '13px' }}>{moment(item.ngayChieuGioChieu).format('DD.MM')}~</span> {moment(item.ngayChieuGioChieu).format('hh:mm a')}</NavLink>)
                                              )
 

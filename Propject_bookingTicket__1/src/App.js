@@ -56,10 +56,8 @@ function App() {
 
   const dispatch = useDispatch();
   const getCredentialFormLocal = () => {
-
     const credentialStr = localStorage.getItem('credentials');
     if (credentialStr) {
-
       dispatch({
         type: 'FETCH_CREDENTIALS',
         payload: JSON.parse(credentialStr)
@@ -79,7 +77,6 @@ function App() {
 
           </header>
         </div>
-
 
         <Switch>
           {showHomeLayout(routesHome)}
