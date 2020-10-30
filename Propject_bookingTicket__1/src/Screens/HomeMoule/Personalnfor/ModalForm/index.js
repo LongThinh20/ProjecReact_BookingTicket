@@ -3,52 +3,18 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import '../../../../Sass/Components/button_Form.scss';
 import { useDispatch, useSelector } from "react-redux";
-import Swal from 'sweetalert2';
-import Axios from "axios";
 import { update } from "../../../../Redux/Actions/user";
 
 
-export default function ModalForm() {
+
+export default function ModalForm(props) {
     const credentials = useSelector(state => state.user.credentials);
     const { register, errors, handleSubmit } = useForm();
     const dispatch = useDispatch();
 
     const onSubmit = (values) => {
-
         dispatch(update(values, credentials.accessToken));
 
-        Axios({
-            method: "PUT",
-            url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
-            data: values,
-            headers: {
-                'Authorization': `Bearer ${credentials.accessToken}`
-            }
-        }).then(res => {
-            Swal.fire({
-                title: 'Cập nhật thành công !!',
-                icon: 'success',
-                confirmButtonText: 'OK',
-                showCancelButton: false,
-                showCloseButton: true
-            }).then((result) => {
-                if (result) {
-
-                } else {
-
-                }
-            })
-            console.log(res.data);
-        }).catch(err => {
-            Swal.fire({
-                title: 'Cập nhật thất bại  thành công !!',
-                text: `${err.response.data}`,
-                icon: 'error',
-                confirmButtonText: 'OK',
-                showCancelButton: false,
-                showCloseButton: true
-            })
-        })
     }
 
 
@@ -61,7 +27,7 @@ export default function ModalForm() {
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group">
-                    <label htmlFor="hoTen">Họ tên</label>
+                    <label htmlFor="hoTen">Họ tên : </label>
                     <input
                         type="text"
                         name="hoTen"
@@ -70,15 +36,16 @@ export default function ModalForm() {
                             required: "Họ Tên không được rỗng !!"
                         })}
                         className={`form-control ${errors.hoTen ? "is-invalid" : ""}`}
-                        defaultValue={credentials === null ? "" : credentials.hoTen}
+                        defaultValue={credentials === null ? "" : props.lstBooking.hoTen}
 
                     />
                     <p className="invalid-feedback" name="hoTen">{errors.hoTen?.message}</p>
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="taiKhoan">Tài khoản</label>
+                    <label htmlFor="taiKhoan">Tài khoản : </label>
                     <input
+
                         type="text"
                         name="taiKhoan"
                         placeholder="Nhập tài khoản "
@@ -86,30 +53,29 @@ export default function ModalForm() {
                             required: "Tài khoản không được rỗng !!"
                         })}
                         className={`form-control ${errors.taiKhoan ? "is-invalid" : ""}`}
-                        defaultValue={credentials === null ? "" : credentials.taiKhoan}
+                        defaultValue={credentials === null ? "" : props.lstBooking.taiKhoan}
 
                     />
                     <p className="invalid-feedback" name="taiKhoan">{errors.taiKhoan?.message}</p>
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="password">Mật khẩu </label>
+                    <label htmlFor="password">Mật khẩu : </label>
                     <input
-                        name="password"
+                        name="matKhau"
                         type="password"
                         placeholder="Nhập password"
                         ref={register({
                             required: "Mật khẩu không được rỗng !!"
                         })}
-                        className={`form-control ${errors.password ? "is-invalid" : ""}`}
-                        defaultValue="******"
+                        className={`form-control ${errors.matKhau ? "is-invalid" : ""}`}
 
                     />
-                    <p className="invalid-feedback" name="password">{errors.password?.message}</p>
+                    <p className="invalid-feedback" name="matKhau">{errors.matKhau?.message}</p>
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="email">Email : </label>
                     <input
                         name="email"
                         type="email"
@@ -122,12 +88,12 @@ export default function ModalForm() {
                             }
                         })}
                         className={`form-control ${errors.email ? "is-invalid" : ""}`}
-                        defaultValue={credentials === null ? "" : credentials.email}
+                        defaultValue={credentials === null ? "" : props.lstBooking.email}
                     />
                     <p className="invalid-feedback" name="email">{errors.email?.message}</p>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="email">Số điện thoại</label>
+                    <label htmlFor="email">Số điện thoại : </label>
                     <input
                         name="soDT"
                         type="text"
@@ -140,31 +106,31 @@ export default function ModalForm() {
                             }
                         })}
                         className={`form-control ${errors.soDT ? "is-invalid" : ""}`}
-                        defaultValue={credentials === null ? "" : credentials.soDT}
+                        defaultValue={credentials === null ? "" : props.lstBooking.soDT}
                     />
                     <p className="invalid-feedback" name="soDT">{errors.soDT?.message}</p>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="maLoaiNguoiDung">Loại người dùng </label>
+                    <label htmlFor="maLoaiNguoiDung">Loại người dùng : </label>
                     <input
                         name="maLoaiNguoiDung"
                         type="text"
-                        placeholder=""
+                        placeholder="Khách hàng"
                         ref={register}
                         className={`form-control ${errors.maLoaiNguoiDung ? "is-invalid" : ""}  `}
-                        defaultValue={credentials === null ? "" : credentials.maLoaiNguoiDung}
+                        defaultValue="KhachHang"
                     />
 
                 </div>
                 <div className="form-group">
-                    <label htmlFor="email">Mã nhóm</label>
+                    <label htmlFor="email">Mã nhóm : </label>
                     <select
                         name="maNhom"
                         className={`form-control ${errors.maNhom ? "is-invalid" : ""}`}
                         ref={register({
                             required: "Mã không được rỗng !!"
                         })}
-                        defaultValue={credentials === null ? "" : credentials.maNhom}
+                        defaultValue="GP03"
 
                     >
                         <option>GP01</option>

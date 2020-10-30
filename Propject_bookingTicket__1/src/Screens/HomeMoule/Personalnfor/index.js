@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import '../../../Layouts/PersonalInfo.scss';
 import { Avatar } from 'antd';
@@ -7,6 +7,9 @@ import '../../../Sass/Components/text_Orange.scss';
 import '../../../Sass/Components/button_Form.scss';
 import '../../../Sass/Components/text_Form_Title.scss'
 import ModalForm from './ModalForm';
+import moment from "moment";
+import { userService } from '../../../Service';
+
 
 
 
@@ -14,7 +17,26 @@ export default function PersonalInfo() {
 
    const credentials = useSelector(state => state.user.credentials);
 
-   const lstBooking = JSON.parse(localStorage.getItem('thongTinDatVe'));
+   const [lstBooking, setlstBooking] = useState({});
+
+
+
+   let objTaiKhoan = {
+      'taiKhoan': credentials.taiKhoan
+   }
+
+   useEffect(() => {
+      userService.getPersonal(objTaiKhoan)
+         .then(res => {
+            setlstBooking(res.data)
+         })
+         .catch(err => {
+            console.log(err);
+         })
+
+   }, [credentials.taiKhoan])
+
+
 
    return (
       <section className="PersonalInfo">
@@ -31,8 +53,8 @@ export default function PersonalInfo() {
                      <div className="card-body">
                         {
                            credentials !== null ?
-                              <h5 class="card-title">Xin chào <span className="text_Orange">{credentials.hoTen}</span> !!</h5>
-                              : <h5 class="card-title">Xin chào <span className="text_Orange">............</span> !!</h5>
+                              <h5 className="card-title">Xin chào <span className="text_Orange">{lstBooking.hoTen}</span> !!</h5>
+                              : <h5 className="card-title">Xin chào <span className="text_Orange">............</span> !!</h5>
 
                         }
                         <ul className="nav nav-pills mb-3  flex-column" id="pills-tab" role="tablist">
@@ -57,19 +79,19 @@ export default function PersonalInfo() {
                               <tbody>
                                  <tr>
                                     <td className="text_Form_Title left_Info">Tài khoản :</td>
-                                    <td className="text-secondary">{credentials === null ? "" : credentials.taiKhoan}</td>
+                                    <td className="text-secondary">{credentials === null ? "" : lstBooking.taiKhoan}</td>
                                  </tr>
                                  <tr>
                                     <td className="text_Form_Title left_Info">Số điện thoại : </td>
-                                    <td className="text-secondary">{credentials === null ? "" : credentials.soDT}</td>
+                                    <td className="text-secondary">{credentials === null ? "" : lstBooking.soDT}</td>
                                  </tr>
                                  <tr>
                                     <td className="text_Form_Title left_Info">Họ và tên :</td>
-                                    <td className="text-secondary">{credentials === null ? "" : credentials.hoTen}</td>
+                                    <td className="text-secondary">{credentials === null ? "" : lstBooking.hoTen}</td>
                                  </tr>
                                  <tr>
                                     <td className="text_Form_Title left_Info">Email : </td>
-                                    <td className="text-secondary">{credentials === null ? "" : credentials.email}</td>
+                                    <td className="text-secondary">{credentials === null ? "" : lstBooking.email}</td>
                                  </tr>
                               </tbody>
                            </table>
@@ -89,7 +111,7 @@ export default function PersonalInfo() {
                                     </button>
                                  </div>
                                  <div className="modal-body">
-                                    < ModalForm />
+                                    < ModalForm lstBooking={lstBooking} />
                                  </div>
 
                               </div>
@@ -108,43 +130,47 @@ export default function PersonalInfo() {
                                     <th>STT</th>
                                     <th>Tên phim</th>
                                     <th>ID</th>
-                                    <th>Ngày & giờ chiếu </th>
+                                    <th>Ngày & giờ đặt </th>
+                                    <th>Giá</th>
                                     <th>Thông Tin đặt ghế</th>
                                  </tr>
                               </thead>
                               <tbody>
-                                 {credentials === null ? "" :
-                                    lstBooking.map((item, index) => {
+                                 {
+                                    lstBooking.thongTinDatVe?.map((item, index) => {
 
-                                       return (item.taiKhoanNguoiDung === credentials.taiKhoan) ?
-                                          (
-                                             <tr>
-                                                <td className="text-center font-weight-bold">{index + 1}</td>
-                                                <td>{item.lst.tenPhim}</td>
-                                                <td>{item.lst.maLichChieu}</td>
-                                                <td>{item.lst.ngayChieu} - {item.lst.gioChieu}</td>
-                                                <td>
-                                                   <tr className="title_Info">
-                                                      <th>STT</th>
-                                                      <th>Ghế</th>
-                                                      <th>Loại ghế</th>
-                                                      <th>Giá</th>
-                                                   </tr>
-                                                   {item.lst.danhSachVe.map((item, index) => {
-                                                      return (
-                                                         <tr>
-                                                            <td className="font-weight-bold">{index + 1}</td>
-                                                            <td>{item.rowSeat}{item.stt}</td>
-                                                            <td>{item.type === 'Thuong' ? 'Thường' : 'Vip'}</td>
-                                                            <td>{item.price.toLocaleString()} đ</td>
-                                                         </tr>
-                                                      )
-                                                   })}
-                                                </td>
-                                             </tr>
-
-                                          )
-                                          : ("")
+                                       return (
+                                          <tr key={index}>
+                                             <td className="text-center font-weight-bold">{index + 1}</td>
+                                             <td>{item.tenPhim}</td>
+                                             <td>{item.maVe}</td>
+                                             <td>{<span>
+                                                {moment(item.ngayDat).format("DD.MM")} ~{" "}
+                                                <span>
+                                                   {moment(item.ngayDat).format("hh:mm a")}
+                                                </span>
+                                             </span>}</td>
+                                             <td>{item.giaVe.toLocaleString()}</td>
+                                             <td>
+                                                <tr className="title_Info">
+                                                   <th>STT</th>
+                                                   <th>Ghế</th>
+                                                   <th>Rạp</th>
+                                                   <th>Hệ thống rạp</th>
+                                                </tr>
+                                                {item.danhSachGhe.map((item, index) => {
+                                                   return (
+                                                      <tr key={index}>
+                                                         <td className="font-weight-bold">{index + 1}</td>
+                                                         <td>{item.tenGhe}</td>
+                                                         <td>{item.maHeThongRap}</td>
+                                                         <td>{item.tenHeThongRap}</td>
+                                                      </tr>
+                                                   )
+                                                })}
+                                             </td>
+                                          </tr>
+                                       )
 
                                     })
                                  }

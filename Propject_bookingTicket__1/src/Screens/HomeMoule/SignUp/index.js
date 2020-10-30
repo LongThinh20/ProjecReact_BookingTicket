@@ -3,17 +3,37 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { userService } from '../../../Service';
 import { signupUserSchema } from '../../../Service/user';
 import '../../../Layouts/signUp.scss';
-import '../../../Sass/Components/button_Form.scss'
+import '../../../Sass/Components/button_Form.scss';
+import Swal from "sweetalert2";
+
 
 
 class SignUp extends Component {
     _handleSubmit = values => {
+        console.log(values);
         userService.signUp(values)
             .then(res => {
-                console.log(res);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Đăng kí thành công!!',
+                    confirmButtonText: 'OK',
+                }).then((result) => {
+                    if (result) {
+                        window.location.replace("/signIn")
+
+                    }
+                }
+
+                )
+
             })
             .catch(err => {
-                console.log(err);
+                Swal.fire({
+                    icon: 'error',
+                    title: err.response.data,
+                    text: 'Đăng kí không thành công!!',
+                })
+
             })
     }
     render() {
@@ -29,7 +49,7 @@ class SignUp extends Component {
                             email: "",
                             soDt: "",
                             maNhom: "GP03",
-                            maLoaiNguoiDung:"KhachHang",
+                            maLoaiNguoiDung: "KhachHang",
                         }}
                         validationSchema={signupUserSchema}
                         onSubmit={this._handleSubmit

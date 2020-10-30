@@ -22,7 +22,6 @@ export default function SeatList(props) {
     let [danhSachGheDangDat, setDanhSachGheDangDat] = useState([]);
     const dispatch = useDispatch();
 
-  
 
     useEffect(() => {
         showLoader();
@@ -49,7 +48,7 @@ export default function SeatList(props) {
             danhSachGheDangDatUpdate.push(ghe);
         }
         setDanhSachGheDangDat(danhSachGheDangDatUpdate)
-        
+
         dispatch({
             type: 'LSTBOOKING_TO_SEATLST',
             payload: danhSachGheDangDat
@@ -64,8 +63,8 @@ export default function SeatList(props) {
             price: price,
             type: type,
             id: id
-
         }
+
 
         dispatch({
             type: 'CHECK_SEAT_BOOKING',
@@ -77,255 +76,254 @@ export default function SeatList(props) {
     return (
 
         <table style={{ margin: 'auto' }}>
+            <tbody>
+                <tr>
+                    <td className="rowSeat">{A}</td>
+                    <td>
+                        {
 
-            <tr>
-                <td className="rowSeat">{A}</td>
-                <td>
-                    {
+                            lstBookingTicket.danhSachGhe?.slice(0, 16).map((ghe, index) => {
 
-                        lstBookingTicket.danhSachGhe?.slice(0, 16).map((ghe, index) => {
+                                let i = index + 1;
 
-                            let i = index + 1;
+                                let classGheVip = ghe.loaiGhe === 'Vip' ? 'seatVip' : '';
 
-                            let classGheVip = ghe.loaiGhe === 'Vip' ? 'seatVip' : '';
-
-                            let indexGhe = danhSachGheDangDat.findIndex(gheDangDat => gheDangDat.stt === ghe.stt);
-
-
-                            let classGheDangDat = indexGhe !== -1 ? 'seatSelect' : '';
-
-                            return (ghe.daDat ? <button key={index} className=" seatBooking">
-                                X </button>
-                                :
-                                <button key={index} onClick={() => { datGhe(ghe); booking(`${A}`, i, ghe.giaVe, ghe.loaiGhe, ghe.maGhe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
-                                    {i}
-                                </button>)
+                                let indexGhe = danhSachGheDangDat.findIndex(gheDangDat => gheDangDat.stt === ghe.stt);
 
 
+                                let classGheDangDat = indexGhe !== -1 ? 'seatSelect' : '';
 
-                        })
+                                return (ghe.daDat ? <button key={index} className=" seatBooking">
+                                    X </button>
+                                    :
+                                    <button key={index} onClick={() => { datGhe(ghe); booking(`${A}`, i, ghe.giaVe, ghe.loaiGhe, ghe.maGhe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
+                                        {i}
+                                    </button>)
 
-                    }
-                </td>
-            </tr>
-            <tr>
-                <td className="rowSeat">{B}</td>
-                <td>
-                    {
-                        lstBookingTicket.danhSachGhe?.slice(16, 32).map((ghe, index) => {
+                            })
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td className="rowSeat">{B}</td>
+                    <td>
+                        {
+                            lstBookingTicket.danhSachGhe?.slice(16, 32).map((ghe, index) => {
 
-                            let i = index + 1;
+                                let i = index + 1;
 
-                            let classGheVip = ghe.loaiGhe === 'Vip' ? 'seatVip' : '';
+                                let classGheVip = ghe.loaiGhe === 'Vip' ? 'seatVip' : '';
 
-                            let indexGhe = danhSachGheDangDat.findIndex(gheDangDat => gheDangDat.stt === ghe.stt);
+                                let indexGhe = danhSachGheDangDat.findIndex(gheDangDat => gheDangDat.stt === ghe.stt);
 
-                            let classGheDangDat = indexGhe !== -1 ? 'seatSelect' : '';
+                                let classGheDangDat = indexGhe !== -1 ? 'seatSelect' : '';
 
-                            return ghe.daDat ? <button key={index} className=" seatBooking">
-                                X </button>
-                                :
-                                <button key={index} onClick={() => { datGhe(ghe); booking(`${B}`, i, ghe.giaVe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
-                                    {i}
-                                </button>
-                        })
-                    }
-                </td>
-            </tr>
-            <tr>
-                <td className="rowSeat">{C}</td>
-                <td>
-                    {
-                        lstBookingTicket.danhSachGhe?.slice(32, 48).map((ghe, index) => {
+                                return ghe.daDat ? <button key={index} className=" seatBooking">
+                                    X </button>
+                                    :
+                                    <button key={index} onClick={() => { datGhe(ghe); booking(`${B}`, i, ghe.giaVe, ghe.loaiGhe, ghe.maGhe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
+                                        {i}
+                                    </button>
+                            })
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td className="rowSeat">{C}</td>
+                    <td>
+                        {
+                            lstBookingTicket.danhSachGhe?.slice(32, 48).map((ghe, index) => {
 
-                            let i = index + 1;
+                                let i = index + 1;
 
-                            let classGheVip = ghe.loaiGhe === 'Vip' ? 'seatVip' : '';
+                                let classGheVip = ghe.loaiGhe === 'Vip' ? 'seatVip' : '';
 
 
 
-                            let indexGhe = danhSachGheDangDat.findIndex(gheDangDat => gheDangDat.stt === ghe.stt);
+                                let indexGhe = danhSachGheDangDat.findIndex(gheDangDat => gheDangDat.stt === ghe.stt);
 
-                            let classGheDangDat = indexGhe !== -1 ? 'seatSelect' : '';
+                                let classGheDangDat = indexGhe !== -1 ? 'seatSelect' : '';
 
-                            return ghe.daDat ? <button key={index} className=" seatBooking">
-                                X </button>
-                                :
-                                <button key={index} onClick={() => { datGhe(ghe); booking(`${C}`, i, ghe.giaVe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
-                                    {i}
-                                </button>
-                        })
-                    }
-                </td>
-            </tr>
-            <tr>
-                <td className="rowSeat">{D}</td>
-                <td>
-                    {
-                        lstBookingTicket.danhSachGhe?.slice(48, 64).map((ghe, index) => {
+                                return ghe.daDat ? <button key={index} className=" seatBooking">
+                                    X </button>
+                                    :
+                                    <button key={index} onClick={() => { datGhe(ghe); booking(`${C}`, i, ghe.giaVe, ghe.loaiGhe, ghe.maGhe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
+                                        {i}
+                                    </button>
+                            })
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td className="rowSeat">{D}</td>
+                    <td>
+                        {
+                            lstBookingTicket.danhSachGhe?.slice(48, 64).map((ghe, index) => {
 
-                            let i = index + 1;
+                                let i = index + 1;
 
-                            let classGheVip = ghe.loaiGhe === 'Vip' ? 'seatVip' : '';
+                                let classGheVip = ghe.loaiGhe === 'Vip' ? 'seatVip' : '';
 
-                            let indexGhe = danhSachGheDangDat.findIndex(gheDangDat => gheDangDat.stt === ghe.stt);
+                                let indexGhe = danhSachGheDangDat.findIndex(gheDangDat => gheDangDat.stt === ghe.stt);
 
-                            let classGheDangDat = indexGhe !== -1 ? 'seatSelect' : '';
+                                let classGheDangDat = indexGhe !== -1 ? 'seatSelect' : '';
 
-                            return ghe.daDat ? <button key={index} className=" seatBooking">
-                                X </button>
-                                :
-                                <button key={index} onClick={() => { datGhe(ghe); booking(`${D}`, i, ghe.giaVe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
-                                    {i}
-                                </button>
-                        })
-                    }
-                </td>
-            </tr>
-            <tr>
-                <td className="rowSeat">{E}</td>
-                <td>
-                    {
-                        lstBookingTicket.danhSachGhe?.slice(64, 80).map((ghe, index) => {
+                                return ghe.daDat ? <button key={index} className=" seatBooking">
+                                    X </button>
+                                    :
+                                    <button key={index} onClick={() => { datGhe(ghe); booking(`${D}`, i, ghe.giaVe, ghe.loaiGhe, ghe.maGhe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
+                                        {i}
+                                    </button>
+                            })
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td className="rowSeat">{E}</td>
+                    <td>
+                        {
+                            lstBookingTicket.danhSachGhe?.slice(64, 80).map((ghe, index) => {
 
-                            let i = index + 1;
+                                let i = index + 1;
 
-                            let classGheVip = ghe.loaiGhe === 'Vip' ? 'seatVip' : '';
+                                let classGheVip = ghe.loaiGhe === 'Vip' ? 'seatVip' : '';
 
-                            let indexGhe = danhSachGheDangDat.findIndex(gheDangDat => gheDangDat.stt === ghe.stt);
+                                let indexGhe = danhSachGheDangDat.findIndex(gheDangDat => gheDangDat.stt === ghe.stt);
 
-                            let classGheDangDat = indexGhe !== -1 ? 'seatSelect' : '';
+                                let classGheDangDat = indexGhe !== -1 ? 'seatSelect' : '';
 
-                            return ghe.daDat ? <button key={index} className=" seatBooking">
-                                X </button>
-                                :
-                                <button key={index} onClick={() => { datGhe(ghe); booking(`${E}`, i, ghe.giaVe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
-                                    {i}
-                                </button>
-                        })
-                    }
-                </td>
-            </tr>
-            <tr>
-                <td className="rowSeat">{F}</td>
-                <td>
-                    {
-                        lstBookingTicket.danhSachGhe?.slice(80, 96).map((ghe, index) => {
+                                return ghe.daDat ? <button key={index} className=" seatBooking">
+                                    X </button>
+                                    :
+                                    <button key={index} onClick={() => { datGhe(ghe); booking(`${E}`, i, ghe.giaVe, ghe.loaiGhe, ghe.maGhe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
+                                        {i}
+                                    </button>
+                            })
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td className="rowSeat">{F}</td>
+                    <td>
+                        {
+                            lstBookingTicket.danhSachGhe?.slice(80, 96).map((ghe, index) => {
 
-                            let i = index + 1;
+                                let i = index + 1;
 
-                            let classGheVip = ghe.loaiGhe === 'Vip' ? 'seatVip' : '';
+                                let classGheVip = ghe.loaiGhe === 'Vip' ? 'seatVip' : '';
 
-                            let indexGhe = danhSachGheDangDat.findIndex(gheDangDat => gheDangDat.stt === ghe.stt);
+                                let indexGhe = danhSachGheDangDat.findIndex(gheDangDat => gheDangDat.stt === ghe.stt);
 
-                            let classGheDangDat = indexGhe !== -1 ? 'seatSelect' : '';
+                                let classGheDangDat = indexGhe !== -1 ? 'seatSelect' : '';
 
-                            return ghe.daDat ? <button key={index} className=" seatBooking">
-                                X </button>
-                                :
-                                <button key={index} onClick={() => { datGhe(ghe); booking(`${F}`, i, ghe.giaVe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
-                                    {i}
-                                </button>
-                        })
-                    }
-                </td>
-            </tr>
-            <tr>
-                <td className="rowSeat">{G}</td>
-                <td>
-                    {
-                        lstBookingTicket.danhSachGhe?.slice(96, 112).map((ghe, index) => {
+                                return ghe.daDat ? <button key={index} className=" seatBooking">
+                                    X </button>
+                                    :
+                                    <button key={index} onClick={() => { datGhe(ghe); booking(`${F}`, i, ghe.giaVe, ghe.loaiGhe, ghe.maGhe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
+                                        {i}
+                                    </button>
+                            })
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td className="rowSeat">{G}</td>
+                    <td>
+                        {
+                            lstBookingTicket.danhSachGhe?.slice(96, 112).map((ghe, index) => {
 
-                            let classGheVip = ghe.loaiGhe === 'Vip' ? 'seatVip' : '';
+                                let i = index + 1;
 
+                                let classGheVip = ghe.loaiGhe === 'Vip' ? 'seatVip' : '';
 
+                                let indexGhe = danhSachGheDangDat.findIndex(gheDangDat => gheDangDat.stt === ghe.stt);
 
-                            let indexGhe = danhSachGheDangDat.findIndex(gheDangDat => gheDangDat.stt === ghe.stt);
+                                let classGheDangDat = indexGhe !== -1 ? 'seatSelect' : '';
 
-                            let classGheDangDat = indexGhe !== -1 ? 'seatSelect' : '';
+                                return ghe.daDat ? <button key={index} className=" seatBooking">
+                                    X </button>
+                                    :
+                                    <button key={index} onClick={() => { datGhe(ghe); booking(`${G}`, i, ghe.giaVe, ghe.loaiGhe, ghe.maGhe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
+                                        {i}
+                                    </button>
+                            })
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td className="rowSeat">{H}</td>
+                    <td>
+                        {
+                            lstBookingTicket.danhSachGhe?.slice(112, 128).map((ghe, index) => {
 
-                            return ghe.daDat ? <button key={index} className=" seatBooking">
-                                X </button>
-                                :
-                                <button key={index} onClick={() => { datGhe(ghe); booking(`${G}`, ghe.stt, ghe.giaVe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
-                                    {ghe.stt}
-                                </button>
-                        })
-                    }
-                </td>
-            </tr>
-            <tr>
-                <td className="rowSeat">{H}</td>
-                <td>
-                    {
-                        lstBookingTicket.danhSachGhe?.slice(112, 128).map((ghe, index) => {
+                                let i = index + 1;
 
-                            let classGheVip = ghe.loaiGhe === 'Vip' ? 'seatVip' : '';
-
-
-
-                            let indexGhe = danhSachGheDangDat.findIndex(gheDangDat => gheDangDat.stt === ghe.stt);
-
-                            let classGheDangDat = indexGhe !== -1 ? 'seatSelect' : '';
-
-                            return ghe.daDat ? <button key={index} className=" seatBooking">
-                                X </button>
-                                :
-                                <button key={index} onClick={() => { datGhe(ghe); booking(`${H}`, ghe.stt, ghe.giaVe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
-                                    {ghe.stt}
-                                </button>
-                        })
-                    }
-                </td>
-            </tr>
-            <tr>
-                <td className="rowSeat">{I}</td>
-                <td>
-                    {
-                        lstBookingTicket.danhSachGhe?.slice(128, 144).map((ghe, index) => {
-
-                            let classGheVip = ghe.loaiGhe === 'Vip' ? 'seatVip' : '';
+                                let classGheVip = ghe.loaiGhe === 'Vip' ? 'seatVip' : '';
 
 
+                                let indexGhe = danhSachGheDangDat.findIndex(gheDangDat => gheDangDat.stt === ghe.stt);
 
-                            let indexGhe = danhSachGheDangDat.findIndex(gheDangDat => gheDangDat.stt === ghe.stt);
-                            let classGheDangDat = indexGhe !== -1 ? 'seatSelect' : '';
+                                let classGheDangDat = indexGhe !== -1 ? 'seatSelect' : '';
 
-                            return ghe.daDat ? <button key={index} className=" seatBooking">
-                                X </button>
-                                :
-                                <button key={index} onClick={() => { datGhe(ghe); booking(`${I}`, ghe.stt, ghe.giaVe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
-                                    {ghe.stt}
-                                </button>
-                        })
-                    }
-                </td>
-            </tr>
-            <tr>
-                <td className="rowSeat">{J}</td>
-                <td>
-                    {
-                        lstBookingTicket.danhSachGhe?.slice(144, 160).map((ghe, index) => {
+                                return ghe.daDat ? <button key={index} className=" seatBooking">
+                                    X </button>
+                                    :
+                                    <button key={index} onClick={() => { datGhe(ghe); booking(`${H}`, i, ghe.giaVe, ghe.loaiGhe, ghe.maGhe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
+                                        {i}
+                                    </button>
+                            })
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td className="rowSeat">{I}</td>
+                    <td>
+                        {
+                            lstBookingTicket.danhSachGhe?.slice(128, 144).map((ghe, index) => {
 
-                            let classGheVip = ghe.loaiGhe === 'Vip' ? 'seatVip' : '';
+                                let i = index + 1;
+                                let classGheVip = ghe.loaiGhe === 'Vip' ? 'seatVip' : '';
 
 
+                                let indexGhe = danhSachGheDangDat.findIndex(gheDangDat => gheDangDat.stt === ghe.stt);
+                                let classGheDangDat = indexGhe !== -1 ? 'seatSelect' : '';
 
-                            let indexGhe = danhSachGheDangDat.findIndex(gheDangDat => gheDangDat.stt === ghe.stt);
+                                return ghe.daDat ? <button key={index} className=" seatBooking">
+                                    X </button>
+                                    :
+                                    <button key={index} onClick={() => { datGhe(ghe); booking(`${I}`, i, ghe.giaVe, ghe.loaiGhe, ghe.maGhe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
+                                        {i}
+                                    </button>
+                            })
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td className="rowSeat">{J}</td>
+                    <td>
+                        {
+                            lstBookingTicket.danhSachGhe?.slice(144, 160).map((ghe, index) => {
 
-                            let classGheDangDat = indexGhe !== -1 ? 'seatSelect' : '';
+                                let i = index + 1;
+                                let classGheVip = ghe.loaiGhe === 'Vip' ? 'seatVip' : '';
 
-                            return ghe.daDat ? <button key={index} className=" seatBooking">
-                                X </button>
-                                :
-                                <button key={index} onClick={() => { datGhe(ghe); booking(`${J}`, ghe.stt, ghe.giaVe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
-                                    {ghe.stt}
-                                </button>
-                        })
-                    }
-                </td>
-            </tr>
-            {loader}
+
+                                let indexGhe = danhSachGheDangDat.findIndex(gheDangDat => gheDangDat.stt === ghe.stt);
+
+                                let classGheDangDat = indexGhe !== -1 ? 'seatSelect' : '';
+
+                                return ghe.daDat ? <button key={index} className=" seatBooking">
+                                    X </button>
+                                    :
+                                    <button key={index} onClick={() => { datGhe(ghe); booking(`${J}`, i, ghe.giaVe, ghe.loaiGhe, ghe.maGhe) }} className={` seat ${classGheDangDat}  ${classGheVip} `}>
+                                        {i}
+                                    </button>
+                            })
+                        }
+                    </td>
+                </tr>
+                {loader}
+            </tbody>
         </table>
 
 

@@ -1,59 +1,59 @@
 import Axios from 'axios';
+import {domain} from '../Config/config'
 
 class MovieService {
     fetchMovie() {
         return Axios({
             method: 'GET',
-            url: 'https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP03',
+            url: `${domain}/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP03`,
         })
     }
 
     fetchMovieDetail(id) {
         return Axios({
             method: "GET",
-            url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`
+            url: `${domain}/api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`
         })
     }
 
     fetchCinema() {
         return Axios({
             method: "GET",
-            url: 'https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinHeThongRap'
+            url: `${domain}/api/QuanLyRap/LayThongTinHeThongRap`
         })
     }
 
     fetchCinemaGroup(id) {
         return Axios({
             method: "GET",
-            url: `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${id}`
+            url: `${domain}/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${id}`
         })
     }
     fetchShowtimeToCinemaGroup(id) {
         return Axios({
             method: "GET",
-            url: `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${id}&maNhom=GP03`
+            url: `${domain}/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${id}&maNhom=GP03`
         })
     }
 
     fetchShowtimeToIdMovie(id) {
         return Axios({
             method: "GET",
-            url: `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}
-            `
+            url: `${domain}/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`
         })
     }
 
     fetchBookingTicket(id) {
         return Axios({
             method: "GET",
-            url: `https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${id}`
+            url: `${domain}/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${id}`
         })
     }
 
     booking(data, token) {
         return Axios({
             method: "POST",
-            url: `https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/DatVe`,
+            url: `${domain}/api/QuanLyDatVe/DatVe`,
             data: data,
             headers: {
                 'Authorization': `Bearer ${token}`

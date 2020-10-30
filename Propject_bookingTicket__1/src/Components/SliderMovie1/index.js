@@ -15,7 +15,6 @@ export default function SliderMovie1(props) {
         slidesToShow: 4,
         slidesToScroll: 3,
         rows: 2,
-        // slidesPerRow: 2,
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />,
         responsive: [
@@ -104,7 +103,7 @@ export default function SliderMovie1(props) {
                         {
                             Object.entries(movieList).map(([index, item]) =>
                                 (
-                                    <SliderItemsOnShow item={item} index={index} />
+                                    <SliderItemsOnShow item={item} key={index} />
                                 )
                             )
                         }
@@ -115,7 +114,7 @@ export default function SliderMovie1(props) {
                         {
                             Object.entries(movieList).map(([index, item]) =>
                                 (
-                                    <SilderItemsComingSoon item={item} />
+                                    <SilderItemsComingSoon item={item} key={index} />
                                 )
 
 

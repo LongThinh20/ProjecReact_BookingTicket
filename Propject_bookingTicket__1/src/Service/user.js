@@ -1,6 +1,6 @@
 import Axios from 'axios';
-
 import * as yup from 'yup';
+import { domain } from '../Config/config'
 
 
 
@@ -34,7 +34,7 @@ class UserService {
     signUp(data) {
         return Axios({
             method: "POST",
-            url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangKy",
+            url: `${domain}/api/QuanLyNguoiDung/DangKy`,
             data: data
         })
     }
@@ -42,7 +42,7 @@ class UserService {
     signIn(user) {
         return Axios({
             method: "POST",
-            url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap",
+            url: `${domain}/api/QuanLyNguoiDung/DangNhap`,
             data: user
         })
     }
@@ -50,7 +50,7 @@ class UserService {
     getInfo() {
         return Axios({
             method: "GET",
-            url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP03",
+            url: `${domain}/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP03`,
 
         })
     }
@@ -58,7 +58,7 @@ class UserService {
     upDateInfo(user, accessToken) {
         return Axios({
             method: "PUT",
-            url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
+            url: `${domain}/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
             data: user,
             headers: {
                 'Authorization': `Bearer ${accessToken}`
@@ -69,13 +69,22 @@ class UserService {
     dedeteUser(user, accessToken) {
         return Axios({
             method: "DELETE",
-            url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${user}`,
+            url: `${domain}/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${user}`,
             data: user,
             headers: {
                 'Authorization': `Bearer ${accessToken}`
             }
         })
     }
+
+    getPersonal(user) {
+        return Axios({
+            method: "POST",
+            url: `${domain}/api/QuanLyNguoiDung/ThongTinTaiKhoan`,
+            data: user,
+        })
+    }
+
 
 }
 

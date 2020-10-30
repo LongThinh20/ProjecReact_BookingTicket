@@ -17,7 +17,6 @@ export default function PayList(props) {
   let lstSeatBooking = useSelector((state) => state.movie.lstSeatBooking);
   let [lstBookingTicket, setlstBookingTicket] = useState({});
   const user = useSelector((state) => state.user.credentials);
-  const dispatch = useDispatch();
   const objBooking = useSelector(state => state.movie.objBooking)
 
 
@@ -39,7 +38,7 @@ export default function PayList(props) {
   }, [JSON.stringify(lstBookingTicket)]);
 
 
-  const checkPay = (tenPhim, maLichChieu, ngayChieu, gioChieu) => {
+  const checkPay = (maLichChieu) => {
     if (check) {
       Swal.fire({
         title: "Bạn có chắc muốn thanh toán không",
@@ -49,7 +48,7 @@ export default function PayList(props) {
         cancelButtonColor: "#d33",
         confirmButtonText: "THANH TOÁN",
       }).then((result) => {
-        datVe(tenPhim, maLichChieu, ngayChieu, gioChieu)
+        datVe(maLichChieu)
       })
 
 
@@ -61,21 +60,10 @@ export default function PayList(props) {
     }
   };
 
-  const datVe = (tenPhim, maLichChieu, ngayChieu, gioChieu) => {
+  const datVe = (maLichChieu) => {
     let taiKhoan = JSON.parse(localStorage.getItem("credentials")).taiKhoan;
     let accessToken = JSON.parse(localStorage.getItem("credentials")).accessToken;
 
-
-    let objectDatVe = {
-      'taiKhoanNguoiDung': taiKhoan,
-      'lst': {
-        'tenPhim': tenPhim,
-        'maLichChieu': maLichChieu,
-        'danhSachVe': lstSeatBooking,
-        'gioChieu': gioChieu,
-        'ngayChieu': ngayChieu
-      }
-    };
 
     let lstBooking = {
       'maLichChieu': maLichChieu,
@@ -102,10 +90,6 @@ export default function PayList(props) {
       })
 
 
-    dispatch({
-      type: 'ADD_MOVIEBOOKING_INFO_PROM_PAYLIST',
-      payload: objectDatVe
-    })
 
   };
 
@@ -268,7 +252,7 @@ export default function PayList(props) {
         <div className="card-foot">
           {Object.entries(lstBookingTicket).slice(0, 1).map(([index, item]) => {
             // console.log(item.tenPhim)
-            return (<button onClick={() => { checkPay(item.tenPhim, item.maLichChieu, item.ngayChieu, item.gioChieu) }} className="button_Form bookingEdit" > Đặt Vé </button>)
+            return (<button onClick={() => { checkPay( item.maLichChieu) }} className="button_Form bookingEdit" > Đặt Vé </button>)
           })}
 
         </div>

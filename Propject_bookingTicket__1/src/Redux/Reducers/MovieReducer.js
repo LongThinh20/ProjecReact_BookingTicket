@@ -1,4 +1,4 @@
-import { FETCH_CINEMA, FETCH_CINEMA_GROUP, FETCH_MOVIE, FETCH_MOVIE_DETAIL } from "../Actions/type";
+import { LSTBOOKING_TO_SEATLST, CHANGE_ID, FETCH_CINEMA, FETCH_CINEMA_GROUP, FETCH_MOVIE, FETCH_MOVIE_DETAIL, LST_MOVIE, CHECK_SEAT_BOOKING } from "../Actions/type";
 
 
 let initialState = {
@@ -37,17 +37,17 @@ const MovieReducer = (state = initialState, action) => {
 
             return { ...state }
         }
-        case 'CHANGE_ID': {
+        case CHANGE_ID: {
 
             state.maHeThongRap = action.payload;
             return { ...state }
         }
-        case 'LST_MOVIE': {
+        case LST_MOVIE: {
 
             state.lstMovie = action.payload;
             return { ...state }
         }
-        case 'CHECK_SEAT_BOOKING': {
+        case CHECK_SEAT_BOOKING: {
 
             let lstSeatBookingUpdate = [...state.lstSeatBooking];
             let index = lstSeatBookingUpdate.findIndex(gheDangDat => (gheDangDat.stt === action.payload.stt) && (gheDangDat.rowSeat === action.payload.rowSeat));
@@ -60,23 +60,7 @@ const MovieReducer = (state = initialState, action) => {
 
             return { ...state }
         }
-        case 'ADD_MOVIEBOOKING_INFO_PROM_PAYLIST': {
-            console.log(action.payload);
-            let lstInfoMovieBookingUpdate = [...state.lstInfoMovieBooking];
-
-            lstInfoMovieBookingUpdate.push(action.payload);
-
-            state.lstInfoMovieBooking = lstInfoMovieBookingUpdate;
-
-            if (typeof (Storage) !== 'undefined') {
-                localStorage.setItem("thongTinDatVe", JSON.stringify(state.lstInfoMovieBooking));
-            } else {
-                alert('Trình duyệt của bạn không hỗ trợ localStorage. Hãy nâng cấp trình duyệt để sử dụng!')
-            }
-
-            return { ...state }
-        }
-        case 'LSTBOOKING_TO_SEATLST': {
+        case LSTBOOKING_TO_SEATLST: {
             state.objBooking = action.payload;
             return { ...state }
         }

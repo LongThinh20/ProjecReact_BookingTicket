@@ -49,9 +49,6 @@
 }
 
 @media screen and (max-width: 992px) {
-  .movieCarousel #movieSlider .carousel-indicators {
-    padding-bottom: 50px;
-  }
   .movieCarousel #movieSlider .carousel-indicators li {
     width: 10px;
     height: 10px;

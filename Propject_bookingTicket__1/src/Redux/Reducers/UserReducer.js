@@ -1,5 +1,5 @@
 
-import { FETCH_CREDENTIALS } from "../Actions/type";
+import { DELETE_ACCOUNT, FETCH_CREDENTIALS } from "../Actions/type";
 
 let initialState = {
     credentials: [],
@@ -12,11 +12,8 @@ const UserReducer = (state = initialState, action) => {
             state.credentials = action.payload;
             return { ...state }
         }
-        case 'DELETE_ACCOUNT': {
-            state.credentials = null;
-            return { ...state }
-        }
-     
+      
+
         default:
             return state
     }

@@ -20,7 +20,11 @@ export const login = (user) => {
                         window.location.replace("/");
                     })
 
-                localStorage.setItem('credentials', JSON.stringify(res.data))
+                if (typeof (Storage) !== 'undefined') {
+                    localStorage.setItem('credentials', JSON.stringify(res.data))
+                } else {
+                    alert('Trình duyệt của bạn không hỗ trợ localStorage. Hãy nâng cấp trình duyệt để sử dụng!');
+                }
 
                 // localStorage.setItem('token', res.data.accessToken);
 
@@ -59,13 +63,9 @@ export const update = (user, credentials) => {
                     showCancelButton: false,
                     showCloseButton: true
                 }).then((result) => {
-                    if (result) {
-
-                    } else {
-
-                    }
+                    console.log(res.data);
+                    window.location.replace("/");
                 })
-                console.log(res.data);
             }).catch(err => {
                 Swal.fire({
                     title: 'Cập nhật thất bại  thành công !!',

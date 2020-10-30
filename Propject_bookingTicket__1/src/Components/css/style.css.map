@@ -1,8 +1,8 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,eAAe,CAAC;EACZ,YAAY,EAAE,GAAG;EACjB,MAAM,EAAE,MAAM;CACf;;CAED,AAAA,AAAA,KAAC,EAAO,UAAU,AAAjB,EAAmB,eAAe,CAAC;EAClC,aAAa,EAAE,GAAG;EAClB,YAAY,EAAE,CAAC;CAChB",
+    "mappings": "",
     "sources": [
-        "../Demo/style.scss"
+        "../NavbarAdmin/style.scss"
     ],
     "names": [],
     "file": "style.css"

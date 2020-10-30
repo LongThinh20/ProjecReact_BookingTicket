@@ -13,20 +13,17 @@ export default function Header1(props) {
 
     const isTopOfPage = useScrollTop();
 
-    const dispatch = useDispatch();
 
-   
 
     const handleSignOut = () => {
-        dispatch({
-            type: 'DELETE_ACCOUNT'
-        });
         if (typeof (Storage) !== 'undefined') {
-            localStorage.setItem('credentials', null);
+            // localStorage.setItem('credentials', null);
+            localStorage.removeItem('credentials')
+            window.location.replace("/")
+
         } else {
             alert('Trình duyệt của bạn không hỗ trợ localStorage. Hãy nâng cấp trình duyệt để sử dụng!');
         }
-
     }
     const checkSignOut = () => {
         Swal.fire({
@@ -41,9 +38,12 @@ export default function Header1(props) {
             if (result.isConfirmed) {
                 Swal.fire(
                     'Đăng xuất thành công !',
-                    // window.location.reload()
-                )
-                handleSignOut()
+                ).then((result) => {
+                    if (result) {
+                        handleSignOut()
+                    }
+                })
+
             }
         })
     }
