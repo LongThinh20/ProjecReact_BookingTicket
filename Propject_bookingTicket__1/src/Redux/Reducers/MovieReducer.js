@@ -48,7 +48,6 @@ const MovieReducer = (state = initialState, action) => {
             return { ...state }
         }
         case CHECK_SEAT_BOOKING: {
-
             let lstSeatBookingUpdate = [...state.lstSeatBooking];
             let index = lstSeatBookingUpdate.findIndex(gheDangDat => (gheDangDat.stt === action.payload.stt) && (gheDangDat.rowSeat === action.payload.rowSeat));
             if (index !== -1) {

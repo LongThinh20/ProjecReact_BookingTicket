@@ -22,7 +22,7 @@
 }
 
 .movieCarousel #movieSlider .carousel-inner .img-1 {
-  background-image: url(../img/panel-3.jpg);
+  background-image: url(../img/panel_3.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -65,7 +65,7 @@
     height: 600px;
   }
   .movieCarousel #movieSlider .carousel-inner .img-1 {
-    background-image: url(../img/panel-3.jpg);
+    background-image: url(../img/panel_3.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;

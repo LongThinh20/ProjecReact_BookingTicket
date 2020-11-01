@@ -1,176 +1,288 @@
-// import React, { useState } from 'react';
-// import { Table, Input, InputNumber, Popconfirm, Form } from 'antd';
-// const originData = [];
+import React, { useEffect, useState } from 'react';
+import { Input, InputNumber, Table, Image, Form } from 'antd';
+import { movieService, userService } from '../../../Service';
+import { useForm } from "react-hook-form";
+import '../../../Sass/Components/button_Form.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import ModalFormAddMovie from './ModalFormAddMovie';
+import ModalFormEditUser from './ModalFormEditUser';
 
-// for (let i = 0; i < 100; i++) {
-//     originData.push({
-//         key: i.toString(),
-//         name: `Edrward ${i}`,
-//         age: 32,
-//         address: `London Park no. ${i}`,
-//     });
-// }
+import '../../../Layouts/userManager.scss'
+import Axios from 'axios';
+import swal from 'sweetalert';
+import DatePicker from "react-datepicker";
 
-// const EditableCell = ({
-//     editing,
-//     dataIndex,
-//     title,
-//     inputType,
-//     record,
-//     index,
-//     children,
-//     ...restProps
-// }) => {
-//     const inputNode = inputType === 'number' ? <InputNumber /> : <Input />;
-//     return (
-//         <td {...restProps}>
-//             {editing ? (
-//                 <Form.Item
-//                     name={dataIndex}
-//                     style={{
-//                         margin: 0,
-//                     }}
-//                     rules={[
-//                         {
-//                             required: true,
-//                             message: `Please Input ${title}!`,
-//                         },
-//                     ]}
-//                 >
-//                     {inputNode}
-//                 </Form.Item>
-//             ) : (
-//                     children
-//                 )}
-//         </td>
-//     );
-// };
-// // ////////////////////////////////////
-// export default function MovieManager() {
-//     const [form] = Form.useForm();
-//     const [data, setData] = useState(originData);
-//     const [editingKey, setEditingKey] = useState('');
 
-//     const isEditing = (record) => record.key === editingKey;
 
-//     const edit = (record) => {
-//         form.setFieldsValue({
-//             name: '',
-//             age: '',
-//             address: '',
-//             ...record,
-//         });
-//         setEditingKey(record.key);
-//     };
+export default function MovieManager() {
 
-//     const cancel = () => {
-//         setEditingKey('');
-//     };
+    const [DeleteAccount, setDeleteAccount] = useState({});
+    const [movie, setmovie] = useState({});
+    const [objEdit, setobjEdit] = useState({});
 
-//     const save = async (key) => {
-//         try {
-//             const row = await form.validateFields();
-//             const newData = [...data];
-//             const index = newData.findIndex((item) => key === item.key);
+    const credentials = useSelector(state => state.user.credentials)
 
-//             if (index > -1) {
-//                 const item = newData[index];
-//                 newData.splice(index, 1, { ...item, ...row });
-//                 setData(newData);
-//                 setEditingKey('');
-//             } else {
-//                 newData.push(row);
-//                 setData(newData);
-//                 setEditingKey('');
-//             }
-//         } catch (errInfo) {
-//             console.log('Validate Failed:', errInfo);
-//         }
-//     };
+    useEffect(() => {
+        movieService.fetchMovie()
+            .then(res => {
+                let lstMovie = res.data;
+                setmovie(lstMovie);
+            })
+            .catch(err => {
+                console.log(err.reponse.data);
+            })
+    }, [])
 
-//     const columns = [
-//         {
-//             title: 'name',
-//             dataIndex: 'name',
-//             width: '25%',
-//             editable: true,
-//         },
-//         {
-//             title: 'age',
-//             dataIndex: 'age',
-//             width: '15%',
-//             editable: true,
-//         },
-//         {
-//             title: 'address',
-//             dataIndex: 'address',
-//             width: '40%',
-//             editable: true,
-//         },
-//         {
-//             title: 'operation',
-//             dataIndex: 'operation',
-//             render: (_, record) => {
-//                 const editable = isEditing(record);
-//                 return editable ? (
-//                     <span>
-//                         <a
-//                             href="javascript:;"
-//                             onClick={() => save(record.key)}
-//                             style={{
-//                                 marginRight: 8,
-//                             }}
-//                         >
-//                             Save
-//             </a>
-//                         <Popconfirm title="Sure to cancel?" onConfirm={cancel}>
-//                             <a>Cancel</a>
-//                         </Popconfirm>
-//                     </span>
-//                 ) : (
-//                         <a disabled={editingKey !== ''} onClick={() => edit(record)}>
-//                             Edit
-//                         </a>
-//                     );
-//             },
-//         },
-//     ];
-//     const mergedColumns = columns.map((col) => {
-//         if (!col.editable) {
-//             return col;
-//         }
+    const handleDelete = (acc, pass) => {
+        let account = {
+            taiKhoan: acc,
+            matKhau: pass
+        }
 
-//         return {
-//             ...col,
-//             onCell: (record) => ({
-//                 record,
-//                 inputType: col.dataIndex === 'age' ? 'number' : 'text',
-//                 dataIndex: col.dataIndex,
-//                 title: col.title,
-//                 editing: isEditing(record),
-//             }),
-//         };
-//     });
-//     return (
-//         <div className="container">
-//             <Form form={form} component={false}>
-//                 <Table
-//                     scroll={{ x: 1500, y: 800 }}
-//                     components={{
-//                         body: {
-//                             cell: EditableCell,
-//                         },
-//                     }}
-//                     bordered
-//                     dataSource={data}
-//                     columns={mergedColumns}
-//                     rowClassName="editable-row"
-//                     pagination={{
-//                         onChange: cancel,
-//                     }}
-//                 />
-//             </Form>
-//         </div>
-//     );
-// };
 
+        userService.signIn(account)
+            .then(res => {
+                setDeleteAccount(res.data)
+
+                Axios({
+                    method: "DELETE",
+                    url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${DeleteAccount.taiKhoan}`,
+                    data: DeleteAccount.taiKhoan,
+                    headers: {
+                        'Authorization': `Bearer ${credentials.accessToken}`
+                    }
+                })
+                    .then(res => {
+                        swal({
+                            title: res.data,
+                            icon: "success",
+                            button: "OK",
+                        })
+                            .then((result) => {
+                                if (result) {
+                                    window.location.reload()
+                                }
+                            }
+                            )
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+
+            })
+            .catch(err => {
+                console.log(err.reponse.data);
+            })
+    }
+
+    const handleSearch = (e) => {
+        Axios({
+            method: 'GET',
+            url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=GP03&tuKhoa=${e}`
+        })
+            .then(res => {
+                let lstUserUpdate = res.data;
+
+                setmovie(lstUserUpdate)
+            })
+            .catch(err => {
+                console.log(err.reponse.data);
+            })
+    }
+
+    const handleEdit = (e) => {
+        let obj = {
+            'taiKhoan': e.taiKhoan,
+            'hoTen': e.hoTen,
+            'matKhau': e.matKhau,
+            'email': e.email,
+            'soDT': e.soDT,
+            'maLoaiNguoiDung': e.maLoaiNguoiDung,
+            'maNhom': 'GP03'
+        }
+        setobjEdit(obj)
+    }
+
+    const columns = [
+        {
+            title: 'STT',
+            width: 40,
+            dataIndex: 'stt',
+            key: '1',
+            fixed: 'left',
+        },
+        {
+            title: 'Mã phim',
+            width: 50,
+            dataIndex: 'maPhim',
+            key: '1',
+            fixed: 'left',
+        },
+        {
+            title: 'Tên phim',
+            width: 80,
+            dataIndex: 'tenPhim',
+            key: '2',
+            fixed: 'left',
+        },
+        {
+            title: 'Bí danh ',
+            dataIndex: 'biDanh',
+            key: '3',
+            width: 80,
+        },
+        {
+            title: 'Trailer',
+            dataIndex: 'trailer',
+            key: '4',
+            fixed: 'center',
+            width: 250,
+            render: (_, record) => <iframe width="360" height="215" src={record.trailer} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        },
+        {
+            title: 'Hình ảnh',
+            dataIndex: 'hinhAnh',
+            key: '5',
+            width: 200,
+            fixed: 'center',
+            render: (_, record) => <Image src={record.hinhAnh} width={200} />
+        },
+        {
+            title: 'Mô tả',
+            dataIndex: 'moTa',
+            key: '6',
+            width: 150,
+        },
+        {
+            title: 'Mã Nhóm ',
+            dataIndex: 'maNhom',
+            key: '7',
+            width: 50,
+        },
+        {
+            title: 'Ngày khởi chiếu ',
+            dataIndex: 'ngayKhoiChieu',
+            key: '8',
+            width: 100,
+        },
+        {
+            title: 'Đánh giá',
+            dataIndex: 'danhGia',
+            key: '9',
+            width: 50,
+        },
+        {
+            title: 'Action',
+            key: 'operation',
+            fixed: 'center',
+            width: 100,
+            render: (_, record) =>
+                <div>
+                    <button
+                        className="btn btn-danger mr-2"
+                        onClick={() => { handleDelete(record.taiKhoan, record.matKhau) }}>XÓA</button>
+                    <button
+                        className="btn btn-warning"
+                        data-toggle="modal" data-target="#modalEditUser"
+                        onClick={() => { handleEdit(record) }}
+                    >SỬA</button>
+                </div>
+            ,
+        },
+    ];
+
+
+    const data = [];
+
+    Object.entries(movie).map(([index, item]) => {
+        return (data.push({
+            key: index.toString(),
+            stt: (Number(index) + 1),
+            maPhim: item.maPhim,
+            tenPhim: item.tenPhim,
+            biDanh: item.biDanh,
+            trailer: item.trailer,
+            hinhAnh: item.hinhAnh,
+            moTa: item.moTa,
+            ngayKhoiChieu: item.ngayKhoiChieu,
+            maNhom: item.maNhom,
+            danhGia: item.danhGia
+
+
+        })
+        )
+    })
+
+    const { register, errors, handleSubmit } = useForm();
+
+    const onSubmit = (values) => { console.log(values); }
+
+
+
+    return (
+        <section className="userManager">
+            <div className="container-fluid">
+
+                <div className="row mt-4">
+                    <div className="col"><h1>Danh sách phim </h1></div>
+                    <div className="col-3 text-right">
+                        <button type="button" className="btn  button_Form" data-toggle="modal" data-target="#modalAddMovie">THÊM PHIM</button>
+                    </div>
+
+                </div>
+
+                <Table
+                    columns={columns}
+                    dataSource={data}
+                    scroll={{ x: 1500, y: 600 }}
+
+                />
+
+                <div>
+
+                    <div className="modal fade" id="modalAddMovie" tabIndex={-1} role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                        <div className="modal-dialog" role="document">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div className="modal-body">
+                                    <ModalFormAddMovie />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div>
+                    <div className="modal fade" id="modalEditUser" tabIndex={-1} role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                        <div className="modal-dialog" role="document">
+                            <div className="modal-content">
+                                <div className="modal-header">
+
+                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div className="modal-body">
+                                    <ModalFormEditUser objEdit={objEdit} />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+        </section>
+    )
+
+}

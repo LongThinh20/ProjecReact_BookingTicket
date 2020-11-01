@@ -23,17 +23,12 @@ export default function DetailMovie1(props) {
 
 
    useEffect(() => {
-
       showLoader();
-
       movieService.fetchMovieDetail(param.Id)
          .then(res => {
-
             hideLoader();
-
             let lstdetailMovie = res.data;
             setlstmovieDetail(lstdetailMovie)
-
          })
          .catch(err => {
             console.log(err.response.data)

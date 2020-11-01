@@ -170,7 +170,12 @@
   }
   .PersonalInfo .history_Info table {
     background-color: #f8b85d;
+    text-align: center;
     border-radius: 5px;
+  }
+  .PersonalInfo .history_Info table th {
+    padding-left: 5px;
+    padding-right: 5px;
   }
   .PersonalInfo .history_Info table td {
     color: white;

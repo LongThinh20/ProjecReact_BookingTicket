@@ -13,11 +13,8 @@ export default function Header1(props) {
 
     const isTopOfPage = useScrollTop();
 
-
-
     const handleSignOut = () => {
         if (typeof (Storage) !== 'undefined') {
-            // localStorage.setItem('credentials', null);
             localStorage.removeItem('credentials')
             window.location.replace("/")
 
@@ -43,7 +40,6 @@ export default function Header1(props) {
                         handleSignOut()
                     }
                 })
-
             }
         })
     }
@@ -69,13 +65,20 @@ export default function Header1(props) {
                             }
                         </div>
                         {
-                            credentials !== null ?
-                                (<div className="dropdown-menu">
-                                    <a className="acount_logout dropdown-item" href="/info">Thông tin cá nhân</a>
-                                </div>)
-                                : (<div className="dropdown-menu ">
-                                    <a className="acount_logout dropdown-item  disabled" href="/info">Thông tin cá nhân</a>
-                                </div>)
+
+                            credentials == null
+                                ? <div className="dropdown-menu">
+                                    <a className="acount_logout dropdown-item" disabled href="/">Thông tin cá nhân</a>
+                                </div>
+                                : (credentials.maLoaiNguoiDung === 'QuanTri'
+                                    ? <div className="dropdown-menu ">
+                                        <a className="acount_logout dropdown-item " href="/admin">DashBoard</a>
+                                    </div>
+                                    : <div className="dropdown-menu ">
+                                        <a className="acount_logout dropdown-item " href="/info">Thông tin cá nhân </a>
+                                    </div>
+                                )
+
                         }
 
                     </div>
