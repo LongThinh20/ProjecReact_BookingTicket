@@ -1,4 +1,4 @@
-
+import moment from "moment";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import '../../../../Sass/Components/button_Form.scss';
@@ -12,14 +12,64 @@ import "react-datepicker/dist/react-datepicker.css";
 
 
 
+
 export default function ModalForm() {
     const credentials = useSelector(state => state.user.credentials);
-    const { register, errors, handleSubmit } = useForm();
+    const { register, errors, handleSubmit } = useForm({
+        mode: "onChange"
+    });
     const [startDate, setStartDate] = useState(new Date())
+    const [objAddMovie, setobjAddMovie] = useState({
+        maPhim: '',
+        tenPhim: '',
+        biDanh: '',
+        trailer: '',
+        hinhAnh: {},
+        moTa: '',
+        maNhom: 'GP03',
+        ngayKhoiChieu: startDate,
+        danhGia: ''
+
+    })
+
+
+    const handleAddDate = (e) => {
+        let date = moment(e).format('DD.MM.yyyy')
+       
+        console.log(date);
+
+    }
+
+    const handleChange = (e) => {
+
+        let { value, name } = e.target
+
+        let target = e.target;
+        if (target.name === 'hinhAnh') {
+            setobjAddMovie({
+                ...objAddMovie,
+                [name]: e.target.files[0]
+            })
+        } else {
+            setobjAddMovie({
+                ...objAddMovie,
+                [name]: value
+            })
+
+        }
+        console.log(objAddMovie);
+
+    }
 
     const onSubmit = (values) => {
 
-        console.log(values);
+        console.log(values)
+
+
+
+
+
+
 
     }
 
@@ -39,11 +89,12 @@ export default function ModalForm() {
                         placeholder="Nhập mã phim"
                         ref={register({
                             required: "Mã phim không được rỗng !!",
-                            maxLength: 4
+
+                            minLength: { value: 4, message: "Mã phim phải từ 4 chữ số!!" }
                         }
                         )}
                         className={`form-control ${errors.maPhim ? "is-invalid" : ""}`}
-
+                        onChange={event => handleChange(event)}
 
                     />
                     <p className="invalid-feedback" name="maPhim">{errors.maPhim?.message}</p>
@@ -59,6 +110,7 @@ export default function ModalForm() {
                             required: "Tên phim không được rỗng !!"
                         })}
                         className={`form-control ${errors.tenPhim ? "is-invalid" : ""}`}
+                        onChange={event => handleChange(event)}
 
 
                     />
@@ -75,6 +127,7 @@ export default function ModalForm() {
                             required: "Bí danh không được rỗng !!"
                         })}
                         className={`form-control ${errors.biDanh ? "is-invalid" : ""}`}
+                        onChange={event => handleChange(event)}
 
                     />
                     <p className="invalid-feedback" name="biDanh">{errors.biDanh?.message}</p>
@@ -90,6 +143,8 @@ export default function ModalForm() {
                             required: "Trailer không được rỗng !!",
                         })}
                         className={`form-control ${errors.trailer ? "is-invalid" : ""}`}
+                        onChange={event => handleChange(event)}
+
 
                     />
                     <p className="invalid-feedback" name="trailer">{errors.trailer?.message}</p>
@@ -104,6 +159,7 @@ export default function ModalForm() {
                             required: "Hình ảnh không được rỗng !!",
                         })}
                         className={`form-control ${errors.hinhAnh ? "is-invalid" : ""}`}
+                        onChange={event => handleChange(event)}
 
                     />
                     <p className="invalid-feedback" name="hinhAnh">{errors.hinhAnh?.message}</p>
@@ -118,17 +174,38 @@ export default function ModalForm() {
                             required: "Mô tả không được rỗng !!",
                         })}
                         className={`form-control ${errors.moTa ? "is-invalid" : ""}`}
+                        onChange={event => handleChange(event)}
 
                     />
                     <p className="invalid-feedback" name="moTa">{errors.moTa?.message}</p>
                 </div>
                 <div className="form-group">
                     <label htmlFor="hinhAnh" className="mr-2">Ngày khởi chiếu </label>
-                    <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
+                    <DatePicker
+                        name='ngayKhoiChieu'
+                        onChange={date => handleAddDate(date)}
+                        selected={startDate}
+                        className={`form-control`}
+                    />
 
                 </div>
 
 
+                <div className="form-group">
+                    <label htmlFor="danhGia">Đánh giá </label>
+                    <input
+                        name="danhGia"
+                        type="number"
+                        placeholder="Nhập đánh giá "
+                        ref={register({
+                            required: "Đánh giá không được rỗng !!"
+                        })}
+                        className={`form-control ${errors.danhGia ? "is-invalid" : ""}`}
+                        onChange={event => handleChange(event)}
+
+                    />
+                    <p className="invalid-feedback" name="danhGia">{errors.danhGia?.message}</p>
+                </div>
 
                 <div className="form-group">
                     <label htmlFor="maNhom">Mã nhóm</label>

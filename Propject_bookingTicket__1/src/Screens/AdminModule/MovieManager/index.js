@@ -136,8 +136,7 @@ export default function MovieManager() {
             dataIndex: 'trailer',
             key: '4',
             fixed: 'center',
-            width: 250,
-            render: (_, record) => <iframe width="360" height="215" src={record.trailer} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            width: 100
         },
         {
             title: 'Hình ảnh',

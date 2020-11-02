@@ -20,12 +20,9 @@ class SignUp extends Component {
                 }).then((result) => {
                     if (result) {
                         window.location.replace("/signIn")
-
                     }
                 }
-
                 )
-
             })
             .catch(err => {
                 Swal.fire({
@@ -33,7 +30,6 @@ class SignUp extends Component {
                     title: err.response.data,
                     text: 'Đăng kí không thành công!!',
                 })
-
             })
     }
     render() {
