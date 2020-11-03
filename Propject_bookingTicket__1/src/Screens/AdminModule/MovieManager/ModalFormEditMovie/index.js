@@ -1,6 +1,6 @@
-import moment from "moment";
+
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import '../../../../Sass/Components/button_Form.scss';
 import { useDispatch, useSelector } from "react-redux";
 import { userService } from "../../../../Service";
@@ -8,16 +8,16 @@ import Swal from 'sweetalert2';
 import Axios from "axios";
 import { update } from "../../../../Redux/Actions/user";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-
+import moment from "moment";
 
 
 
 export default function ModalForm(props) {
-    const credentials = useSelector(state => state.user.credentials);
-    const { register, errors, handleSubmit } = useForm();
+
+    const { register, errors, handleSubmit, control } = useForm();
     const [startDate, setStartDate] = useState(new Date())
-    const [objAddMovie, setobjAddMovie] = useState({
+    const accessToken = useSelector(state => state.user.credentials.accessToken)
+    const [objEditMovie, setobjEditMovie] = useState({
         maPhim: '',
         tenPhim: '',
         biDanh: '',
@@ -31,55 +31,85 @@ export default function ModalForm(props) {
     })
 
 
+
     const handleChange = (e) => {
         let { value, name } = e.target
 
         let target = e.target;
         if (target.name === 'hinhAnh') {
-            setobjAddMovie({
-                ...objAddMovie,
+            setobjEditMovie({
+                ...objEditMovie,
                 [name]: e.target.files[0]
             })
+            console.log(objEditMovie);
         } else {
-            setobjAddMovie({
-                ...objAddMovie,
+            setobjEditMovie({
+                ...objEditMovie,
                 [name]: value
             })
 
         }
     }
-
     const onSubmit = (values) => {
+        
 
-        let form_data = new FormData();
-        for (let key in objAddMovie) {
-            console.log(key, objAddMovie[key]);
-            form_data.append(key, objAddMovie[key])
-        }
+        // let obj = {
+        //     maPhim: '',
+        //     tenPhim: '',
+        //     biDanh: '',
+        //     trailer: '',
+        //     hinhAnh: {},
+        //     moTa: '',
+        //     maNhom: 'GP03',
+        //     ngayKhoiChieu: moment(startDate).format("DD/MM/yyyy"),
+        //     danhGia: ''
+        // }
 
-        Axios({
-            method: 'POST',
-            url: 'https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/ThemPhimUploadHinh',
-            data: form_data
-        }).then(res => {
-            Swal.fire({
-                position: 'top-center',
-                icon: 'success',
-                title: 'Thêm phim thành công !!!',
-                showConfirmButton: false,
-                timer: 1500
-            })
-            window.location.reload();
-        }).catch(err => {
-            Swal.fire({
-                position: 'top-center',
-                icon: 'error',
-                title: err.response.data,
-                showConfirmButton: false,
-               
-            })
-        })
 
+        // let { value, name } = values.target
+
+        // let target = values.target;
+        // if (target.name === 'hinhAnh') {
+        //     setobjEditMovie({
+        //         ...objEditMovie,
+        //         [name]: values.target.files[0]
+        //     })
+        // } else {
+        //     setobjEditMovie({
+        //         ...objEditMovie,
+        //         [name]: value
+        //     })
+
+        // }
+
+
+
+
+        // let form_data = new FormData();
+        // for (let key in objEditMovie) {
+        //     console.log(key, objEditMovie[key]);
+        //     form_data.append(key, objEditMovie[key])
+        // }
+
+        // Axios({
+        //     method: 'POST',
+        //     url: 'https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/CapNhatPhimUpload',
+        //     data: form_data,
+        //     headers: {
+        //         'Authorization': `Bearer ${accessToken}`
+        //     }
+        // }).then(res => {
+        //     Swal.fire({
+        //         position: 'top-center',
+        //         icon: 'success',
+        //         title: 'Cập nhật phim thành công !!!',
+        //         showConfirmButton: false,
+        //         timer: 1500
+        //     })
+        //     window.location.reload();
+        // }).catch(err => {
+        //     console.log(err);
+        // })
 
     }
 
@@ -87,7 +117,7 @@ export default function ModalForm(props) {
         <div>
             <div className="row">
                 <div className="col-lg-12 text-center">
-                    <h3>THÊM PHIM </h3>
+                    <h3>SỬA THÔNG TIN PHIM </h3>
                 </div>
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -105,7 +135,7 @@ export default function ModalForm(props) {
                         )}
                         className={`form-control ${errors.maPhim ? "is-invalid" : ""}`}
                         onChange={event => handleChange(event)}
-
+                        defaultValue={props.objEdit.maPhim}
                     />
                     <p className="invalid-feedback" name="maPhim">{errors.maPhim?.message}</p>
                 </div>
@@ -121,7 +151,7 @@ export default function ModalForm(props) {
                         })}
                         className={`form-control ${errors.tenPhim ? "is-invalid" : ""}`}
                         onChange={event => handleChange(event)}
-
+                        defaultValue={props.objEdit.tenPhim}
 
                     />
                     <p className="invalid-feedback" name="tenPhim">{errors.tenPhim?.message}</p>
@@ -138,6 +168,7 @@ export default function ModalForm(props) {
                         })}
                         className={`form-control ${errors.biDanh ? "is-invalid" : ""}`}
                         onChange={event => handleChange(event)}
+                        defaultValue={props.objEdit.biDanh}
 
                     />
                     <p className="invalid-feedback" name="biDanh">{errors.biDanh?.message}</p>
@@ -154,6 +185,7 @@ export default function ModalForm(props) {
                         })}
                         className={`form-control ${errors.trailer ? "is-invalid" : ""}`}
                         onChange={event => handleChange(event)}
+                        defaultValue={props.objEdit.trailer}
 
 
                     />
@@ -164,12 +196,13 @@ export default function ModalForm(props) {
                     <input
                         name="hinhAnh"
                         type="file"
-                        // placeholder="Nhập số điện thoại"
+                        placeholder="Chọn hình ảnh "
                         ref={register({
                             required: "Hình ảnh không được rỗng !!",
                         })}
                         className={`form-control ${errors.hinhAnh ? "is-invalid" : ""}`}
                         onChange={event => handleChange(event)}
+                        defaultValue={props.objEdit.hinhAnh}
 
                     />
                     <p className="invalid-feedback" name="hinhAnh">{errors.hinhAnh?.message}</p>
@@ -185,22 +218,36 @@ export default function ModalForm(props) {
                         })}
                         className={`form-control ${errors.moTa ? "is-invalid" : ""}`}
                         onChange={event => handleChange(event)}
+                        defaultValue={props.objEdit.moTa}
 
                     />
                     <p className="invalid-feedback" name="moTa">{errors.moTa?.message}</p>
                 </div>
                 <div className="form-group">
                     <label htmlFor="hinhAnh" className="mr-2">Ngày khởi chiếu </label>
+
                     <DatePicker
-                        name='ngayKhoiChieu'
+                        showTimeSelect
+                        placeholderText="Ngày khởi chiếu "
+                        minDate={new Date()}
+                        dateFormat="dd.MM.yyyy - HH:MM "
                         onChange={date => setStartDate(date)}
+                        name='ngayKhoiChieu'
+                        placeholderText="Ngày khởi chiếu "
                         selected={startDate}
-                        className={`form-control`}
+                        className={`form-control ${errors.ngayKhoiChieu ? "is-invalid" : ""}`}
+                        ref={register({
+                            required: "Ngày khởi chiếu không được rỗng !!",
+                        })}
                     />
 
+
+
+
+
+                    <p className="invalid-feedback" name="ngayKhoiChieu">{errors.ngayKhoiChieu?.message}</p>
+
                 </div>
-
-
                 <div className="form-group">
                     <label htmlFor="danhGia">Đánh giá </label>
                     <input
@@ -212,6 +259,7 @@ export default function ModalForm(props) {
                         })}
                         className={`form-control ${errors.danhGia ? "is-invalid" : ""}`}
                         onChange={event => handleChange(event)}
+                        defaultValue={props.objEdit.danhGia}
 
                     />
                     <p className="invalid-feedback" name="danhGia">{errors.danhGia?.message}</p>

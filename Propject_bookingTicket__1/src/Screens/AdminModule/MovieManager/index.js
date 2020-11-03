@@ -5,12 +5,13 @@ import { useForm } from "react-hook-form";
 import '../../../Sass/Components/button_Form.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import ModalFormAddMovie from './ModalFormAddMovie';
-import ModalFormEditUser from './ModalFormEditUser';
-
+import ModalFormEditMovie from './ModalFormEditMovie';
+import Swal from 'sweetalert2';
 import '../../../Layouts/userManager.scss'
 import Axios from 'axios';
 import swal from 'sweetalert';
-import DatePicker from "react-datepicker";
+import moment from "moment";
+
 
 
 
@@ -19,6 +20,7 @@ export default function MovieManager() {
     const [DeleteAccount, setDeleteAccount] = useState({});
     const [movie, setmovie] = useState({});
     const [objEdit, setobjEdit] = useState({});
+    const accessToken = useSelector(state => state.user.credentials.accessToken)
 
     const credentials = useSelector(state => state.user.credentials)
 
@@ -33,46 +35,44 @@ export default function MovieManager() {
             })
     }, [])
 
-    const handleDelete = (acc, pass) => {
-        let account = {
-            taiKhoan: acc,
-            matKhau: pass
-        }
+    const handleDelete = (id) => {
 
-
-        userService.signIn(account)
-            .then(res => {
-                setDeleteAccount(res.data)
-
+        Swal.fire({
+            title: 'Bạn có chắc muốn xóa không ?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Xóa'
+        }).then((result) => {
+            if (result.isConfirmed) {
                 Axios({
-                    method: "DELETE",
-                    url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${DeleteAccount.taiKhoan}`,
-                    data: DeleteAccount.taiKhoan,
+                    url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/XoaPhim?MaPhim=${id}`,
+                    method: 'DELETE',
                     headers: {
-                        'Authorization': `Bearer ${credentials.accessToken}`
+                        'Authorization': `Bearer ${accessToken}`
                     }
                 })
                     .then(res => {
-                        swal({
-                            title: res.data,
-                            icon: "success",
-                            button: "OK",
+                        
+                        Swal.fire({
+                            position: 'top-center',
+                            icon: 'success',
+                            title: 'Xóa phim thành công !!!',
+                            showConfirmButton: false,
+                            timer: 1500
                         })
-                            .then((result) => {
-                                if (result) {
-                                    window.location.reload()
-                                }
-                            }
-                            )
-                    })
-                    .catch(err => {
-                        console.log(err);
+
                     })
 
-            })
-            .catch(err => {
-                console.log(err.reponse.data);
-            })
+                    .catch(err => {
+                        console.log(err.response.data);
+                    })
+
+
+            }
+        })
+
     }
 
     const handleSearch = (e) => {
@@ -92,12 +92,14 @@ export default function MovieManager() {
 
     const handleEdit = (e) => {
         let obj = {
-            'taiKhoan': e.taiKhoan,
-            'hoTen': e.hoTen,
-            'matKhau': e.matKhau,
-            'email': e.email,
-            'soDT': e.soDT,
-            'maLoaiNguoiDung': e.maLoaiNguoiDung,
+            'maPhim': e.maPhim,
+            'tenPhim': e.tenPhim,
+            'biDanh': e.biDanh,
+            'trailer': e.trailer,
+            'hinhAnh': e.hinhAnh,
+            'moTa': e.moTa,
+            'ngayKhoiChieu': e.ngayKhoiChieu,
+            'danhGia': e.danhGia,
             'maNhom': 'GP03'
         }
         setobjEdit(obj)
@@ -163,6 +165,7 @@ export default function MovieManager() {
             dataIndex: 'ngayKhoiChieu',
             key: '8',
             width: 100,
+            render: (_, record) => <div>{moment(record.ngayKhoiChieu).format('DD.MM.YYYY HH:MM A')}</div>
         },
         {
             title: 'Đánh giá',
@@ -179,10 +182,10 @@ export default function MovieManager() {
                 <div>
                     <button
                         className="btn btn-danger mr-2"
-                        onClick={() => { handleDelete(record.taiKhoan, record.matKhau) }}>XÓA</button>
+                        onClick={() => { handleDelete(record.maPhim) }}>XÓA</button>
                     <button
                         className="btn btn-warning"
-                        data-toggle="modal" data-target="#modalEditUser"
+                        data-toggle="modal" data-target="#modalEditMovie"
                         onClick={() => { handleEdit(record) }}
                     >SỬA</button>
                 </div>
@@ -258,7 +261,7 @@ export default function MovieManager() {
 
 
                 <div>
-                    <div className="modal fade" id="modalEditUser" tabIndex={-1} role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                    <div className="modal fade" id="modalEditMovie" tabIndex={-1} role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                         <div className="modal-dialog" role="document">
                             <div className="modal-content">
                                 <div className="modal-header">
@@ -268,7 +271,7 @@ export default function MovieManager() {
                                     </button>
                                 </div>
                                 <div className="modal-body">
-                                    <ModalFormEditUser objEdit={objEdit} />
+                                    <ModalFormEditMovie objEdit={objEdit} />
                                 </div>
                             </div>
                         </div>
