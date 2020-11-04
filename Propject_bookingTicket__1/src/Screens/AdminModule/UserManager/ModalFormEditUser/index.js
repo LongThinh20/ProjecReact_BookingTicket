@@ -2,12 +2,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import '../../../../Sass/Components/button_Form.scss';
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { userService } from "../../../../Service";
 import Swal from 'sweetalert2';
-import Axios from "axios";
-import { update } from "../../../../Redux/Actions/user";
-
 
 export default function ModalForm(props) {
 
@@ -82,7 +79,6 @@ export default function ModalForm(props) {
                             required: "Mật khẩu không được rỗng !!"
                         })}
                         className={`form-control ${errors.matKhau ? "is-invalid" : ""}`}
-                        defaultValue={props.objEdit.matKhau}
                     />
                     <p className="invalid-feedback" name="matKhau">{errors.matKhau?.message}</p>
                 </div>

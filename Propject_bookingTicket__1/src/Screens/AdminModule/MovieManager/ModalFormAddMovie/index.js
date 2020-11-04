@@ -2,19 +2,12 @@ import moment from "moment";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import '../../../../Sass/Components/button_Form.scss';
-import { useDispatch, useSelector } from "react-redux";
-import { userService } from "../../../../Service";
+import { movieService } from "../../../../Service";
 import Swal from 'sweetalert2';
-import Axios from "axios";
-import { update } from "../../../../Redux/Actions/user";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-
-
-
 export default function ModalForm(props) {
-    const credentials = useSelector(state => state.user.credentials);
     const { register, errors, handleSubmit } = useForm();
     const [startDate, setStartDate] = useState(new Date())
     const [objAddMovie, setobjAddMovie] = useState({
@@ -30,7 +23,6 @@ export default function ModalForm(props) {
 
     })
 
-
     const handleChange = (e) => {
         let { value, name } = e.target
 
@@ -40,6 +32,7 @@ export default function ModalForm(props) {
                 ...objAddMovie,
                 [name]: e.target.files[0]
             })
+
         } else {
             setobjAddMovie({
                 ...objAddMovie,
@@ -57,28 +50,25 @@ export default function ModalForm(props) {
             form_data.append(key, objAddMovie[key])
         }
 
-        Axios({
-            method: 'POST',
-            url: 'https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/ThemPhimUploadHinh',
-            data: form_data
-        }).then(res => {
-            Swal.fire({
-                position: 'top-center',
-                icon: 'success',
-                title: 'Thêm phim thành công !!!',
-                showConfirmButton: false,
-                timer: 1500
+        movieService.addMovie(form_data)
+            .then(res => {
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'Thêm phim thành công !!!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                window.location.reload();
+            }).catch(err => {
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'error',
+                    title: err.response.data,
+                    showConfirmButton: false,
+
+                })
             })
-            window.location.reload();
-        }).catch(err => {
-            Swal.fire({
-                position: 'top-center',
-                icon: 'error',
-                title: err.response.data,
-                showConfirmButton: false,
-               
-            })
-        })
 
 
     }

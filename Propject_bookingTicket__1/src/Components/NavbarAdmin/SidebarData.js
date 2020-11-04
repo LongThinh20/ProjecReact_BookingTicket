@@ -1,7 +1,7 @@
 import React from 'react';
-import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai'
-import * as IoIcons from 'react-icons/io'
+import * as BiIcons from 'react-icons/bi'
+
 
 export const SidebarData = [
     {
@@ -11,19 +11,19 @@ export const SidebarData = [
         className: 'nav-text'
     },
     {
-        title: 'User',
+        title: 'Quản lý người dùng ',
         path: '/admin/user',
-        icon: <AiIcons.AiFillHome />,
+        icon: <AiIcons.AiOutlineUser />,
         className: 'nav-text'
     },
     {
-        title: 'Movie',
+        title: 'Quản lý phim ',
         path: '/admin/movie',
-        icon: <AiIcons.AiFillHome />,
+        icon: <BiIcons.BiFilm />,
         className: 'nav-text'
     },
     {
-        title: 'ShowTime',
+        title: 'Quản lý lịch chiếu',
         path: '/admin/showtime',
         icon: <AiIcons.AiFillHome />,
         className: 'nav-text'

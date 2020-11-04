@@ -84,6 +84,22 @@ class UserService {
             data: user,
         })
     }
+    searchUser(id) {
+        return Axios({
+            method: 'GET',
+            url: `${domain}/api/QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=GP03&tuKhoa=${id}`
+        })
+    }
+    addUser(data, token) {
+        return Axios({
+            method: 'POST',
+            url: `${domain}/api/QuanLyNguoiDung/ThemNguoiDung`,
+            data: data,
+            headers: {
+                "Authorization": `Bearer ${token} `
+            }
+        })
+    }
 
 
 }

@@ -103,8 +103,8 @@ export default function ListGroup(props) {
                             <a className="cinemaGroupList_item list-group-item list-group-item-action " id={item.maHeThongRap} data-toggle="list" href={`#${item.maCumRap}`} role="tab" aria-controls="home" key={index}
                               onClick={() => { checkShowTime(item.danhSachPhim) }}
                             >
-                              <p>Tên rạp: <span>{item.tenCumRap}</span></p>
-                              <p>Địa chỉ : <span>{item.diaChi}</span></p>
+                              <p className="text-dark">Tên rạp: <span className="text-info">{item.tenCumRap}</span></p>
+                              <p className="text-dark">Địa chỉ : <span className="text-info">{item.diaChi}</span></p>
                             </a>
 
                           )

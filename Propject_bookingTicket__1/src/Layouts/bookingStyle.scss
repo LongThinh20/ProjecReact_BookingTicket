@@ -12,22 +12,10 @@
     background-repeat: no-repeat;
     padding: 50px 0;
 
-    .custom {
-      table {
-        tbody {
-          tr {
-            td {
-              padding: 5px;
-            }
-            .rowName {
-              padding-right: 20px;
-              @include styleText($color-black-1, 20px, $fw-bold);
-            }
-          }
-        }
-      }
-    }
-
+  .custom{
+    width: 80%;
+    margin: auto;
+  }
     .contentBottom {
       padding-top: 30px;
       .row {
@@ -115,21 +103,7 @@
       background-size: contain;
       background-repeat: no-repeat;
       padding: 50px 0;
-      .custom {
-        table {
-          tbody {
-            tr {
-              td {
-                padding: 0px;
-              }
-              .rowName {
-                padding-right: 5px;
-                @include styleText($color-black-1, 15px, $fw-bold);
-              }
-            }
-          }
-        }
-      }
+    
 
       .contentBottom {
         padding-top: 30px;
@@ -223,22 +197,7 @@
       min-width: 700px;
       overflow-x: auto;
       overflow-y: hidden;
-      .custom {
-        width: 700px;
-        table {
-          tbody {
-            tr {
-              td {
-                padding: 0px;
-              }
-              .rowName {
-                padding-right: 5px;
-                @include styleText($color-black-1, 15px, $fw-bold);
-              }
-            }
-          }
-        }
-      }
+    
 
       .contentBottom {
         padding-top: 30px;

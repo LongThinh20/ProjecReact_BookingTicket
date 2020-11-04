@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import moment from "moment";
 import Swal from "sweetalert2";
 import { movieService } from "../../../../Service";
@@ -10,7 +10,7 @@ import img4 from '../../../../img/STARLIGHT.png';
 import img5 from '../../../../img/IVB.png';
 import img6 from '../../../../img/payoo.jpg';
 import img7 from '../../../../img/zalopay_icon.png';
-import '../../../../Layouts/seatList.scss';
+import '../../../../Layouts/bookingStyle.scss';
 
 
 export default function PayList(props) {

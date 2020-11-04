@@ -16,9 +16,9 @@ export default function DetailMovie1(props) {
    const [lstmovieDetail, setlstmovieDetail] = useState({});
    const [lstmovie, setlstmovie] = useState([]);
    const credentials = useSelector(state => state.user.credentials);
-
+   const [ratingValues, setratingValues] = useState(0)
    const [loader, showLoader, hideLoader] = usePageLoading();
-
+   const [view, setview] = useState(false);
    let param = useParams();
 
 
@@ -53,6 +53,11 @@ export default function DetailMovie1(props) {
          })
    }, [])
 
+   const handleChange = (values) => {
+      setratingValues(values)
+   }
+
+
    return (
       <section className="detail" style={imgStyle}>
          <div className="container">
@@ -82,7 +87,7 @@ export default function DetailMovie1(props) {
 
                   <div className="row mt-4">
                      <div className="col-2 pr-0">
-                        <div>Ngày :  </div>
+                        <strong className="text-secondary">Ngày :  </strong>
                      </div>
                      <div className="col" >
                         {moment(`${lstmovieDetail.ngayKhoiChieu}`).format('DD.MM.yyyy')}
@@ -90,15 +95,29 @@ export default function DetailMovie1(props) {
                   </div>
                   <div className="row mt-4">
                      <div className="col-2 pr-0 w-auto">
-                        <div>Đánh giá:</div>
+                        <strong className="text-secondary">Đánh giá:</strong>
                      </div>
-                     <div className="col" >
-                        {lstmovieDetail.danhGia} / <Rate allowHalf defaultValue={4} />
+                     <div className="col rating" >
+                        <i className="fa fa-star" />
+                        <div className="rating_Value">
+                           <strong>7.8</strong><span className="text-muted">/10</span>
+                           <span className="rating_View">{lstmovieDetail.danhGia}</span>
+                        </div>
+                        <button className="btn rating_Btn" onClick={() => { setview(true) }}>Đánh giá</button>
+
+                        {
+                           view ? (<Rate allowHalf value={ratingValues} onChange={(value) => {
+                              handleChange(value)
+                           }} />)
+                              : (<Rate style={{ display: 'none' }} />)
+                        }
+
+
                      </div>
                   </div>
                   <div className="row mt-4">
                      <div className="col-2 pr-0">
-                        <div>Mô tả : </div>
+                        <strong className="text-secondary">Mô tả : </strong>
                      </div>
                      <div className="col description" >
                         {lstmovieDetail.moTa}

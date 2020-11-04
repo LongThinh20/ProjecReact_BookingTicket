@@ -1,12 +1,11 @@
 
 import React, { useState } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import '../../../../Sass/Components/button_Form.scss';
-import { useDispatch, useSelector } from "react-redux";
-import { userService } from "../../../../Service";
+import { useSelector } from "react-redux";
+import { movieService } from "../../../../Service";
 import Swal from 'sweetalert2';
-import Axios from "axios";
-import { update } from "../../../../Redux/Actions/user";
+
 import DatePicker from "react-datepicker";
 import moment from "moment";
 
@@ -14,7 +13,7 @@ import moment from "moment";
 
 export default function ModalForm(props) {
 
-    const { register, errors, handleSubmit, control } = useForm();
+    const { register, errors, handleSubmit } = useForm();
     const [startDate, setStartDate] = useState(new Date())
     const accessToken = useSelector(state => state.user.credentials.accessToken)
     const [objEditMovie, setobjEditMovie] = useState({
@@ -41,7 +40,7 @@ export default function ModalForm(props) {
                 ...objEditMovie,
                 [name]: e.target.files[0]
             })
-            console.log(objEditMovie);
+
         } else {
             setobjEditMovie({
                 ...objEditMovie,
@@ -49,67 +48,44 @@ export default function ModalForm(props) {
             })
 
         }
+
+        console.log(objEditMovie);
     }
+
     const onSubmit = (values) => {
-        
 
-        // let obj = {
-        //     maPhim: '',
-        //     tenPhim: '',
-        //     biDanh: '',
-        //     trailer: '',
-        //     hinhAnh: {},
-        //     moTa: '',
-        //     maNhom: 'GP03',
-        //     ngayKhoiChieu: moment(startDate).format("DD/MM/yyyy"),
-        //     danhGia: ''
-        // }
+        let obj = {
+            maPhim: values.maPhim,
+            tenPhim: values.tenPhim,
+            biDanh: values.biDanh,
+            trailer: values.trailer,
+            hinhAnh: values.hinhAnh[0],
+            moTa: values.moTa,
+            maNhom: 'GP03',
+            ngayKhoiChieu: moment(startDate).format("DD/MM/yyyy"),
+            danhGia: values.danhGia
+        }
 
+        let form_data = new FormData();
 
-        // let { value, name } = values.target
+        for (let key in obj) {
+            console.log(key, obj[key]);
+            form_data.append(key, obj[key])
+        }
 
-        // let target = values.target;
-        // if (target.name === 'hinhAnh') {
-        //     setobjEditMovie({
-        //         ...objEditMovie,
-        //         [name]: values.target.files[0]
-        //     })
-        // } else {
-        //     setobjEditMovie({
-        //         ...objEditMovie,
-        //         [name]: value
-        //     })
-
-        // }
-
-
-
-
-        // let form_data = new FormData();
-        // for (let key in objEditMovie) {
-        //     console.log(key, objEditMovie[key]);
-        //     form_data.append(key, objEditMovie[key])
-        // }
-
-        // Axios({
-        //     method: 'POST',
-        //     url: 'https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/CapNhatPhimUpload',
-        //     data: form_data,
-        //     headers: {
-        //         'Authorization': `Bearer ${accessToken}`
-        //     }
-        // }).then(res => {
-        //     Swal.fire({
-        //         position: 'top-center',
-        //         icon: 'success',
-        //         title: 'Cập nhật phim thành công !!!',
-        //         showConfirmButton: false,
-        //         timer: 1500
-        //     })
-        //     window.location.reload();
-        // }).catch(err => {
-        //     console.log(err);
-        // })
+        movieService.updateMovie(form_data, accessToken)
+            .then(res => {
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'Cập nhật phim thành công !!!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                window.location.reload();
+            }).catch(err => {
+                console.log(err.response.data);
+            })
 
     }
 

@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Input, InputNumber, Table, Form } from 'antd';
-import { movieService, userService } from '../../../Service';
-import { useForm } from "react-hook-form";
+import { Table } from 'antd';
+import { userService } from '../../../Service';
 import '../../../Sass/Components/button_Form.scss';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import ModalFormAddUser from './ModalFormAddUser';
 import ModalFormEditUser from './ModalFormEditUser';
 
 import '../../../Layouts/userManager.scss'
-import { number } from 'yup';
-import Axios from 'axios';
 import swal from 'sweetalert';
-
 
 
 
@@ -39,20 +35,12 @@ export default function UserManager() {
             taiKhoan: acc,
             matKhau: pass
         }
-        
+
 
         userService.signIn(account)
             .then(res => {
                 setDeleteAccount(res.data)
-
-                Axios({
-                    method: "DELETE",
-                    url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${DeleteAccount.taiKhoan}`,
-                    data: DeleteAccount.taiKhoan,
-                    headers: {
-                        'Authorization': `Bearer ${credentials.accessToken}`
-                    }
-                })
+                userService.dedeteUser(DeleteAccount.taiKhoan, credentials.accessToken)
                     .then(res => {
                         swal({
                             title: res.data,
@@ -78,10 +66,7 @@ export default function UserManager() {
 
 
     const handleSearch = (e) => {
-        Axios({
-            method: 'GET',
-            url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=GP03&tuKhoa=${e}`
-        })
+        userService.searchUser(e)
             .then(res => {
                 let lstUserUpdate = res.data;
 
@@ -188,11 +173,6 @@ export default function UserManager() {
         })
         )
     })
-
-    const { register, errors, handleSubmit } = useForm();
-
-    const onSubmit = (values) => { console.log(values); }
-
 
 
     return (

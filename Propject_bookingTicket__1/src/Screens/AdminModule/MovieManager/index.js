@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Input, InputNumber, Table, Image, Form } from 'antd';
-import { movieService, userService } from '../../../Service';
-import { useForm } from "react-hook-form";
+import { Table, Image } from 'antd';
+import { movieService } from '../../../Service';
 import '../../../Sass/Components/button_Form.scss';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import ModalFormAddMovie from './ModalFormAddMovie';
 import ModalFormEditMovie from './ModalFormEditMovie';
 import Swal from 'sweetalert2';
 import '../../../Layouts/userManager.scss'
-import Axios from 'axios';
-import swal from 'sweetalert';
 import moment from "moment";
 
 
@@ -17,12 +14,9 @@ import moment from "moment";
 
 export default function MovieManager() {
 
-    const [DeleteAccount, setDeleteAccount] = useState({});
     const [movie, setmovie] = useState({});
     const [objEdit, setobjEdit] = useState({});
     const accessToken = useSelector(state => state.user.credentials.accessToken)
-
-    const credentials = useSelector(state => state.user.credentials)
 
     useEffect(() => {
         movieService.fetchMovie()
@@ -46,15 +40,9 @@ export default function MovieManager() {
             confirmButtonText: 'Xóa'
         }).then((result) => {
             if (result.isConfirmed) {
-                Axios({
-                    url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/XoaPhim?MaPhim=${id}`,
-                    method: 'DELETE',
-                    headers: {
-                        'Authorization': `Bearer ${accessToken}`
-                    }
-                })
+                movieService.deleteMovie(id, accessToken)
                     .then(res => {
-                        
+
                         Swal.fire({
                             position: 'top-center',
                             icon: 'success',
@@ -75,20 +63,6 @@ export default function MovieManager() {
 
     }
 
-    const handleSearch = (e) => {
-        Axios({
-            method: 'GET',
-            url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=GP03&tuKhoa=${e}`
-        })
-            .then(res => {
-                let lstUserUpdate = res.data;
-
-                setmovie(lstUserUpdate)
-            })
-            .catch(err => {
-                console.log(err.reponse.data);
-            })
-    }
 
     const handleEdit = (e) => {
         let obj = {
@@ -144,7 +118,7 @@ export default function MovieManager() {
             title: 'Hình ảnh',
             dataIndex: 'hinhAnh',
             key: '5',
-            width: 200,
+            width: 150,
             fixed: 'center',
             render: (_, record) => <Image src={record.hinhAnh} width={200} />
         },
@@ -214,11 +188,6 @@ export default function MovieManager() {
         })
         )
     })
-
-    const { register, errors, handleSubmit } = useForm();
-
-    const onSubmit = (values) => { console.log(values); }
-
 
 
     return (

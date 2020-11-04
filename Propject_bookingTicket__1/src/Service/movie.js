@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import {domain} from '../Config/config'
+import { domain } from '../Config/config'
 
 class MovieService {
     fetchMovie() {
@@ -58,6 +58,32 @@ class MovieService {
             headers: {
                 'Authorization': `Bearer ${token}`
 
+            }
+        })
+    }
+    deleteMovie(id, token) {
+        return Axios({
+            url: `${domain}/api/QuanLyPhim/XoaPhim?MaPhim=${id}`,
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+    }
+    addMovie(data) {
+        return Axios({
+            method: 'POST',
+            url: `${domain}/api/QuanLyPhim/ThemPhimUploadHinh`,
+            data: data
+        })
+    }
+    updateMovie(data, token) {
+        return Axios({
+            method: 'POST',
+            url: `${domain}/api/QuanLyPhim/CapNhatPhimUpload`,
+            data: data,
+            headers: {
+                'Authorization': `Bearer ${token}`
             }
         })
     }

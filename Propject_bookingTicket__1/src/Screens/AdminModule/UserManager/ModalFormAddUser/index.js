@@ -2,11 +2,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import '../../../../Sass/Components/button_Form.scss';
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { userService } from "../../../../Service";
 import Swal from 'sweetalert2';
-import Axios from "axios";
-import { update } from "../../../../Redux/Actions/user";
 
 
 export default function ModalForm() {
@@ -14,25 +12,20 @@ export default function ModalForm() {
     const { register, errors, handleSubmit } = useForm();
 
     const onSubmit = (values) => {
-      
-        Axios({
-            method: 'POST',
-            url: 'https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThemNguoiDung',
-            data: values,
-            headers: {
-                "Authorization": `Bearer ${credentials.accessToken} `
-            }
-        }).then(res => {
-            Swal.fire({
-                position: 'top-center',
-                icon: 'success',
-                title: 'Thành công !! ',
-                showConfirmButton: false,
-                timer: 1500
+
+
+        userService.addUser(values, credentials.accessToken)
+            .then(res => {
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'Thành công !! ',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }).catch(err => {
+                console.log(err)
             })
-        }).catch(err => {
-            console.log(err)
-        })
 
     }
 

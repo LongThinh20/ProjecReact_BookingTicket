@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import '../../../Layouts/PersonalInfo.scss';
 import { Avatar } from 'antd';
