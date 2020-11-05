@@ -1,4 +1,5 @@
 import React from 'react'
+import BoxBooking from '../../../Components/BoxBooking'
 
 import Carousel from '../../../Components/Carousel'
 import usePageLoading from '../../../Components/Hook/usePageLoading'
@@ -15,6 +16,7 @@ export default function HomePage(props) {
     return (
         <div>
             <Carousel />
+            <BoxBooking />
             <SliderMovie1 showLoader={showLoader} hideLoader={hideLoader} />
             <ListGroup />
             <MobileApp />

@@ -1,0 +1,9 @@
+.boxBooking {
+  height: 400px;
+  width: 400px;
+  position: absolute;
+  background-color: #555555;
+  top: 30%;
+  right: 5%;
+  z-index: 100;
+}

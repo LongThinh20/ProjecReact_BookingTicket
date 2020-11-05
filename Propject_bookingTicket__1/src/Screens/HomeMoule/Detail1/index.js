@@ -8,6 +8,7 @@ import '../../../Sass/Components/button_Trailer.scss';
 import '../../../Layouts/detail.scss';
 import { Rate } from 'antd';
 import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2'
 
 
 
@@ -53,8 +54,33 @@ export default function DetailMovie1(props) {
          })
    }, [])
 
+   const handleClick = () => {
+      if (view === false) {
+         setview(true)
+      } else {
+         Swal.fire({
+            position: 'top-center',
+            icon: 'error',
+            title: 'Bạn đã bình chon rồi !! ',
+            showConfirmButton: false,
+            timer: 1500
+         })
+
+      }
+   }
    const handleChange = (values) => {
-      setratingValues(values)
+      if (view) {
+         setratingValues(values)
+         Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'Cảm ơn bạn đã quan tâm !!',
+            showConfirmButton: false,
+            timer: 1500
+         })
+         setview(null)
+      }
+
    }
 
 
@@ -103,7 +129,7 @@ export default function DetailMovie1(props) {
                            <strong>7.8</strong><span className="text-muted">/10</span>
                            <span className="rating_View">{lstmovieDetail.danhGia}</span>
                         </div>
-                        <button className="btn rating_Btn" onClick={() => { setview(true) }}>Đánh giá</button>
+                        <button className="btn rating_Btn" onClick={() => { handleClick() }}>Đánh giá</button>
 
                         {
                            view ? (<Rate allowHalf value={ratingValues} onChange={(value) => {
@@ -133,7 +159,6 @@ export default function DetailMovie1(props) {
                <h3>LỊCH CHIẾU</h3>
 
                <div className="logo_detail">
-
                   <ul className="nav nav-pills ">
                      {
                         lstmovie.heThongRapChieu?.map((item, index) => {
@@ -147,7 +172,6 @@ export default function DetailMovie1(props) {
                         })
                      }
                   </ul>
-
                </div>
 
                <div className="tab-content ">
@@ -178,6 +202,9 @@ export default function DetailMovie1(props) {
                      })
                   }
                </div>
+
+
+
             </div>
          </div>
          { loader}
