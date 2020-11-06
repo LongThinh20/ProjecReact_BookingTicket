@@ -13,6 +13,8 @@ let initialState = {
     lstInfoMovieBooking: [],
     objBooking: [],
 
+
+
 }
 
 const MovieReducer = (state = initialState, action) => {
@@ -60,9 +62,19 @@ const MovieReducer = (state = initialState, action) => {
             return { ...state }
         }
         case LSTBOOKING_TO_SEATLST: {
-            state.objBooking = action.payload;
+            let danhSachGheDangDatUpdate = [...state.objBooking];
+            let index = danhSachGheDangDatUpdate.findIndex(gheDangDat => gheDangDat.stt === ghe.stt);
+            if (index !== -1) {
+                danhSachGheDangDatUpdate.splice(index, 1);
+            } else {
+                danhSachGheDangDatUpdate.push(ghe);
+            }
+            state.objBooking = danhSachGheDangDatUpdate;
+
+
             return { ...state }
         }
+
 
         default:
             return state;

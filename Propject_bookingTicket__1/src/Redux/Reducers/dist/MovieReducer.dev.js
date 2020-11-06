@@ -28,7 +28,11 @@ var initialState = {
   cinemaGroup: [],
   maHeThongRap: null,
   lstMovie: [],
-  lstSeatBooking: []
+  lstSeatBooking: [],
+  lstBooking: [],
+  lstInfoMovieBooking: [],
+  objBooking: [],
+  boxBookingCinema: []
 };
 
 var MovieReducer = function MovieReducer() {
@@ -60,33 +64,39 @@ var MovieReducer = function MovieReducer() {
         return _objectSpread({}, state);
       }
 
-    case 'CHANGE_ID':
+    case _type.CHANGE_ID:
       {
         state.maHeThongRap = action.payload;
         return _objectSpread({}, state);
       }
 
-    case 'LST_MOVIE':
+    case _type.LST_MOVIE:
       {
         state.lstMovie = action.payload;
         return _objectSpread({}, state);
       }
 
-    case 'CHECK_SEAT_BOOKING':
+    case _type.CHECK_SEAT_BOOKING:
       {
         var lstSeatBookingUpdate = _toConsumableArray(state.lstSeatBooking);
 
         var index = lstSeatBookingUpdate.findIndex(function (gheDangDat) {
-          return gheDangDat.stt === action.payload.stt;
+          return gheDangDat.stt === action.payload.stt && gheDangDat.rowSeat === action.payload.rowSeat;
         });
 
-        if (index != -1) {
+        if (index !== -1) {
           lstSeatBookingUpdate.splice(index, 1);
         } else {
           lstSeatBookingUpdate.push(action.payload);
         }
 
         state.lstSeatBooking = lstSeatBookingUpdate;
+        return _objectSpread({}, state);
+      }
+
+    case _type.LSTBOOKING_TO_SEATLST:
+      {
+        state.objBooking = action.payload;
         return _objectSpread({}, state);
       }
 

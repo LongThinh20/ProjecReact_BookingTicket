@@ -11,6 +11,8 @@ export const login = (user) => {
             .then(res => {
                 dispatch(createAction(FETCH_CREDENTIALS, res.data));
 
+
+
                 swal({
                     title: "Đăng nhập thành công !",
                     icon: "success",
@@ -20,11 +22,15 @@ export const login = (user) => {
                         window.location.replace("/");
                     })
 
+
+
                 if (typeof (Storage) !== 'undefined') {
                     localStorage.setItem('credentials', JSON.stringify(res.data))
                 } else {
                     alert('Trình duyệt của bạn không hỗ trợ localStorage. Hãy nâng cấp trình duyệt để sử dụng!');
                 }
+
+
 
                 // localStorage.setItem('token', res.data.accessToken);
 

@@ -55,10 +55,11 @@ function App() {
   };
 
   const dispatch = useDispatch();
+  const credentialStr = localStorage.getItem('credentials');
   const getCredentialFormLocal = () => {
 
     if (typeof (Storage) !== 'undefined') {
-      const credentialStr = localStorage.getItem('credentials');
+
       dispatch({
         type: 'FETCH_CREDENTIALS',
         payload: JSON.parse(credentialStr)
@@ -86,7 +87,16 @@ function App() {
         <Switch>
           {showHomeLayout(routesHome)}
           {showBookingLayout(routesBooking)}
-          {showAdminLayout(routesAdmin)}
+          {
+            credentialStr ?
+              (
+                JSON.parse(credentialStr).maLoaiNguoiDung === 'QuanTri'
+                  ? showAdminLayout(routesAdmin)
+                  : ''
+
+              )
+              : ''
+          }
           <Route path="" component={PageNotFound} />
         </Switch>
 

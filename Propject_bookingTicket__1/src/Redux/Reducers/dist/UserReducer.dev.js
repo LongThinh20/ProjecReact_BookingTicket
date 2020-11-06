@@ -14,7 +14,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var initialState = {
-  credentials: []
+  credentials: [],
+  account: []
 };
 
 var UserReducer = function UserReducer() {
@@ -25,12 +26,6 @@ var UserReducer = function UserReducer() {
     case _type.FETCH_CREDENTIALS:
       {
         state.credentials = action.payload;
-        return _objectSpread({}, state);
-      }
-
-    case 'DELETE_ACCOUNT':
-      {
-        state.credentials = null;
         return _objectSpread({}, state);
       }
 

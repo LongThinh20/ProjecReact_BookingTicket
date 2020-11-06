@@ -1,8 +1,6 @@
 import React from 'react'
-import BoxBooking from '../../../Components/BoxBooking'
-
+import BoxBooking from '../../../Components/BoxBooking/BoxBooking'
 import Carousel from '../../../Components/Carousel'
-import usePageLoading from '../../../Components/Hook/usePageLoading'
 import ListGroup from '../../../Components/ListGroup'
 import MobileApp from '../../../Components/MobileApp'
 import ScrollArrow from '../../../Components/ScrollArrow'
@@ -11,17 +9,16 @@ import SliderMovie1 from '../../../Components/SliderMovie1'
 
 export default function HomePage(props) {
 
-    const [loader, showLoader, hideLoader] = usePageLoading();
+
 
     return (
         <div>
             <Carousel />
             <BoxBooking />
-            <SliderMovie1 showLoader={showLoader} hideLoader={hideLoader} />
+            <SliderMovie1 />
             <ListGroup />
             <MobileApp />
             <ScrollArrow />
-            {loader}
         </div>
     )
 }

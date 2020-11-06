@@ -8,7 +8,7 @@ import ModalFormEditUser from './ModalFormEditUser';
 
 import '../../../Layouts/userManager.scss'
 import swal from 'sweetalert';
-
+import Swal from 'sweetalert2'
 
 
 export default function UserManager() {
@@ -36,29 +36,44 @@ export default function UserManager() {
             matKhau: pass
         }
 
-
         userService.signIn(account)
             .then(res => {
-                setDeleteAccount(res.data)
-                userService.dedeteUser(DeleteAccount.taiKhoan, credentials.accessToken)
-                    .then(res => {
-                        swal({
-                            title: res.data,
-                            icon: "success",
-                            button: "OK",
-                        })
-                            .then((result) => {
-                                if (result) {
-                                    window.location.reload()
-                                }
-                            }
-                            )
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    })
+                Swal.fire({
+                    title: 'Bạn có muốn xóa không ?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Xóa'
+                }).then((result) => {
+                    if (result) {
 
-            })
+
+                        setDeleteAccount(res.data)
+                        userService.dedeteUser(DeleteAccount.taiKhoan, credentials.accessToken)
+                            .then(res => {
+                                swal({
+                                    title: res.data,
+                                    icon: "success",
+                                    button: "OK",
+                                })
+                                    .then((result) => {
+                                        if (result) {
+                                            window.location.reload()
+                                        }
+                                    })
+                            })
+                            .catch(err => {
+                                console.log(err);
+                            })
+
+                    }
+
+                })
+
+            }
+
+            )
             .catch(err => {
                 console.log(err.reponse.data);
             })
@@ -140,7 +155,7 @@ export default function UserManager() {
             title: 'Action',
             key: 'operation',
             fixed: 'center',
-            width: 120,
+            width: 100,
             render: (_, record) =>
                 <div>
                     <button
@@ -175,8 +190,12 @@ export default function UserManager() {
     })
 
 
+
     return (
+
+
         <section className="userManager">
+
             <div className="container-fluid">
 
                 <div className="row mt-4">
@@ -246,8 +265,6 @@ export default function UserManager() {
                 </div>
 
             </div>
-
-
 
 
 

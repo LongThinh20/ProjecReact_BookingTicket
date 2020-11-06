@@ -1,9 +1,15 @@
 import React from 'react'
 
+
 export default function AdminPage() {
+
+
+
+
+
   return (
     <div className="container">
-      <h1>3132</h1>
+
     </div>
   )
 }

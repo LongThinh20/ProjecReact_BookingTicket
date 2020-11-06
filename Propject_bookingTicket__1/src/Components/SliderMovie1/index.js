@@ -66,10 +66,8 @@ export default function SliderMovie1(props) {
     let [movieList, setmovieList] = useState({});
 
     useEffect(() => {
-
         movieService.fetchMovie()
             .then(res => {
-
                 let danhSachPhim = res.data;
                 setmovieList(danhSachPhim)
             })
@@ -116,7 +114,6 @@ export default function SliderMovie1(props) {
                                 (
                                     <SilderItemsComingSoon item={item} key={index} />
                                 )
-
 
                             )
                         }
